@@ -2,8 +2,8 @@
 <script type="application/json" id="cowork-artifact-meta">
 {
   "name": "Youropa Dashboard",
-  "schemaVersion": 1,
-  "description": "Youropa Real Estate executive dashboard — consolidated sales & rental performance from Inmovilla CRM (manually read weekly via Claude in Chrome, no API). Shows KPIs, monthly volume/profit trend, category/channel/region breakdowns, top 10 properties, quarterly comparison, sales & rental conversion funnels, leads by month/quarter, and a monthly summary table. Two combinable filters: period (this month/3/6/12/all) and deal type (Sales/Rental/All). Currently populated with 24 months of plausible fictitious data in the exact shape the weekly automation will overwrite."
+  "schemaVersion": 2,
+  "description": "Youropa Real Estate executive dashboard — consolidated sales, rentals, listings, proposals and commissions performance from Inmovilla CRM."
 }
 </script>
 <html lang="en">
@@ -27,6 +27,7 @@
   --line:rgba(226,189,122,0.14);
   --pos:#7ed9a7;
   --neg:#e2777a;
+  --info:#6fb3d9;
   --radius:16px;
   --radius-sm:12px;
 }
@@ -48,7 +49,6 @@ header.top{
   gap:24px;flex-wrap:wrap;margin-bottom:28px;
 }
 .brand{display:flex;align-items:center;gap:14px;}
-.brand svg{flex-shrink:0;}
 .brand-text h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin:0;color:var(--text-hi);}
 .brand-text p{margin:4px 0 0;font-size:13.5px;color:var(--text-mid);}
 .brand-text .period-note{color:var(--gold);font-weight:500;}
@@ -74,7 +74,7 @@ select#periodFilter:focus{outline:2px solid var(--gold);outline-offset:1px;}
 
 /* ---------- KPI grid ---------- */
 .kpi-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:32px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:32px;
 }
 .kpi-card{
   background:linear-gradient(160deg,var(--card) 0%, var(--card-2) 100%);
@@ -86,9 +86,10 @@ select#periodFilter:focus{outline:2px solid var(--gold);outline-offset:1px;}
   background:radial-gradient(circle, rgba(226,189,122,0.18), transparent 70%);pointer-events:none;
 }
 .kpi-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,0.4);border-color:rgba(226,189,122,0.35);}
-.kpi-label{font-size:12px;color:var(--text-low);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;font-weight:600;}
-.kpi-value{font-size:24px;font-weight:700;color:var(--text-hi);letter-spacing:-0.02em;line-height:1.15;}
-.kpi-delta{display:flex;align-items:center;gap:5px;margin-top:10px;font-size:12.5px;font-weight:600;}
+.kpi-label{font-size:11.5px;color:var(--text-low);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;font-weight:600;}
+.kpi-value{font-size:22px;font-weight:700;color:var(--text-hi);letter-spacing:-0.02em;line-height:1.15;}
+.kpi-subvalue{font-size:11.5px;color:var(--text-mid);margin-top:4px;}
+.kpi-delta{display:flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:600;}
 .kpi-delta.pos{color:var(--pos);}
 .kpi-delta.neg{color:var(--neg);}
 .kpi-delta.flat{color:var(--text-low);}
@@ -130,13 +131,13 @@ select#periodFilter:focus{outline:2px solid var(--gold);outline-offset:1px;}
 
 /* ---------- Table ---------- */
 .table-card{background:linear-gradient(160deg,var(--card) 0%, var(--card-2) 120%);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:20px;}
-table.summary{width:100%;border-collapse:collapse;font-size:13px;}
+table.summary{width:100%;border-collapse:collapse;font-size:12.5px;}
 table.summary th{
   text-align:right;color:var(--text-low);font-weight:600;font-size:11px;text-transform:uppercase;
-  letter-spacing:0.05em;padding:10px 12px;border-bottom:1px solid var(--line);
+  letter-spacing:0.05em;padding:10px 10px;border-bottom:1px solid var(--line);
 }
 table.summary th:first-child, table.summary td:first-child{text-align:left;}
-table.summary td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-mid);text-align:right;}
+table.summary td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-mid);text-align:right;}
 table.summary tr:hover td{background:rgba(226,189,122,0.05);color:var(--text-hi);}
 table.summary td.month-cell{color:var(--text-hi);font-weight:600;}
 table.summary tbody tr{transition:background .2s ease;}
@@ -151,11 +152,8 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
   .kpi-card, .chart-card{transition:none;}
 }
 
-/* stagger */
 .d1{animation-delay:.03s;} .d2{animation-delay:.07s;} .d3{animation-delay:.11s;} .d4{animation-delay:.15s;}
-.d5{animation-delay:.19s;} .d6{animation-delay:.23s;} .d7{animation-delay:.27s;}
-
-::selection{background:rgba(226,189,122,0.3);}
+.d5{animation-delay:.19s;} .d6{animation-delay:.27s;}
 
 .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
   padding:3px 8px;border-radius:999px;background:rgba(226,189,122,0.12);color:var(--gold);margin-left:8px;vertical-align:middle;}
@@ -168,7 +166,7 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
     <div class="brand">
       <div class="brand-text">
         <h1>Youropa Dashboard</h1>
-        <p>Consolidated commercial performance — sales &amp; rentals<span class="period-note" id="periodLabel"></span></p>
+        <p>Consolidated commercial performance — sales, rentals &amp; listings<span class="period-note" id="periodLabel"></span></p>
       </div>
     </div>
     <div class="controls">
@@ -190,82 +188,100 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
     </div>
   </header>
 
+  <!-- KPI Grid -->
   <section class="kpi-grid" id="kpiGrid"></section>
 
+  <!-- Charts Section -->
   <div class="charts-grid">
+    <!-- Volume & Commissions -->
     <div class="chart-card span-7 fade-in d1">
       <div class="section-title">Sale vs. Rental Volume</div>
       <div class="section-sub">Total transacted volume, sales against rentals, by month</div>
       <div class="canvas-wrap"><canvas id="chartVolumeProfit"></canvas></div>
       <div class="insight" id="insightVolumeProfit"></div>
     </div>
+
+    <!-- Angariações Novas por Mês -->
     <div class="chart-card span-5 fade-in d1">
-      <div class="section-title">Leads by Typology</div>
-      <div class="section-sub">Number of leads by bedroom count (quantity, all-time snapshot)</div>
-      <div class="canvas-wrap"><canvas id="chartCategory"></canvas></div>
-      <div class="insight" id="insightCategory"></div>
+      <div class="section-title">New Listings (Angariações)</div>
+      <div class="section-sub">New property listings captured per month</div>
+      <div class="canvas-wrap"><canvas id="chartListings"></canvas></div>
+      <div class="insight" id="insightListings"></div>
     </div>
 
+    <!-- Propostas Status -->
     <div class="chart-card span-6 fade-in d2">
-      <div class="section-title">Leads by Channel</div>
-      <div class="section-sub">Number of leads by contact origin (quantity, all-time snapshot)</div>
-      <div class="canvas-wrap"><canvas id="chartChannel"></canvas></div>
-      <div class="insight" id="insightChannel"></div>
+      <div class="section-title">Proposals Breakdown</div>
+      <div class="section-sub">Closed, open, and rejected proposals by month</div>
+      <div class="canvas-wrap"><canvas id="chartProposals"></canvas></div>
+      <div class="insight" id="insightProposals"></div>
     </div>
+
+    <!-- Comissões Pago (Venda vs Arrendamento) -->
     <div class="chart-card span-6 fade-in d2">
+      <div class="section-title">Commissions Paid</div>
+      <div class="section-sub">Commissions earned from Sales vs Rentals (€)</div>
+      <div class="canvas-wrap"><canvas id="chartCommissions"></canvas></div>
+      <div class="insight" id="insightCommissions"></div>
+    </div>
+
+    <!-- Regional Demand -->
+    <div class="chart-card span-6 fade-in d3">
       <div class="section-title">Regional Demand by Leads</div>
       <div class="section-sub">Closed deals by concelho, sales vs rentals side by side</div>
       <div class="canvas-wrap"><canvas id="chartRegion"></canvas></div>
       <div class="insight" id="insightRegion"></div>
     </div>
 
-    <div class="chart-card span-12 fade-in d3">
+    <!-- Leads by Channel -->
+    <div class="chart-card span-6 fade-in d3">
+      <div class="section-title">Leads by Channel</div>
+      <div class="section-sub">Number of leads by contact origin</div>
+      <div class="canvas-wrap"><canvas id="chartChannel"></canvas></div>
+      <div class="insight" id="insightChannel"></div>
+    </div>
+
+    <!-- Quarterly Comparison -->
+    <div class="chart-card span-12 fade-in d4">
       <div class="section-title">Quarterly Comparison<span class="tag" id="quarterlyTag"></span></div>
       <div class="section-sub">Volume by quarter, sales vs rentals — available quarterly history</div>
-      <div class="canvas-wrap" style="min-height:260px;"><canvas id="chartQuarterly"></canvas></div>
+      <div class="canvas-wrap" style="min-height:250px;"><canvas id="chartQuarterly"></canvas></div>
       <div class="insight" id="insightQuarterly"></div>
     </div>
 
-    <div class="chart-card span-6 fade-in d4" id="cardSalesFunnel">
+    <!-- Funnels -->
+    <div class="chart-card span-6 fade-in d5" id="cardSalesFunnel">
       <div class="section-title">Sales Conversion Funnel</div>
       <div class="section-sub">Opportunity → Visit → Offer → Contract → Win</div>
       <div id="funnelSales" class="funnel-row" style="margin-top:6px;"></div>
       <div class="insight" id="insightFunnelSales"></div>
     </div>
-    <div class="chart-card span-6 fade-in d4" id="cardRentalFunnel">
+    <div class="chart-card span-6 fade-in d5" id="cardRentalFunnel">
       <div class="section-title">Rental Conversion Funnel</div>
       <div class="section-sub">Opportunity → Visit → Offer → Contract → Win</div>
       <div id="funnelRental" class="funnel-row" style="margin-top:6px;"></div>
       <div class="insight" id="insightFunnelRental"></div>
     </div>
-
-    <div class="chart-card span-6 fade-in d5">
-      <div class="section-title">Leads by Month</div>
-      <div class="section-sub">Opportunities entered the funnel, by month</div>
-      <div class="canvas-wrap"><canvas id="chartLeadsMonth"></canvas></div>
-      <div class="insight" id="insightLeadsMonth"></div>
-    </div>
-    <div class="chart-card span-6 fade-in d5">
-      <div class="section-title">Leads by Quarter</div>
-      <div class="section-sub">Opportunities entered the funnel, by quarter</div>
-      <div class="canvas-wrap"><canvas id="chartLeadsQuarter"></canvas></div>
-      <div class="insight" id="insightLeadsQuarter"></div>
-    </div>
   </div>
 
+  <!-- Summary Table -->
   <div class="table-card fade-in d6">
     <div class="section-title">Monthly Summary</div>
-    <div class="section-sub">Detailed volume, sales and rentals by month, for the selected period</div>
+    <div class="section-sub">Detailed volume, sales, rentals, listings, proposals, and commissions for the selected period</div>
     <div style="overflow-x:auto;">
       <table class="summary" id="summaryTable">
         <thead>
           <tr>
             <th>Month</th>
-            <th>Total Volume</th>
+            <th>Total Vol.</th>
             <th>Sales (#)</th>
-            <th>Sales Volume</th>
+            <th>Sales Vol.</th>
             <th>Rentals (#)</th>
-            <th>Rental Volume</th>
+            <th>Rental Vol.</th>
+            <th>Angariações</th>
+            <th>Prop. Fechadas</th>
+            <th>Comissão Venda</th>
+            <th>Comissão Arrend.</th>
           </tr>
         </thead>
         <tbody id="summaryTbody"></tbody>
@@ -273,49 +289,36 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
     </div>
   </div>
 
-  <footer class="foot fade-in d7">Live data from Inmovilla CRM — generated on <span id="genDate"></span> · Youropa Real Estate</footer>
+  <footer class="foot fade-in d6">Live data from Inmovilla CRM — generated on <span id="genDate"></span> · Youropa Real Estate</footer>
 </div>
 
 <script>
-/* =========================================================================
-   DATA LOADING
-   Commercial data now lives entirely in ./data.json (same shape as before).
-   The weekly Cowork automation should update data.json directly — this
-   HTML/JS file no longer contains any embedded data and should not need to
-   change on a routine data refresh.
-   ========================================================================= */
 let RAW_DATA = null;
 
-/* =========================================================================
-   COMPUTE ENGINE
-   ========================================================================= */
 const fmtEUR = new Intl.NumberFormat('de-DE', { style:'currency', currency:'EUR', maximumFractionDigits:0 });
 const fmtEURdec = new Intl.NumberFormat('de-DE', { style:'currency', currency:'EUR', maximumFractionDigits:2 });
 const fmtNum = new Intl.NumberFormat('de-DE');
 const fmtPct = (v) => (v>=0?'+':'') + v.toFixed(1) + '%';
 
-// MONTHS / QUARTERS / QUARTER_ORDER are derived from RAW_DATA once it has
-// loaded (see initFromData() near the bottom) — declared here so every
-// function below can close over the same bindings.
 let MONTHS, QUARTERS, QUARTER_ORDER;
 const MONTH_LABEL = (mk) => {
   const [y,m] = mk.split('-').map(Number);
   return new Date(y, m-1, 1).toLocaleDateString('en-US', { month:'short', year:'2-digit' });
 };
+
 function quarterOfMonth(mk){
   const [y,m] = mk.split('-').map(Number);
   const q = Math.floor((m-1)/3)+1;
   return 'Q'+q+' '+y;
 }
+
 function initFromData(){
-  MONTHS = RAW_DATA.meta.months; // chronological, oldest->newest
+  MONTHS = RAW_DATA.meta.months;
   QUARTERS = [...new Set(RAW_DATA.transactions.map(t=>t.quarter))].sort((a,b)=>{
-    // sort by year then quarter number using month order
     const idxA = MONTHS.findIndex(mk => quarterOfMonth(mk)===a);
     const idxB = MONTHS.findIndex(mk => quarterOfMonth(mk)===b);
     return idxA-idxB;
   });
-  // unique ordered quarter list derived straight from MONTHS to guarantee correct chronological order
   QUARTER_ORDER = [];
   MONTHS.forEach(mk=>{ const q=quarterOfMonth(mk); if(!QUARTER_ORDER.includes(q)) QUARTER_ORDER.push(q); });
 }
@@ -329,14 +332,14 @@ function monthRange(endIdxExclusive, count){
 
 function currentAndPrevious(){
   const totalMonths = MONTHS.length;
-  const count = state.period; // 1,3,6,12,24
+  const count = state.period;
   const current = monthRange(totalMonths, count);
   let previous = null;
   const prevEnd = totalMonths - count;
   if(prevEnd - count >= 0){
     previous = monthRange(prevEnd, count);
   } else if (prevEnd > 0) {
-    previous = monthRange(prevEnd, prevEnd); // shorter, partial — still show as best-effort
+    previous = monthRange(prevEnd, prevEnd);
   }
   return { current, previous };
 }
@@ -345,6 +348,17 @@ function filterTx(months, type){
   const set = new Set(months);
   return RAW_DATA.transactions.filter(t => set.has(t.month) && (type==='all' || t.type===type));
 }
+
+function filterListings(months){
+  const set = new Set(months);
+  return (RAW_DATA.newListings || []).filter(l => set.has(l.month));
+}
+
+function filterProposals(months){
+  const set = new Set(months);
+  return (RAW_DATA.proposals || []).filter(p => set.has(p.month));
+}
+
 function filterFunnel(months, type){
   const set = new Set(months);
   return RAW_DATA.funnel.filter(r => set.has(r.month) && (type==='all' || r.type===type));
@@ -352,44 +366,7 @@ function filterFunnel(months, type){
 
 function sum(arr, fn){ return arr.reduce((a,x)=>a+fn(x),0); }
 
-function computeKPIs(){
-  const { current, previous } = currentAndPrevious();
-  const curTx = filterTx(current, state.type);
-  const prevTx = previous ? filterTx(previous, state.type) : null;
-  const curFunnel = filterFunnel(current, state.type);
-  const prevFunnel = previous ? filterFunnel(previous, state.type) : null;
-
-  const salesTx = curTx.filter(t=>t.type==='sale');
-  const rentalTx = curTx.filter(t=>t.type==='rental');
-  const totalVol = sum(curTx, t=>t.amount);
-  const salesVol = sum(salesTx, t=>t.amount);
-  const rentalVol = sum(rentalTx, t=>t.amount);
-  const avgTicket = salesTx.length ? salesVol/salesTx.length : null;
-  const oppEntered = sum(curFunnel.filter(r=>r.stage==='opportunity'), r=>r.count);
-
-  let prevVals = null;
-  if(prevTx){
-    const pSales = prevTx.filter(t=>t.type==='sale');
-    const pRental = prevTx.filter(t=>t.type==='rental');
-    const pTotalVol = sum(prevTx, t=>t.amount);
-    const pSalesVol = sum(pSales, t=>t.amount);
-    const pRentalVol = sum(pRental, t=>t.amount);
-    const pAvgTicket = pSales.length ? pSalesVol/pSales.length : null;
-    const pOppEntered = prevFunnel ? sum(prevFunnel.filter(r=>r.stage==='opportunity'), r=>r.count) : null;
-    prevVals = {
-      totalVol:pTotalVol, salesVol:pSalesVol, rentalVol:pRentalVol,
-      avgTicket:pAvgTicket, salesCount:pSales.length, rentalCount:pRental.length,
-      oppEntered:pOppEntered
-    };
-  }
-
-  return {
-    totalVol, salesVol, rentalVol, avgTicket,
-    salesCount: salesTx.length, rentalCount: rentalTx.length,
-    oppEntered, prev: prevVals
-  };
-}
-
+/* Delta calculations & HTML helpers */
 function delta(cur, prev){
   if(prev===null || prev===undefined || prev===0 || cur===null) return null;
   return ((cur-prev)/prev)*100;
@@ -407,145 +384,248 @@ function deltaHTML(d, periodLabel){
 
 const PERIOD_LABELS = { 1:'previous month', 3:'previous 3 months', 6:'previous 6 months', 12:'previous 12 months', 24:'earlier history' };
 
+function computeKPIs(){
+  const { current, previous } = currentAndPrevious();
+  const curTx = filterTx(current, state.type);
+  const prevTx = previous ? filterTx(previous, state.type) : null;
+  
+  const curListings = filterListings(current);
+  const prevListings = previous ? filterListings(previous) : [];
+
+  const curProposals = filterProposals(current);
+  const prevProposals = previous ? filterProposals(previous) : [];
+
+  const salesTx = curTx.filter(t=>t.type==='sale');
+  const rentalTx = curTx.filter(t=>t.type==='rental');
+  const totalVol = sum(curTx, t=>t.amount);
+  const salesVol = sum(salesTx, t=>t.amount);
+  const rentalVol = sum(rentalTx, t=>t.amount);
+
+  // Commissions (uses commission field if present, otherwise defaults to 5% sales / 100% rental month)
+  const salesComm = sum(salesTx, t => t.commission !== undefined ? t.commission : t.amount * 0.05);
+  const rentalComm = sum(rentalTx, t => t.commission !== undefined ? t.commission : t.amount);
+
+  const newListingsCount = sum(curListings, l => l.count);
+  const prevListingsCount = sum(prevListings, l => l.count);
+
+  const propClosed = sum(curProposals, p => p.closed || 0);
+  const propOpen = sum(curProposals, p => p.open || 0);
+  const propRejected = sum(curProposals, p => p.rejected || 0);
+
+  const prevPropClosed = sum(prevProposals, p => p.closed || 0);
+
+  let prevVals = null;
+  if(prevTx){
+    const pSales = prevTx.filter(t=>t.type==='sale');
+    const pRental = prevTx.filter(t=>t.type==='rental');
+    const pSalesComm = sum(pSales, t => t.commission !== undefined ? t.commission : t.amount * 0.05);
+    const pRentalComm = sum(pRental, t => t.commission !== undefined ? t.commission : t.amount);
+    prevVals = {
+      totalVol: sum(prevTx, t=>t.amount),
+      salesVol: sum(pSales, t=>t.amount),
+      rentalVol: sum(pRental, t=>t.amount),
+      salesComm: pSalesComm,
+      rentalComm: pRentalComm,
+      listingsCount: prevListingsCount,
+      propClosed: prevPropClosed
+    };
+  }
+
+  return {
+    totalVol, salesVol, rentalVol, salesComm, rentalComm,
+    salesCount: salesTx.length, rentalCount: rentalTx.length,
+    newListingsCount, propClosed, propOpen, propRejected, prev: prevVals
+  };
+}
+
 function renderKPIs(){
   const k = computeKPIs();
   const pLabel = PERIOD_LABELS[state.period];
+  
   const cards = [
     { label:'Total Volume', value: fmtEUR.format(k.totalVol), d: delta(k.totalVol, k.prev && k.prev.totalVol) },
     { label:'Sales Volume', value: fmtEUR.format(k.salesVol), d: delta(k.salesVol, k.prev && k.prev.salesVol) },
     { label:'Rental Volume', value: fmtEUR.format(k.rentalVol), d: delta(k.rentalVol, k.prev && k.prev.rentalVol) },
-    { label:'Average Ticket (Sales)', value: k.avgTicket!==null ? fmtEURdec.format(k.avgTicket) : '–', d: delta(k.avgTicket, k.prev && k.prev.avgTicket) },
-    { label:'Total Sales', value: fmtNum.format(k.salesCount), d: delta(k.salesCount, k.prev && k.prev.salesCount) },
-    { label:'Total Rentals', value: fmtNum.format(k.rentalCount), d: delta(k.rentalCount, k.prev && k.prev.rentalCount) },
-    { label:'Total Leads', value: fmtNum.format(k.oppEntered), d: delta(k.oppEntered, k.prev && k.prev.oppEntered) },
+    { label:'Novas Angariações', value: fmtNum.format(k.newListingsCount), d: delta(k.newListingsCount, k.prev && k.prev.listingsCount) },
+    { label:'Comissão Vendas', value: fmtEUR.format(k.salesComm), d: delta(k.salesComm, k.prev && k.prev.salesComm) },
+    { label:'Comissão Arrendamento', value: fmtEUR.format(k.rentalComm), d: delta(k.rentalComm, k.prev && k.prev.rentalComm) },
+    { label:'Propostas Fechadas', value: fmtNum.format(k.propClosed), sub: `Abertas: ${k.propOpen} | Recusadas: ${k.propRejected}`, d: delta(k.propClosed, k.prev && k.prev.propClosed) },
   ];
+
   const grid = document.getElementById('kpiGrid');
   grid.innerHTML = cards.map((c,i)=>`
-    <div class="kpi-card fade-in d${Math.min(i+1,7)}">
+    <div class="kpi-card fade-in d${Math.min(i+1,6)}">
       <div class="kpi-label">${c.label}</div>
       <div class="kpi-value">${c.value}</div>
+      ${c.sub ? `<div class="kpi-subvalue">${c.sub}</div>` : ''}
       ${ state.period===24 ? '<div class="kpi-delta flat">— <span class="vs">full history selected</span></div>' : deltaHTML(c.d, pLabel) }
     </div>
   `).join('');
 }
 
-/* ---------- Chart.js shared config ---------- */
+/* Charts Shared Setup */
 Chart.defaults.color = '#b9b6c7';
-Chart.defaults.font.family = "'Inter', -apple-system, 'Segoe UI', sans-serif";
-Chart.defaults.font.size = 11.5;
+Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
 const GOLD = '#e2bd7a';
-const CREAM = '#e2dacb';
-const ACCENT = '#262441';
 const GRID_COLOR = 'rgba(255,255,255,0.06)';
-const PALETTE = ['#e2bd7a','#8f8ac4','#7ed9a7','#e2777a','#6fb3d9','#c99f5c','#a89bd0'];
 
 let charts = {};
 function destroyChart(key){ if(charts[key]){ charts[key].destroy(); delete charts[key]; } }
-
 function tooltipBase(){
   return {
     backgroundColor:'#16152b', titleColor:'#f4f1ea', bodyColor:'#e2dacb',
-    borderColor:'rgba(226,189,122,0.3)', borderWidth:1, padding:10, cornerRadius:8,
-    titleFont:{weight:'600'}, displayColors:true
+    borderColor:'rgba(226,189,122,0.3)', borderWidth:1, padding:10, cornerRadius:8
   };
 }
 
-function groupSum(tx, keyFn){
-  const map = new Map();
-  tx.forEach(t=>{ const k=keyFn(t); map.set(k, (map.get(k)||0)+t.amount); });
-  return map;
-}
-
-/* 1. Sale vs Rental Volume by month */
+/* 1. Volume Chart */
 function renderVolumeProfit(months, tx){
   const labels = months.map(MONTH_LABEL);
   const saleVol = months.map(mk => sum(tx.filter(t=>t.month===mk && t.type==='sale'), t=>t.amount));
   const rentalVol = months.map(mk => sum(tx.filter(t=>t.month===mk && t.type==='rental'), t=>t.amount));
+  
   destroyChart('volumeProfit');
-  const ctx = document.getElementById('chartVolumeProfit');
-  charts.volumeProfit = new Chart(ctx, {
+  charts.volumeProfit = new Chart(document.getElementById('chartVolumeProfit'), {
     type:'bar',
     data:{ labels, datasets:[
-      { label:'Sales', data:saleVol, backgroundColor:GOLD, borderRadius:6, maxBarThickness:28 },
-      { label:'Rentals', data:rentalVol, backgroundColor:'#7ed9a7', borderRadius:6, maxBarThickness:28 },
+      { label:'Sales', data:saleVol, backgroundColor:GOLD, borderRadius:6 },
+      { label:'Rentals', data:rentalVol, backgroundColor:'#7ed9a7', borderRadius:6 }
     ]},
     options:{
       responsive:true, maintainAspectRatio:false,
-      interaction:{ mode:'index', intersect:false },
-      plugins:{ legend:{ labels:{ usePointStyle:true, boxWidth:8 } }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.dataset.label}: ${fmtEUR.format(c.raw)}` } } },
-      scales:{
-        x:{ grid:{ display:false }, ticks:{ maxRotation:0, autoSkip:true } },
-        y:{ grid:{ color:GRID_COLOR }, ticks:{ callback:(v)=>fmtEUR.format(v) } },
-      }
+      plugins:{ tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.dataset.label}: ${fmtEUR.format(c.raw)}` } } },
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ callback:(v)=>fmtEUR.format(v) } } }
     }
   });
-  const totalSale = saleVol.reduce((a,b)=>a+b,0), totalRental = rentalVol.reduce((a,b)=>a+b,0);
-  const total = totalSale+totalRental;
-  const rentalShare = total ? (totalRental/total*100) : 0;
-  document.getElementById('insightVolumeProfit').innerHTML = total ? `Rentals account for <b>${rentalShare.toFixed(0)}%</b> of transacted volume (${fmtEUR.format(totalRental)}) vs <b>${fmtEUR.format(totalSale)}</b> in sales, over the selected period.` : 'No closed transactions in this selection.';
+  const total = sum(saleVol,x=>x) + sum(rentalVol,x=>x);
+  document.getElementById('insightVolumeProfit').innerHTML = `Total transacted volume for this selection: <b>${fmtEUR.format(total)}</b>.`;
 }
 
-/* 2. Leads by Typology (bedroom count) — real lead-level snapshot, quantity based */
-function renderCategory(){
-  const entries = RAW_DATA.leadsByTypology.map(r=>[r.typology, r.count]);
-  destroyChart('category');
-  const ctx = document.getElementById('chartCategory');
-  charts.category = new Chart(ctx, {
-    type:'doughnut',
-    data:{ labels: entries.map(e=>e[0]), datasets:[{ data: entries.map(e=>e[1]), backgroundColor:PALETTE, borderColor:'#16152b', borderWidth:2, hoverOffset:6 }] },
-    options:{
-      responsive:true, maintainAspectRatio:false, cutout:'62%',
-      plugins:{ legend:{ position:'right', labels:{ boxWidth:9, padding:10, font:{size:11} } },
-        tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.label}: ${fmtNum.format(c.raw)} leads` } } }
-    }
+/* 2. New Listings Chart (Angariações Novas por Mês) */
+function renderListingsChart(months){
+  const labels = months.map(MONTH_LABEL);
+  const listingsData = (RAW_DATA.newListings || []);
+  const counts = months.map(mk => {
+    const item = listingsData.find(l => l.month === mk);
+    return item ? item.count : 0;
   });
-  const total = entries.reduce((a,e)=>a+e[1],0);
-  const top = [...entries].sort((a,b)=>b[1]-a[1])[0];
-  document.getElementById('insightCategory').innerHTML = top ? `<b>${top[0]}</b> is the most requested typology, with ${fmtNum.format(top[1])} of ${fmtNum.format(total)} leads (as of ${RAW_DATA.meta.leadsSnapshotOn || RAW_DATA.meta.generatedOn}).` : 'No lead data available.';
-}
 
-/* 3. Leads by Channel — real lead-level snapshot, quantity based, all real channel options */
-function renderChannel(){
-  const entries = [...RAW_DATA.leadsByChannel].sort((a,b)=>b.count-a.count).map(r=>[r.channel, r.count]);
-  destroyChart('channel');
-  const ctx = document.getElementById('chartChannel');
-  charts.channel = new Chart(ctx, {
-    type:'bar',
-    data:{ labels: entries.map(e=>e[0]), datasets:[{ data: entries.map(e=>e[1]), backgroundColor:GOLD, borderRadius:6, maxBarThickness:34 }] },
+  destroyChart('listings');
+  charts.listings = new Chart(document.getElementById('chartListings'), {
+    type:'line',
+    data:{ labels, datasets:[{
+      label:'Angariações Novas', data:counts, borderColor:GOLD, backgroundColor:'rgba(226,189,122,0.15)',
+      fill:true, tension:0.35, pointRadius:4, pointBackgroundColor:GOLD
+    }]},
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} leads` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:9.5}, maxRotation:28, minRotation:0 } }, y:{ grid:{ color:GRID_COLOR } } }
+      plugins:{ tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.raw} angariações` } } },
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ precision:0 } } }
     }
   });
-  const top = entries[0];
-  document.getElementById('insightChannel').innerHTML = top ? `<b>${top[0]}</b> is the top lead source, with ${fmtNum.format(top[1])} leads (as of ${RAW_DATA.meta.leadsSnapshotOn || RAW_DATA.meta.generatedOn}).` : 'No lead data available.';
+
+  const total = sum(counts, x=>x);
+  const avg = counts.length ? (total / counts.length).toFixed(1) : 0;
+  document.getElementById('insightListings').innerHTML = `Total of <b>${total}</b> new listings captured in period (avg. <b>${avg}</b>/month).`;
 }
 
-/* 4. Regional Demand by Leads — sale vs rental side by side, by concelho (from confirmed closed deals) */
+/* 3. Proposals Breakdown Chart (Propostas: Fechadas, Abertas, Recusadas) */
+function renderProposalsChart(months){
+  const labels = months.map(MONTH_LABEL);
+  const propData = (RAW_DATA.proposals || []);
+  
+  const closed = months.map(mk => (propData.find(p=>p.month===mk) || {}).closed || 0);
+  const open = months.map(mk => (propData.find(p=>p.month===mk) || {}).open || 0);
+  const rejected = months.map(mk => (propData.find(p=>p.month===mk) || {}).rejected || 0);
+
+  destroyChart('proposals');
+  charts.proposals = new Chart(document.getElementById('chartProposals'), {
+    type:'bar',
+    data:{ labels, datasets:[
+      { label:'Fechadas', data:closed, backgroundColor:'#7ed9a7', borderRadius:4 },
+      { label:'Abertas', data:open, backgroundColor:'#6fb3d9', borderRadius:4 },
+      { label:'Recusadas', data:rejected, backgroundColor:'#e2777a', borderRadius:4 }
+    ]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      scales:{ x:{ stacked:true, grid:{ display:false } }, y:{ stacked:true, grid:{ color:GRID_COLOR } } },
+      plugins:{ tooltip:{ ...tooltipBase() } }
+    }
+  });
+
+  const sumClosed = sum(closed,x=>x), sumOpen = sum(open,x=>x), sumRej = sum(rejected,x=>x);
+  document.getElementById('insightProposals').innerHTML = `Proposals status: <b>${sumClosed}</b> Closed, <b>${sumOpen}</b> Open, and <b>${sumRej}</b> Rejected.`;
+}
+
+/* 4. Commissions Chart (Comissão Venda vs Arrendamento) */
+function renderCommissionsChart(months, tx){
+  const labels = months.map(MONTH_LABEL);
+  const saleComm = months.map(mk => {
+    const list = tx.filter(t=>t.month===mk && t.type==='sale');
+    return sum(list, t => t.commission !== undefined ? t.commission : t.amount * 0.05);
+  });
+  const rentalComm = months.map(mk => {
+    const list = tx.filter(t=>t.month===mk && t.type==='rental');
+    return sum(list, t => t.commission !== undefined ? t.commission : t.amount);
+  });
+
+  destroyChart('commissions');
+  charts.commissions = new Chart(document.getElementById('chartCommissions'), {
+    type:'bar',
+    data:{ labels, datasets:[
+      { label:'Comissão Vendas', data:saleComm, backgroundColor:GOLD, borderRadius:6 },
+      { label:'Comissão Arrendamento', data:rentalComm, backgroundColor:'#8f8ac4', borderRadius:6 }
+    ]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.dataset.label}: ${fmtEUR.format(c.raw)}` } } },
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ callback:(v)=>fmtEUR.format(v) } } }
+    }
+  });
+
+  const totSale = sum(saleComm,x=>x), totRent = sum(rentalComm,x=>x);
+  document.getElementById('insightCommissions').innerHTML = `Total commissions generated: <b>${fmtEUR.format(totSale + totRent)}</b> (Sales: ${fmtEUR.format(totSale)} | Rentals: ${fmtEUR.format(totRent)}).`;
+}
+
+/* 5. Regional Demand */
 function renderRegion(tx){
   const regions = [...new Set(RAW_DATA.transactions.map(t=>t.region))];
   const saleByRegion = regions.map(r => sum(tx.filter(t=>t.region===r && t.type==='sale'), t=>1));
   const rentalByRegion = regions.map(r => sum(tx.filter(t=>t.region===r && t.type==='rental'), t=>1));
+  
   destroyChart('region');
-  const ctx = document.getElementById('chartRegion');
-  charts.region = new Chart(ctx, {
+  charts.region = new Chart(document.getElementById('chartRegion'), {
     type:'bar',
     data:{ labels: regions, datasets:[
-      { label:'Sale leads (closed)', data:saleByRegion, backgroundColor:GOLD, borderRadius:6, maxBarThickness:28 },
-      { label:'Rental leads (closed)', data:rentalByRegion, backgroundColor:'#8f8ac4', borderRadius:6, maxBarThickness:28 },
+      { label:'Sale leads', data:saleByRegion, backgroundColor:GOLD, borderRadius:6 },
+      { label:'Rental leads', data:rentalByRegion, backgroundColor:'#8f8ac4', borderRadius:6 }
     ]},
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ labels:{ usePointStyle:true, boxWidth:8 } }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.dataset.label}: ${fmtNum.format(c.raw)}` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:10.5} } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ precision:0 } } }
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR } } },
+      plugins:{ tooltip:{ ...tooltipBase() } }
     }
   });
-  const totalDeals = saleByRegion.reduce((a,b)=>a+b,0) + rentalByRegion.reduce((a,b)=>a+b,0);
-  document.getElementById('insightRegion').innerHTML = totalDeals ? `Based on <b>${fmtNum.format(totalDeals)}</b> confirmed closed transactions with a known region. A per-lead region field is not exposed in the CRM's bulk list views, so this reflects closed deals rather than all leads.` : 'No closed transactions with a known region in this selection.';
+  document.getElementById('insightRegion').innerHTML = `Distribution of closed deals across regions.`;
 }
 
-/* 5. Quarterly comparison — sale vs rental side by side (respects type filter, ignores period filter) */
+/* 6. Channel Leads */
+function renderChannel(){
+  const entries = [...RAW_DATA.leadsByChannel].sort((a,b)=>b.count-a.count).map(r=>[r.channel, r.count]);
+  destroyChart('channel');
+  charts.channel = new Chart(document.getElementById('chartChannel'), {
+    type:'bar',
+    data:{ labels: entries.map(e=>e[0]), datasets:[{ data: entries.map(e=>e[1]), backgroundColor:GOLD, borderRadius:6 }] },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase() } },
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR } } }
+    }
+  });
+  document.getElementById('insightChannel').innerHTML = `Top lead acquisition channel: <b>${entries[0]?entries[0][0]:'N/A'}</b>.`;
+}
+
+/* 7. Quarterly Comparison */
 function renderQuarterly(){
   const tx = state.type==='all' ? RAW_DATA.transactions : RAW_DATA.transactions.filter(t=>t.type===state.type);
   const byQSale = new Map(), byQRental = new Map();
@@ -554,34 +634,24 @@ function renderQuarterly(){
     if(t.type==='sale') byQSale.set(t.quarter, (byQSale.get(t.quarter)||0)+t.amount);
     else byQRental.set(t.quarter, (byQRental.get(t.quarter)||0)+t.amount);
   });
-  const saleValues = QUARTER_ORDER.map(q=>byQSale.get(q)||0);
-  const rentalValues = QUARTER_ORDER.map(q=>byQRental.get(q)||0);
+  
   destroyChart('quarterly');
-  const ctx = document.getElementById('chartQuarterly');
-  charts.quarterly = new Chart(ctx, {
+  charts.quarterly = new Chart(document.getElementById('chartQuarterly'), {
     type:'bar',
     data:{ labels: QUARTER_ORDER, datasets:[
-      { label:'Sales', data:saleValues, backgroundColor:GOLD, borderRadius:6, maxBarThickness:30 },
-      { label:'Rentals', data:rentalValues, backgroundColor:'#7ed9a7', borderRadius:6, maxBarThickness:30 },
+      { label:'Sales', data:QUARTER_ORDER.map(q=>byQSale.get(q)||0), backgroundColor:GOLD, borderRadius:6 },
+      { label:'Rentals', data:QUARTER_ORDER.map(q=>byQRental.get(q)||0), backgroundColor:'#7ed9a7', borderRadius:6 }
     ]},
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ labels:{ usePointStyle:true, boxWidth:8 } }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.dataset.label}: ${fmtEUR.format(c.raw)}` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:10} } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ callback:(v)=>fmtEUR.format(v) } } }
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ callback:(v)=>fmtEUR.format(v) } } },
+      plugins:{ tooltip:{ ...tooltipBase() } }
     }
   });
-  const n = QUARTER_ORDER.length;
-  const cur = saleValues[n-1]+rentalValues[n-1];
-  const prevQ = n>=2 ? (saleValues[n-2]+rentalValues[n-2]) : null;
-  const sameQLastYear = n>=5 ? (saleValues[n-5]+rentalValues[n-5]) : null;
-  const dq = prevQ!==null ? delta(cur, prevQ) : null, dy = sameQLastYear!==null ? delta(cur, sameQLastYear) : null;
-  const tagEl = document.getElementById('quarterlyTag');
-  if (tagEl) tagEl.textContent = n + (n===1 ? ' Q' : ' Q');
-  document.getElementById('insightQuarterly').innerHTML =
-    `Current quarter (<b>${QUARTER_ORDER[n-1]}</b>): ${dq!==null?fmtPct(dq):'no prior quarter yet'} vs previous quarter, ${dy!==null?fmtPct(dy):'no year-ago data yet'} vs same quarter last year.`;
+  document.getElementById('insightQuarterly').innerHTML = `Quarterly volume evolution across available history.`;
 }
 
-/* 7 & 8. Funnels */
+/* 8. Funnels */
 const STAGE_LABELS = { opportunity:'Opportunity', visit_scheduled:'Visit Scheduled', offer:'Offer', contract_signed:'Contract Signed', win:'Win' };
 const STAGE_ORDER = ['opportunity','visit_scheduled','offer','contract_signed','win'];
 
@@ -594,147 +664,98 @@ function renderFunnel(containerId, months, type){
   el.innerHTML = STAGE_ORDER.map((s,i)=>{
     const v = totals[s];
     const pct = maxV ? (v/maxV*100) : 0;
-    const prevV = i>0 ? totals[STAGE_ORDER[i-1]] : null;
-    const stepPct = (i>0 && prevV) ? (v/prevV*100) : null;
-    const stepHtml = i>0 ? `<div class="funnel-step-pct">${stepPct!==null ? stepPct.toFixed(0)+'% ↓' : '—'}</div>` : '';
-    return `${stepHtml}<div class="funnel-stage">
+    return `<div class="funnel-stage">
       <div class="label">${STAGE_LABELS[s]}</div>
       <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:${pct}%"></div></div>
       <div class="pct">${fmtNum.format(v)}</div>
     </div>`;
   }).join('');
-  return totals;
 }
 
-/* 9. Leads by month */
-function renderLeadsMonth(months, type){
-  const rows = filterFunnel(months, type).filter(r=>r.stage==='opportunity');
-  const values = months.map(mk => sum(rows.filter(r=>r.month===mk), r=>r.count));
-  destroyChart('leadsMonth');
-  const ctx = document.getElementById('chartLeadsMonth');
-  charts.leadsMonth = new Chart(ctx, {
-    type:'bar',
-    data:{ labels: months.map(MONTH_LABEL), datasets:[{ data: values, backgroundColor:'#6fb3d9', borderRadius:5, maxBarThickness:26 }] },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} leads` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ maxRotation:0, autoSkip:true, font:{size:10} } }, y:{ grid:{ color:GRID_COLOR } } }
-    }
-  });
-  const total = values.reduce((a,b)=>a+b,0);
-  document.getElementById('insightLeadsMonth').innerHTML = `<b>${fmtNum.format(total)}</b> leads entered the funnel across the selected period.`;
-}
-
-/* 10. Leads by quarter */
-function renderLeadsQuarter(type){
-  const rows = (type==='all' ? RAW_DATA.funnel : RAW_DATA.funnel.filter(r=>r.type===type)).filter(r=>r.stage==='opportunity');
-  const values = QUARTER_ORDER.map(q => sum(rows.filter(r=>r.quarter===q), r=>r.count));
-  destroyChart('leadsQuarter');
-  const ctx = document.getElementById('chartLeadsQuarter');
-  charts.leadsQuarter = new Chart(ctx, {
-    type:'bar',
-    data:{ labels: QUARTER_ORDER, datasets:[{ data: values, backgroundColor:'#a89bd0', borderRadius:5, maxBarThickness:30 }] },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} leads` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:10} } }, y:{ grid:{ color:GRID_COLOR } } }
-    }
-  });
-  const n = QUARTER_ORDER.length;
-  const dq = delta(values[n-1], values[n-2]);
-  document.getElementById('insightLeadsQuarter').innerHTML = `Lead volume ${dq!==null && dq>=0 ? 'grew' : 'declined'} <b>${dq!==null?fmtPct(Math.abs(dq)).replace('+',''):'—'}%</b> quarter-over-quarter.`;
-}
-
-/* ---------- Table ---------- */
-function renderTable(months, type){
+/* Table Render */
+function renderTable(months, tx){
   const tbody = document.getElementById('summaryTbody');
-  const rowsHtml = [...months].reverse().map(mk=>{
-    const monthTx = RAW_DATA.transactions.filter(t=>t.month===mk && (type==='all'||t.type===type));
-    const salesTx = monthTx.filter(t=>t.type==='sale');
-    const rentalTx = monthTx.filter(t=>t.type==='rental');
-    const salesVol = sum(salesTx, t=>t.amount);
-    const rentalVol = sum(rentalTx, t=>t.amount);
-    const totalVol = salesVol + rentalVol;
+  const listingsData = RAW_DATA.newListings || [];
+  const proposalsData = RAW_DATA.proposals || [];
+
+  tbody.innerHTML = months.map(mk => {
+    const mSales = tx.filter(t=>t.month===mk && t.type==='sale');
+    const mRentals = tx.filter(t=>t.month===mk && t.type==='rental');
+
+    const salesVol = sum(mSales, t=>t.amount);
+    const rentalVol = sum(mRentals, t=>t.amount);
+    const totVol = salesVol + rentalVol;
+
+    const salesComm = sum(mSales, t => t.commission !== undefined ? t.commission : t.amount * 0.05);
+    const rentalComm = sum(mRentals, t => t.commission !== undefined ? t.commission : t.amount);
+
+    const mListing = listingsData.find(l=>l.month===mk);
+    const listingCount = mListing ? mListing.count : 0;
+
+    const mProp = proposalsData.find(p=>p.month===mk);
+    const propClosed = mProp ? mProp.closed : 0;
+
     return `<tr>
       <td class="month-cell">${MONTH_LABEL(mk)}</td>
-      <td>${fmtEUR.format(totalVol)}</td>
-      <td>${fmtNum.format(salesTx.length)}</td>
+      <td>${fmtEUR.format(totVol)}</td>
+      <td>${mSales.length}</td>
       <td>${fmtEUR.format(salesVol)}</td>
-      <td>${fmtNum.format(rentalTx.length)}</td>
+      <td>${mRentals.length}</td>
       <td>${fmtEUR.format(rentalVol)}</td>
+      <td>${listingCount}</td>
+      <td>${propClosed}</td>
+      <td>${fmtEUR.format(salesComm)}</td>
+      <td>${fmtEUR.format(rentalComm)}</td>
     </tr>`;
-  }).join('');
-  tbody.innerHTML = rowsHtml;
+  }).reverse().join('');
 }
 
-/* ---------- Funnel visibility per type filter ---------- */
-function updateFunnelVisibility(){
-  const salesCard = document.getElementById('cardSalesFunnel');
-  const rentalCard = document.getElementById('cardRentalFunnel');
-  if(state.type==='sale'){ salesCard.style.display=''; rentalCard.style.display='none'; salesCard.classList.add('span-12'); salesCard.classList.remove('span-6'); }
-  else if(state.type==='rental'){ rentalCard.style.display=''; salesCard.style.display='none'; rentalCard.classList.add('span-12'); rentalCard.classList.remove('span-6'); }
-  else { salesCard.style.display=''; rentalCard.style.display=''; salesCard.classList.add('span-6'); salesCard.classList.remove('span-12'); rentalCard.classList.add('span-6'); rentalCard.classList.remove('span-12'); }
-}
-
-/* ---------- Period label ---------- */
-const PERIOD_TEXT = { 1:'This month', 3:'Last 3 months', 6:'Last 6 months', 12:'Last 12 months', 24:'Full history' };
-function updatePeriodLabel(){
-  const { current } = currentAndPrevious();
-  const startLbl = MONTH_LABEL(current[0]), endLbl = MONTH_LABEL(current[current.length-1]);
-  document.getElementById('periodLabel').textContent = ` · ${PERIOD_TEXT[state.period]} (${startLbl} – ${endLbl})`;
-}
-
-/* ---------- Master render ---------- */
-function renderAll(){
-  updatePeriodLabel();
-  renderKPIs();
+/* Main Update View Trigger */
+function updateDashboard(){
   const { current } = currentAndPrevious();
   const tx = filterTx(current, state.type);
+
+  renderKPIs();
   renderVolumeProfit(current, tx);
-  renderCategory();
-  renderChannel();
+  renderListingsChart(current);
+  renderProposalsChart(current);
+  renderCommissionsChart(current, tx);
   renderRegion(tx);
+  renderChannel();
   renderQuarterly();
-  updateFunnelVisibility();
-  if(state.type!=='rental') renderFunnel('funnelSales', current, 'sale');
-  if(state.type!=='sale') renderFunnel('funnelRental', current, 'rental');
-  renderLeadsMonth(current, state.type);
-  renderLeadsQuarter(state.type);
-  renderTable(current, state.type);
+  renderFunnel('funnelSales', current, 'sale');
+  renderFunnel('funnelRental', current, 'rental');
+  renderTable(current, tx);
 }
 
-/* ---------- Wiring ---------- */
-document.getElementById('periodFilter').addEventListener('change', (e)=>{
-  state.period = Number(e.target.value);
-  renderAll();
-});
-document.getElementById('typeFilter').addEventListener('click', (e)=>{
-  const btn = e.target.closest('button[data-type]');
-  if(!btn) return;
-  document.querySelectorAll('#typeFilter button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  state.type = btn.dataset.type;
-  renderAll();
-});
+/* Setup Event Listeners & Initialize Data */
+function setupUI(){
+  document.getElementById('periodFilter').addEventListener('change', (e)=>{
+    state.period = parseInt(e.target.value, 10);
+    updateDashboard();
+  });
 
-/* ---------- Load data.json and boot the dashboard ---------- */
-async function boot(){
-  try {
-    const res = await fetch('./data.json');
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    RAW_DATA = await res.json();
-  } catch (err) {
-    console.error('Failed to load data.json:', err);
-    document.getElementById('kpiGrid').innerHTML =
-      '<div class="kpi-card"><div class="kpi-label">Data error</div><div class="kpi-value" style="font-size:14px;">Could not load data.json. Serve this folder over HTTP (not file://) and make sure data.json sits next to index.html.</div></div>';
-    return;
-  }
-  initFromData();
-  document.getElementById('genDate').textContent = new Date(RAW_DATA.meta.generatedOn+'T00:00:00').toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
-  renderAll();
+  document.querySelectorAll('#typeFilter button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#typeFilter button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      state.type = btn.dataset.type;
+      updateDashboard();
+    });
+  });
 }
 
-boot();
+// Fetch JSON and launch dashboard
+fetch('./data.json')
+  .then(res => res.json())
+  .then(data => {
+    RAW_DATA = data;
+    document.getElementById('genDate').innerText = data.meta.generatedOn || new Date().toISOString().split('T')[0];
+    initFromData();
+    setupUI();
+    updateDashboard();
+  })
+  .catch(err => console.error("Error loading data.json:", err));
 </script>
 </body>
 </html>
