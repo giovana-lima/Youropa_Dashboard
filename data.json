@@ -7,9 +7,10 @@
       "2026-07"
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
-    "dataNote": "Real account history currently spans ~June-July 2026 only for full transaction/funnel detail; no property has ever closed with status \"Vendido\" (sold by Youropa). Lead-level typology and sale/rental splits reflect a full manual count of all 175 Oportunidades in the CRM as of 2026-07-16 and have not been re-sampled since (the CRM now shows 374 total Oportunidades as of 2026-08-04, so these two breakdowns are directionally outdated pending a full re-count). A per-lead region (Freguesia/Concelho) field is not exposed in the CRM's bulk list views, so Regional Demand reflects the confirmed regions of actual closed transactions only. New Properties by Month and Proposals This Month (added 2026-08-04) are sourced fresh from Imoveis creation dates and Oportunidades status as of 2026-08-04; see notes on each field below.",
-    "leadsSnapshotOn": "2026-07-16",
-    "leadsSnapshotTotal": 175
+    "dataNote": "Real account history currently spans ~June-July 2026 only for full transaction/funnel detail; no property has ever closed with status \"Vendido\" (sold by Youropa). Lead-level typology and sale/rental splits below are a fresh full re-count of the CRM's 375 current Oportunidades as of 2026-08-04 (370 of 375 records read directly; see leadsSnapshotCoverage), replacing the prior 2026-07-16 snapshot of 175. A per-lead region (Freguesia/Concelho) field is not exposed in the CRM's bulk list views, so Regional Demand reflects the confirmed regions of actual closed transactions only. New Properties by Month and Proposals This Month are sourced fresh from Imoveis creation dates and Oportunidades status as of 2026-08-04; see notes on each field below. The dashboard's \"Total Leads\" KPI is computed only from months present in the funnel array below (currently Jun+Jul = 181), which is a lower, distinct figure from the CRM's live cumulative Oportunidades total (375); the funnel has not yet been extended to cover August or reconstructed further back, since Inmovilla does not expose date-bucketed stage-transition history in a way that could be reliably re-derived this session.",
+    "leadsSnapshotOn": "2026-08-04",
+    "leadsSnapshotTotal": 375,
+    "leadsSnapshotCoverage": "370 of 375 (98.7%) - CRM UI entered a broken/empty pagination state on the final page during this session and the last 5 records could not be retrieved; all other figures are unaffected."
   },
   "newPropertiesByMonth": {
     "asOf": "2026-08-04",
@@ -23,7 +24,7 @@
   "proposalsThisMonth": {
     "month": "2026-08",
     "asOf": "2026-08-04",
-    "note": "Definition agreed with Youropa: Closed = Oportunidades with status Reserva Realizada, Contrato de Promessa de Compra e Venda, Vendido or Arrendado; Open = Oportunidades em Negociacao / Em espera; Rejected = Arquivado or Ja nao procuram. Figures below are read from the Inmovilla dashboard widgets (last-30-day window) as of 2026-08-04, since the CRM's status filter did not expose a reliable per-status opportunity count during this session.",
+    "note": "Definition agreed with Youropa: Closed = Oportunidades with status Reserva Realizada, Contrato de Promessa de Compra e Venda, Vendido or Arrendado; Open = Oportunidades em Negociacao / Em espera; Rejected = Arquivado or Ja nao procuram. Closed and Rejected are independently verified via direct Estado-checkbox filtering in Inmovilla (Reserva Realizada=3 all in July so far, Contrato=0, Vendido=0, Arrendado=0, Arquivado=0, Ja nao procuram=0 -> Closed=0 and Rejected=0 for the current August window); Open (=8) reflects the CRM's own \"Oportunidades em Negociacao\" dashboard widget, since no single raw Estado checkbox reproduces that figure (it is a computed CRM metric).",
     "closed": 0,
     "open": 8,
     "rejected": 0
@@ -244,23 +245,23 @@
   "leadsByTypology": [
     {
       "typology": "T1",
-      "count": 77
+      "count": 120
     },
     {
       "typology": "T2",
-      "count": 66
+      "count": 161
     },
     {
       "typology": "T3",
-      "count": 18
+      "count": 33
     },
     {
       "typology": "Not specified",
-      "count": 14
+      "count": 56
     }
   ],
   "leadsByOperation": {
-    "sale": 29,
-    "rental": 146
+    "sale": 38,
+    "rental": 332
   }
 }
