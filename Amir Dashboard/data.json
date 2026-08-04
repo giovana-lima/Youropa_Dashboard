@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "generatedOn": "2026-07-16",
+    "reportingThrough": "2026-07",
+    "months": [
+      "2026-06",
+      "2026-07"
+    ],
+    "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
+    "dataNote": "Real account history currently spans ~June-July 2026 only; no property has ever closed with status \"Vendido\" (sold by Youropa). Lead-level channel, typology and sale/rental splits reflect a full manual count of all 175 Oportunidades in the CRM as of 2026-07-16. A per-lead region (Freguesia/Concelho) field is not exposed in the CRM's bulk list views, so Regional Demand reflects the confirmed regions of actual closed transactions only.",
+    "leadsSnapshotOn": "2026-07-16",
+    "leadsSnapshotTotal": 175
+  },
+  "monthlyMargin": {
+    "2026-06": 0.85,
+    "2026-07": 0.85
+  },
+  "transactions": [
+    {
+      "id": "R00001",
+      "date": "2026-06-19",
+      "amount": 1300.0,
+      "type": "rental",
+      "channel": "idealista.com",
+      "category": "Apartment",
+      "project": "Ref. 34944151",
+      "region": "Vila Nova de Gaia",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00002",
+      "date": "2026-07-07",
+      "amount": 1600.0,
+      "type": "rental",
+      "channel": "idealista.com",
+      "category": "House",
+      "project": "Ref. 34901438",
+      "region": "Vila Nova de Gaia",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-07"
+    },
+    {
+      "id": "R00003",
+      "date": "2026-07-09",
+      "amount": 1000.0,
+      "type": "rental",
+      "channel": "idealista.com",
+      "category": "Apartment",
+      "project": "Ref. 34869552",
+      "region": "Vila Nova de Gaia",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-07"
+    },
+    {
+      "id": "R00004",
+      "date": "2026-07-10",
+      "amount": 1150.0,
+      "type": "rental",
+      "channel": "imovirtual.com",
+      "category": "Apartment",
+      "project": "Ref. YR00003",
+      "region": "Canidelo",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-07"
+    },
+    {
+      "id": "R00005",
+      "date": "2026-07-11",
+      "amount": 1200.0,
+      "type": "rental",
+      "channel": "idealista.com",
+      "category": "Apartment",
+      "project": "Ref. 35040352",
+      "region": "Canidelo",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-07"
+    }
+  ],
+  "funnel": [
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "rental",
+      "stage": "opportunity",
+      "count": 34
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "rental",
+      "stage": "visit_scheduled",
+      "count": 3
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "rental",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "rental",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "rental",
+      "stage": "win",
+      "count": 1
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "sale",
+      "stage": "opportunity",
+      "count": 2
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "sale",
+      "stage": "visit_scheduled",
+      "count": 0
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "sale",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "sale",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "sale",
+      "stage": "win",
+      "count": 0
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "opportunity",
+      "count": 137
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "visit_scheduled",
+      "count": 13
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "offer",
+      "count": 2
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "contract_signed",
+      "count": 2
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "win",
+      "count": 4
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "opportunity",
+      "count": 8
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "visit_scheduled",
+      "count": 1
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "win",
+      "count": 0
+    }
+  ],
+  "leadsByChannel": [
+    {
+      "channel": "idealista.com",
+      "count": 139
+    },
+    {
+      "channel": "idealista",
+      "count": 11
+    },
+    {
+      "channel": "imovirtual.com",
+      "count": 20
+    },
+    {
+      "channel": "Broker círculo pessoal",
+      "count": 1
+    },
+    {
+      "channel": "Referência de cliente",
+      "count": 1
+    },
+    {
+      "channel": "Sem origem registada",
+      "count": 3
+    }
+  ],
+  "leadsByTypology": [
+    {
+      "typology": "T1",
+      "count": 77
+    },
+    {
+      "typology": "T2",
+      "count": 66
+    },
+    {
+      "typology": "T3",
+      "count": 18
+    },
+    {
+      "typology": "Não especificado",
+      "count": 14
+    }
+  ],
+  "leadsByOperation": {
+    "sale": 29,
+    "rental": 146
+  }
+}
