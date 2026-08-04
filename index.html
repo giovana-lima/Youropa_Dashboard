@@ -3,7 +3,7 @@
 {
   "name": "Youropa Dashboard",
   "schemaVersion": 1,
-  "description": "Youropa Real Estate executive dashboard — consolidated sales & rental performance from Inmovilla CRM (manually read weekly via Claude in Chrome, no API). Shows KPIs, monthly volume/profit trend, category/channel/region breakdowns, top 10 properties, quarterly comparison, sales & rental conversion funnels, leads by month/quarter, and a monthly summary table. Two combinable filters: period (this month/3/6/12/all) and deal type (Sales/Rental/All). Currently populated with 24 months of plausible fictitious data in the exact shape the weekly automation will overwrite."
+  "description": "Youropa Real Estate executive dashboard — consolidated sales & rental performance from Inmovilla CRM (manually read every 3 days via Claude in Chrome, no API). Shows KPIs, monthly volume/profit trend, category/region breakdowns, new properties by month, proposals this month by outcome, top 10 properties, quarterly comparison, sales & rental conversion funnels, leads by month/quarter, and a monthly summary table. Two combinable filters: period (this month/3/6/12/all) and deal type (Sales/Rental/All)."
 }
 </script>
 <html lang="en">
@@ -120,6 +120,17 @@ select#periodFilter:focus{outline:2px solid var(--gold);outline-offset:1px;}
   .span-7,.span-5,.span-6,.span-4,.span-12{grid-column:span 12;}
 }
 
+.proposals-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:6px;}
+.proposal-stat{
+  background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:16px 18px;text-align:center;
+}
+.proposal-stat .val{font-size:30px;font-weight:700;letter-spacing:-0.02em;line-height:1.1;}
+.proposal-stat .lbl{font-size:12px;color:var(--text-low);text-transform:uppercase;letter-spacing:0.06em;margin-top:8px;font-weight:600;}
+.proposal-stat.closed .val{color:var(--pos);}
+.proposal-stat.open .val{color:var(--gold);}
+.proposal-stat.rejected .val{color:var(--neg);}
+
 .funnel-row{display:flex;flex-direction:column;gap:6px;}
 .funnel-stage{display:grid;grid-template-columns:130px 1fr 60px;align-items:center;gap:10px;font-size:12px;}
 .funnel-stage .label{color:var(--text-mid);}
@@ -207,16 +218,23 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
     </div>
 
     <div class="chart-card span-6 fade-in d2">
-      <div class="section-title">Leads by Channel</div>
-      <div class="section-sub">Number of leads by contact origin (quantity, all-time snapshot)</div>
-      <div class="canvas-wrap"><canvas id="chartChannel"></canvas></div>
-      <div class="insight" id="insightChannel"></div>
+      <div class="section-title">New Properties by Month</div>
+      <div class="section-sub">New property listings created in Inmovilla, month over month</div>
+      <div class="canvas-wrap"><canvas id="chartNewProperties"></canvas></div>
+      <div class="insight" id="insightNewProperties"></div>
     </div>
     <div class="chart-card span-6 fade-in d2">
       <div class="section-title">Regional Demand by Leads</div>
       <div class="section-sub">Closed deals by concelho, sales vs rentals side by side</div>
       <div class="canvas-wrap"><canvas id="chartRegion"></canvas></div>
       <div class="insight" id="insightRegion"></div>
+    </div>
+
+    <div class="chart-card span-12 fade-in d2">
+      <div class="section-title">Proposals This Month</div>
+      <div class="section-sub">Sales &amp; rental proposals in the current month, by outcome</div>
+      <div class="proposals-row" id="proposalsRow"></div>
+      <div class="insight" id="insightProposals"></div>
     </div>
 
     <div class="chart-card span-12 fade-in d3">
@@ -504,22 +522,47 @@ function renderCategory(){
   document.getElementById('insightCategory').innerHTML = top ? `<b>${top[0]}</b> is the most requested typology, with ${fmtNum.format(top[1])} of ${fmtNum.format(total)} leads (as of ${RAW_DATA.meta.leadsSnapshotOn || RAW_DATA.meta.generatedOn}).` : 'No lead data available.';
 }
 
-/* 3. Leads by Channel — real lead-level snapshot, quantity based, all real channel options */
-function renderChannel(){
-  const entries = [...RAW_DATA.leadsByChannel].sort((a,b)=>b.count-a.count).map(r=>[r.channel, r.count]);
-  destroyChart('channel');
-  const ctx = document.getElementById('chartChannel');
-  charts.channel = new Chart(ctx, {
+/* 3. New Properties by Month — count of new Inmovilla listings created, per month */
+function renderNewProperties(){
+  const src = RAW_DATA.newPropertiesByMonth;
+  destroyChart('newProperties');
+  const ctx = document.getElementById('chartNewProperties');
+  if(!src || !src.months || !src.months.length){
+    document.getElementById('insightNewProperties').innerHTML = 'No new-listings data available.';
+    return;
+  }
+  const rows = src.months;
+  const labels = rows.map(r => MONTH_LABEL(r.month) + (r.partial ? ' (partial)' : ''));
+  const values = rows.map(r => r.count);
+  charts.newProperties = new Chart(ctx, {
     type:'bar',
-    data:{ labels: entries.map(e=>e[0]), datasets:[{ data: entries.map(e=>e[1]), backgroundColor:GOLD, borderRadius:6, maxBarThickness:34 }] },
+    data:{ labels, datasets:[{ data: values, backgroundColor: rows.map(r=>r.partial?'#6fb3d9':GOLD), borderRadius:6, maxBarThickness:46 }] },
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} leads` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:9.5}, maxRotation:28, minRotation:0 } }, y:{ grid:{ color:GRID_COLOR } } }
+      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} new properties` } } },
+      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ precision:0 } } }
     }
   });
-  const top = entries[0];
-  document.getElementById('insightChannel').innerHTML = top ? `<b>${top[0]}</b> is the top lead source, with ${fmtNum.format(top[1])} leads (as of ${RAW_DATA.meta.leadsSnapshotOn || RAW_DATA.meta.generatedOn}).` : 'No lead data available.';
+  const last = rows[rows.length-1], prev = rows[rows.length-2];
+  const d = (prev && !last.partial) ? delta(last.count, prev.count) : null;
+  const trendTxt = last.partial
+    ? `<b>${fmtNum.format(last.count)}</b> new properties so far in ${MONTH_LABEL(last.month)} (month in progress).`
+    : (d!==null ? `<b>${fmtNum.format(last.count)}</b> new properties in ${MONTH_LABEL(last.month)}, ${fmtPct(d)} vs the prior month.` : `<b>${fmtNum.format(last.count)}</b> new properties in ${MONTH_LABEL(last.month)}.`);
+  document.getElementById('insightNewProperties').innerHTML = trendTxt + ` (as of ${src.asOf || RAW_DATA.meta.generatedOn})`;
+}
+
+/* Proposals This Month — closed / open / rejected outcome breakdown */
+function renderProposals(){
+  const src = RAW_DATA.proposalsThisMonth;
+  const el = document.getElementById('proposalsRow');
+  if(!src){ el.innerHTML=''; document.getElementById('insightProposals').innerHTML = 'No proposals data available.'; return; }
+  const total = (src.closed||0) + (src.open||0) + (src.rejected||0);
+  el.innerHTML = `
+    <div class="proposal-stat closed"><div class="val">${fmtNum.format(src.closed)}</div><div class="lbl">Closed</div></div>
+    <div class="proposal-stat open"><div class="val">${fmtNum.format(src.open)}</div><div class="lbl">Open</div></div>
+    <div class="proposal-stat rejected"><div class="val">${fmtNum.format(src.rejected)}</div><div class="lbl">Rejected</div></div>
+  `;
+  document.getElementById('insightProposals').innerHTML = `<b>${fmtNum.format(total)}</b> total proposals tracked in ${MONTH_LABEL(src.month)} — ${fmtNum.format(src.closed)} closed, ${fmtNum.format(src.open)} still open, ${fmtNum.format(src.rejected)} rejected (as of ${src.asOf || RAW_DATA.meta.generatedOn}).`;
 }
 
 /* 4. Regional Demand by Leads — sale vs rental side by side, by concelho (from confirmed closed deals) */
@@ -692,7 +735,8 @@ function renderAll(){
   const tx = filterTx(current, state.type);
   renderVolumeProfit(current, tx);
   renderCategory();
-  renderChannel();
+  renderNewProperties();
+  renderProposals();
   renderRegion(tx);
   renderQuarterly();
   updateFunnelVisibility();
