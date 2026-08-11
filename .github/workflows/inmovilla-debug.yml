@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Search all fields for "Prime" across properties
+      - name: Fetch enums
         env:
           TOKEN: ${{ secrets.INMOVILLA_TOKEN }}
         run: |
@@ -30,22 +30,13 @@ jobs:
               with urllib.request.urlopen(req, timeout=30) as resp:
                   return resp.status, json.loads(resp.read().decode())
 
-          out = {"matches": [], "checked": []}
+          out = {}
           try:
-              status, listado = call("https://procesos.inmovilla.com/api/v1/propiedades/?listado")
-              candidates = [p for p in listado if str(p.get("ref","")).startswith("YR")]
-              out["yr_candidates_total"] = len(candidates)
-              candidates = candidates[:15]
-
-              for p in candidates:
-                  cod_ofer = p["cod_ofer"]
-                  time.sleep(6.5)
-                  st, detail = call(f"https://procesos.inmovilla.com/api/v1/propiedades/?cod_ofer={cod_ofer}")
-                  out["checked"].append({"cod_ofer": cod_ofer, "ref": detail.get("ref")})
-                  blob = json.dumps(detail, ensure_ascii=False).lower()
-                  if "prime" in blob:
-                      hit_fields = {k: v for k, v in detail.items() if isinstance(v, str) and "prime" in v.lower()}
-                      out["matches"].append({"cod_ofer": cod_ofer, "ref": detail.get("ref"), "hit_fields": hit_fields})
+              st1, keyacci = call("https://procesos.inmovilla.com/api/v1/enums/?tipos=keyacci")
+              out["keyacci"] = keyacci
+              time.sleep(31)
+              st2, estadoficha = call("https://procesos.inmovilla.com/api/v1/enums/?tipos=estadoficha")
+              out["estadoficha"] = estadoficha
           except Exception as e:
               out["error"] = str(e)
 
@@ -58,5 +49,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add debug_output.json
-          git diff --staged --quiet || git commit -m "Debug: search for Prime Living across YR properties"
+          git diff --staged --quiet || git commit -m "Debug: keyacci and estadoficha enums"
           git push
