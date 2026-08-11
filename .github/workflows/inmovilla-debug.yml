@@ -15,12 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch enums
+      - name: Fetch tiposeguimiento enum and recent leads sample
         env:
           TOKEN: ${{ secrets.INMOVILLA_TOKEN }}
         run: |
           python3 - <<'EOF'
-          import json, os, urllib.request, time
+          import json, os, urllib.request, time, datetime
 
           token = os.environ["TOKEN"]
           headers = {"Content-Type": "application/json", "Token": token}
@@ -32,13 +32,19 @@ jobs:
 
           out = {}
           try:
-              st1, keyacci = call("https://procesos.inmovilla.com/api/v1/enums/?tipos=keyacci")
-              out["keyacci"] = keyacci
-              time.sleep(31)
-              st2, estadoficha = call("https://procesos.inmovilla.com/api/v1/enums/?tipos=estadoficha")
-              out["estadoficha"] = estadoficha
+              st1, tiposeg = call("https://procesos.inmovilla.com/api/v1/enums/?tiposeguimiento")
+              out["tiposeguimiento"] = tiposeg
           except Exception as e:
-              out["error"] = str(e)
+              out["tiposeguimiento_error"] = str(e)
+
+          try:
+              dEnd = datetime.date.today().isoformat()
+              dStart = (datetime.date.today() - datetime.timedelta(days=30)).isoformat()
+              st2, segs = call(f"https://procesos.inmovilla.com/api/v1/seguimientos/search/?fechaalta_desde={dStart}&fechaalta_hasta={dEnd}")
+              out["seguimientos_last30_count"] = len(segs) if isinstance(segs, list) else segs
+              out["seguimientos_sample"] = segs[:5] if isinstance(segs, list) else None
+          except Exception as e:
+              out["seguimientos_error"] = str(e)
 
           with open("debug_output.json", "w") as f:
               json.dump(out, f, indent=2, ensure_ascii=False)
@@ -49,5 +55,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add debug_output.json
-          git diff --staged --quiet || git commit -m "Debug: keyacci and estadoficha enums"
+          git diff --staged --quiet || git commit -m "Debug: tiposeguimiento enum + seguimientos sample"
           git push
