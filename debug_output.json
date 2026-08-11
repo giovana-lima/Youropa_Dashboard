@@ -1,156 +1,210 @@
 {
-  "matches": [
+  "keyacci": [
     {
-      "cod_ofer": 29809878,
-      "ref": "YR00039",
-      "hit_fields": {}
+      "nombre": "1. Venda",
+      "valor": 13
     },
     {
-      "cod_ofer": 29645697,
-      "ref": "YR00026",
-      "hit_fields": {}
+      "nombre": "2. Arrendamento",
+      "valor": 16
     },
     {
-      "cod_ofer": 29610346,
-      "ref": "YR00017",
-      "hit_fields": {}
+      "nombre": "3. Combinado",
+      "valor": 17
     },
     {
-      "cod_ofer": 29908521,
-      "ref": "YR00060",
-      "hit_fields": {}
+      "nombre": "4. Trespasse",
+      "valor": 18
     },
     {
-      "cod_ofer": 29645847,
-      "ref": "YR00027",
-      "hit_fields": {
-        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Suíte e um quarto, ambos com roupeiros embutidos;~- Duas casas de banho completas.~~Outras características:~- Apartamento equipado com máquina de lavar e de secar roupa;~- Lugar de garagem;~- Ar condicionado;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita."
-      }
+      "nombre": "Arrendamento com Opção a Compra",
+      "valor": 15
     },
     {
-      "cod_ofer": 29644773,
-      "ref": "YR00020",
-      "hit_fields": {}
+      "nombre": "Arrendamento para Férias",
+      "valor": 9
     },
     {
-      "cod_ofer": 29851214,
-      "ref": "YR00053",
-      "hit_fields": {
-        "descripcionportugues": "T1 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T1 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto com roupeiros embutidos;~- Casas de banho completa.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
-      }
+      "nombre": "Arrendamento Sazonal",
+      "valor": 20
     },
     {
-      "cod_ofer": 29828256,
-      "ref": "YR00041",
-      "hit_fields": {}
+      "nombre": "Arrendar",
+      "valor": 2
     },
     {
-      "cod_ofer": 29899048,
-      "ref": "YR00059",
-      "hit_fields": {
-        "descripciones": "Apartamento T0 en el Edificio Magnolia con Piscina en la Azotea.~~Apartamento T0 confortable y moderno, ubicado en el Edificio Magnolia, a pocos pasos del Parque da Lavandeira. El inmueble ofrece excelente accesibilidad al transporte público, a la autopista y al centro de la ciudad.~~Situado en el primer piso y con orientación al este, el apartamento dispone de balcón y plaza de aparcamiento privada (incluida en el precio). Está adaptado para personas con movilidad reducida y el edificio cuenta con ascensor.~~El interior posee una cocina totalmente equipada con electrodomésticos SMEG, aire acondicionado por conducto, puerta de seguridad Dierre y videoportero digital. Las ventanas tienen doble acristalamiento y persianas térmicas, lo que contribuye a la clasificación energética A del inmueble.~~Los residentes tienen además acceso a una piscina en la azotea con vistas despejadas.~~Una excelente opción para quien busca un inmueble bien ubicado, eficiente en términos energéticos y con acabados modernos.~~Existe la oportunidad de comprar los muebles del inquilino anterior.~~Disponible a partir del 1 de agosto.~Condiciones de alquiler: 2 rentas + 2 depósitos. Estancia mínima de 1 año.~~Versión en inglés~~Apartamento tipo estudio en el edificio Magnolia con piscina en la azotea.~~Apartamento tipo estudio cómodo y moderno ubicado en el edificio Magnolia, a pocos pasos del Parque da Lavandeira. La propiedad ofrece excelente acceso al transporte público, la autopista y el centro de la ciudad.~Situado en el primer piso y orientado al este, el apartamento incluye un balcón y una plaza de aparcamiento privada (incluida en el precio). También está adaptado para personas con movilidad reducida y cuenta con ascensor.~El interior cuenta con una cocina totalmente equipada con electrodomésticos SMEG, aire acondicionado por conductos y una puerta de seguridad de Dierre con un sistema de video portero digital. Las ventanas tienen doble acristalamiento con persianas térmicas, lo que contribuye a la calificación energética A del apartamento.~Los residentes también pueden disfrutar del acceso a una piscina en la azotea con vistas abiertas.~Una excelente opción para aquellos que buscan una propiedad bien ubicada, energéticamente eficiente y con acabados modernos.~~Existe la oportunidad de comprar muebles del inquilino anterior.~~Disponible a partir del 1 de agosto.~Condiciones de alquiler: 2 alquileres + 2 depósitos. La estancia mínima es de 1 año."
-      }
+      "nombre": "Ocupado ilegalmente",
+      "valor": 19
     },
     {
-      "cod_ofer": 29888966,
-      "ref": "YR00056",
-      "hit_fields": {}
+      "nombre": "Permuta",
+      "valor": 10
     },
     {
-      "cod_ofer": 29889089,
-      "ref": "YR00058",
-      "hit_fields": {
-        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto;~- Suíte com roupeiro embutirdo~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
-      }
+      "nombre": "Trespassar",
+      "valor": 3
     },
     {
-      "cod_ofer": 29889035,
-      "ref": "YR00057",
-      "hit_fields": {
-        "descripcionportugues": "T1 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T1 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quartocom roupeiros embutidos;~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
-      }
+      "nombre": "Trespassar e Arrendar",
+      "valor": 6
     },
     {
-      "cod_ofer": 29886931,
-      "ref": "YR00055",
-      "hit_fields": {
-        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto;~- Suíte com roupeiro embutirdo~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
-      }
+      "nombre": "Trespassar e Vender",
+      "valor": 5
     },
     {
-      "cod_ofer": 29886930,
-      "ref": "YR00054",
-      "hit_fields": {
-        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto;~- Suíte com roupeiro embutirdo~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
-      }
+      "nombre": "Trespassar, Vender ou Arrendar",
+      "valor": 7
     },
     {
-      "cod_ofer": 29851183,
-      "ref": "YR00052",
-      "hit_fields": {}
+      "nombre": "Usufruto",
+      "valor": 11
+    },
+    {
+      "nombre": "Vender",
+      "valor": 1
+    },
+    {
+      "nombre": "Vender com rentabilidade (com arrendatário)",
+      "valor": 14
+    },
+    {
+      "nombre": "Vender ou Arrendar",
+      "valor": 4
     }
   ],
-  "checked": [
+  "estadoficha": [
     {
-      "cod_ofer": 29809878,
-      "ref": "YR00039"
+      "nombre": "Apenas Follow-up",
+      "valor": 9
     },
     {
-      "cod_ofer": 29645697,
-      "ref": "YR00026"
+      "nombre": "Apenas Publicar",
+      "valor": 12
     },
     {
-      "cod_ofer": 29610346,
-      "ref": "YR00017"
+      "nombre": "Arquivado",
+      "valor": 23
     },
     {
-      "cod_ofer": 29908521,
-      "ref": "YR00060"
+      "nombre": "Arrendado",
+      "valor": 2
     },
     {
-      "cod_ofer": 29645847,
-      "ref": "YR00027"
+      "nombre": "Arrendado MLS",
+      "valor": 13
     },
     {
-      "cod_ofer": 29644773,
-      "ref": "YR00020"
+      "nombre": "Arrendado por Outra Agência",
+      "valor": 10
     },
     {
-      "cod_ofer": 29851214,
-      "ref": "YR00053"
+      "nombre": "Arrendado por Particular",
+      "valor": 22
     },
     {
-      "cod_ofer": 29828256,
-      "ref": "YR00041"
+      "nombre": "Arrendamento Social",
+      "valor": 16
     },
     {
-      "cod_ofer": 29899048,
-      "ref": "YR00059"
+      "nombre": "Assinatura pendente",
+      "valor": 42
     },
     {
-      "cod_ofer": 29888966,
-      "ref": "YR00056"
+      "nombre": "É uma agência imobiliária",
+      "valor": 32
     },
     {
-      "cod_ofer": 29889089,
-      "ref": "YR00058"
+      "nombre": "Com Proposta",
+      "valor": 18
     },
     {
-      "cod_ofer": 29889035,
-      "ref": "YR00057"
+      "nombre": "Com Proposta MLS",
+      "valor": 41
     },
     {
-      "cod_ofer": 29886931,
-      "ref": "YR00055"
+      "nombre": "Contrato de Promessa de Compra e Venda",
+      "valor": 19
     },
     {
-      "cod_ofer": 29886930,
-      "ref": "YR00054"
+      "nombre": "Disponivel",
+      "valor": 1
     },
     {
-      "cod_ofer": 29851183,
-      "ref": "YR00052"
+      "nombre": "Eliminado",
+      "valor": 36
+    },
+    {
+      "nombre": "Fim de Contrato",
+      "valor": 20
+    },
+    {
+      "nombre": "Fora do mercado",
+      "valor": 35
+    },
+    {
+      "nombre": "Fora do mercado",
+      "valor": 43
+    },
+    {
+      "nombre": "Já Não Arrendam",
+      "valor": 38
+    },
+    {
+      "nombre": "Já Não Vendem",
+      "valor": 37
+    },
+    {
+      "nombre": "Não Disponivel",
+      "valor": 5
+    },
+    {
+      "nombre": "Ocupas",
+      "valor": 15
+    },
+    {
+      "nombre": "Por Validar",
+      "valor": 8
+    },
+    {
+      "nombre": "Reservada MLS",
+      "valor": 40
+    },
+    {
+      "nombre": "Reservado",
+      "valor": 7
+    },
+    {
+      "nombre": "Sem Verificar",
+      "valor": 34
+    },
+    {
+      "nombre": "Sinalizada",
+      "valor": 4
+    },
+    {
+      "nombre": "Tapada",
+      "valor": 17
+    },
+    {
+      "nombre": "Trespasse",
+      "valor": 6
+    },
+    {
+      "nombre": "Vendido",
+      "valor": 3
+    },
+    {
+      "nombre": "Vendido MLS",
+      "valor": 14
+    },
+    {
+      "nombre": "Vendido por Outra Agência",
+      "valor": 11
+    },
+    {
+      "nombre": "Vendido por Particular",
+      "valor": 21
     }
-  ],
-  "yr_candidates_total": 60
+  ]
 }
