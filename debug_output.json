@@ -1,328 +1,156 @@
 {
-  "listado_status": 200,
-  "listado_count": 291,
-  "rows": [
+  "matches": [
     {
       "cod_ofer": 29809878,
       "ref": "YR00039",
-      "edificio": "",
-      "bloque": "",
-      "urbanizacion": 0,
-      "zonaauxiliar": "Fontaínhas - Duques",
-      "referenciacol": "",
-      "idArea": "28041",
-      "keymedio": 174,
-      "contactadopor": "Israel Team"
+      "hit_fields": {}
     },
     {
       "cod_ofer": 29645697,
       "ref": "YR00026",
-      "edificio": "",
-      "bloque": "B",
-      "urbanizacion": 0,
-      "zonaauxiliar": "Seara - Freixieiro",
-      "referenciacol": "",
-      "idArea": "28613",
-      "keymedio": 174,
-      "contactadopor": "Israel Team"
+      "hit_fields": {}
     },
     {
       "cod_ofer": 29610346,
       "ref": "YR00017",
-      "edificio": "",
-      "bloque": "",
-      "urbanizacion": 1,
-      "zonaauxiliar": "Areosa - Fernão de Magalhães",
-      "referenciacol": "",
-      "idArea": "28002",
-      "keymedio": 174,
-      "contactadopor": "Israel Team"
+      "hit_fields": {}
     },
     {
       "cod_ofer": 29908521,
       "ref": "YR00060",
-      "edificio": "",
-      "bloque": "",
-      "urbanizacion": 1,
-      "zonaauxiliar": "Areosa - Fernão de Magalhães",
-      "referenciacol": "",
-      "idArea": "28002",
-      "keymedio": 174,
-      "contactadopor": "Israel Team"
+      "hit_fields": {}
     },
     {
       "cod_ofer": 29645847,
       "ref": "YR00027",
-      "edificio": "",
-      "bloque": "",
-      "urbanizacion": 0,
-      "zonaauxiliar": "Sampaio-Alumiara-Verdinho",
-      "referenciacol": "",
-      "idArea": "28147",
-      "keymedio": 174,
-      "contactadopor": "Israel Team"
+      "hit_fields": {
+        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Suíte e um quarto, ambos com roupeiros embutidos;~- Duas casas de banho completas.~~Outras características:~- Apartamento equipado com máquina de lavar e de secar roupa;~- Lugar de garagem;~- Ar condicionado;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita."
+      }
     },
     {
       "cod_ofer": 29644773,
       "ref": "YR00020",
-      "edificio": "",
-      "bloque": "",
-      "urbanizacion": 0,
-      "zonaauxiliar": "Seara - Freixieiro",
-      "referenciacol": "",
-      "idArea": "28613",
-      "keymedio": 1,
-      "contactadopor": "Sin Asignar"
+      "hit_fields": {}
+    },
+    {
+      "cod_ofer": 29851214,
+      "ref": "YR00053",
+      "hit_fields": {
+        "descripcionportugues": "T1 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T1 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto com roupeiros embutidos;~- Casas de banho completa.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
+      }
+    },
+    {
+      "cod_ofer": 29828256,
+      "ref": "YR00041",
+      "hit_fields": {}
+    },
+    {
+      "cod_ofer": 29899048,
+      "ref": "YR00059",
+      "hit_fields": {
+        "descripciones": "Apartamento T0 en el Edificio Magnolia con Piscina en la Azotea.~~Apartamento T0 confortable y moderno, ubicado en el Edificio Magnolia, a pocos pasos del Parque da Lavandeira. El inmueble ofrece excelente accesibilidad al transporte público, a la autopista y al centro de la ciudad.~~Situado en el primer piso y con orientación al este, el apartamento dispone de balcón y plaza de aparcamiento privada (incluida en el precio). Está adaptado para personas con movilidad reducida y el edificio cuenta con ascensor.~~El interior posee una cocina totalmente equipada con electrodomésticos SMEG, aire acondicionado por conducto, puerta de seguridad Dierre y videoportero digital. Las ventanas tienen doble acristalamiento y persianas térmicas, lo que contribuye a la clasificación energética A del inmueble.~~Los residentes tienen además acceso a una piscina en la azotea con vistas despejadas.~~Una excelente opción para quien busca un inmueble bien ubicado, eficiente en términos energéticos y con acabados modernos.~~Existe la oportunidad de comprar los muebles del inquilino anterior.~~Disponible a partir del 1 de agosto.~Condiciones de alquiler: 2 rentas + 2 depósitos. Estancia mínima de 1 año.~~Versión en inglés~~Apartamento tipo estudio en el edificio Magnolia con piscina en la azotea.~~Apartamento tipo estudio cómodo y moderno ubicado en el edificio Magnolia, a pocos pasos del Parque da Lavandeira. La propiedad ofrece excelente acceso al transporte público, la autopista y el centro de la ciudad.~Situado en el primer piso y orientado al este, el apartamento incluye un balcón y una plaza de aparcamiento privada (incluida en el precio). También está adaptado para personas con movilidad reducida y cuenta con ascensor.~El interior cuenta con una cocina totalmente equipada con electrodomésticos SMEG, aire acondicionado por conductos y una puerta de seguridad de Dierre con un sistema de video portero digital. Las ventanas tienen doble acristalamiento con persianas térmicas, lo que contribuye a la calificación energética A del apartamento.~Los residentes también pueden disfrutar del acceso a una piscina en la azotea con vistas abiertas.~Una excelente opción para aquellos que buscan una propiedad bien ubicada, energéticamente eficiente y con acabados modernos.~~Existe la oportunidad de comprar muebles del inquilino anterior.~~Disponible a partir del 1 de agosto.~Condiciones de alquiler: 2 alquileres + 2 depósitos. La estancia mínima es de 1 año."
+      }
+    },
+    {
+      "cod_ofer": 29888966,
+      "ref": "YR00056",
+      "hit_fields": {}
+    },
+    {
+      "cod_ofer": 29889089,
+      "ref": "YR00058",
+      "hit_fields": {
+        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto;~- Suíte com roupeiro embutirdo~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
+      }
+    },
+    {
+      "cod_ofer": 29889035,
+      "ref": "YR00057",
+      "hit_fields": {
+        "descripcionportugues": "T1 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T1 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quartocom roupeiros embutidos;~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
+      }
+    },
+    {
+      "cod_ofer": 29886931,
+      "ref": "YR00055",
+      "hit_fields": {
+        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto;~- Suíte com roupeiro embutirdo~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
+      }
+    },
+    {
+      "cod_ofer": 29886930,
+      "ref": "YR00054",
+      "hit_fields": {
+        "descripcionportugues": "T2 Novo | Com Varanda e Garagem | Canidelo, Vila Nova de Gaia~~Apresentamos este elegante T2 no edifício Prime Living, em Canidelo – Vila Nova de Gaia, um espaço moderno e funcional, pensado para quem valoriza qualidade de vida, conforto e localização.~~O imóvel distribui-se da seguinte forma:~- Hall de entrada;~- Sala ampla e luminosa com acesso direto à varanda;~- Cozinha em open space totalmente equipada, com placa, exaustor, maquina de lavar louça, frigorífico e micro-ondas;~- Quarto;~- Suíte com roupeiro embutirdo~- Casas de banho completas.~~Outras características:~- Lugar de garagem;~- Ar condicionado;~- Máquina de Lavar Roupa;~- Edifício com elevador.~~Localização:~- 750m do Parque de Jogos Manuel Marques Gomes;~- 900m do Supermercado;~- 1,3km da Escola Secundária Inês De Castro;~- 1,4km da Brico Depot;~- 1,5km dos acessos A1;~- 1,6km da Estação de Comboios de Coimbrões;~- 1,8km do Arrabidashopping;~- 2,4km da Douro Marina;~- 2,9km das Praias.~~Condições de arrendamento:~- 2 rendas + caução no valor equivalente de duas rendas;~- Comprovante de rendimentos (última liquidação do IRS, contrato de trabalho, os 3 últimos recibos de vencimento).~~Este imóvel reúne todas as condições para quem procura uma casa funcional com excelente localização, perfeito tanto para residência como para investimento.~~Não hesite em enviar uma mensagem caso tenha alguma dúvida e/ou queira marcar uma visita"
+      }
+    },
+    {
+      "cod_ofer": 29851183,
+      "ref": "YR00052",
+      "hit_fields": {}
     }
   ],
-  "all_field_names_union": [
-    "Cerca de Universidad",
-    "aconsultar",
-    "actividad_comercial",
-    "adaptadominus",
-    "agua",
-    "aire_con",
-    "airecentral",
-    "alarma",
-    "alarmaincendio",
-    "alarmarobo",
-    "alqindex",
-    "alqinferior",
-    "alqsuperior",
-    "alta_exclusiva",
-    "altillo",
-    "altura",
-    "alturamin",
-    "alturatecho",
-    "antiguedad",
-    "apartseparado",
-    "arboles",
-    "arma_empo",
-    "ascensor",
-    "aseos",
-    "autobuses",
-    "baja_exclusiva",
-    "balcon",
-    "banyo_suite",
-    "banyos",
-    "bar",
-    "barbacoa",
-    "bloque",
-    "bombafriocalor",
-    "buardilla",
-    "cajafuerte",
-    "calefaccion",
-    "calefaccion_inc",
-    "calefacentral",
-    "calle",
-    "captadopor",
-    "cedula_habitabilidad",
-    "centrico",
-    "centros_comerciales",
-    "centrosalud",
-    "certificado_aptitud",
-    "cesioncom",
-    "chimenea",
-    "cocina_inde",
-    "cod_ofer",
-    "colegios",
-    "comision",
-    "comunidadincluida",
-    "conservacion",
-    "contactadopor",
-    "costa",
-    "cp",
-    "cp_ext",
-    "cruces_idealista",
-    "depoagua",
-    "descalcificador",
-    "descripcionaleman",
-    "descripcionchino",
-    "descripciones",
-    "descripcionfrances",
-    "descripcioningles",
-    "descripcionportugues",
-    "descripcionruso",
-    "despacho",
-    "despensa",
-    "destacado",
-    "diafano",
-    "distmar",
-    "edificio",
-    "electro",
-    "emisionesletra",
-    "emisionesvalor",
-    "energialetra",
-    "energiarecibido",
-    "energiavalor",
-    "eninternet",
-    "entidadbancaria",
-    "escalera",
-    "esquina",
-    "estadoficha",
-    "exclu",
-    "fecha",
-    "fecha_caducidad",
-    "fecha_calificacion",
-    "fecha_contrato_fin",
-    "fecha_contrato_ini",
-    "fechaact",
-    "fechacambio",
-    "fotoletra",
-    "fotos",
-    "galeria",
-    "garajedoble",
-    "gasciudad",
-    "gastos_com",
-    "gimnasio",
-    "golf",
-    "habdobles",
-    "habitaciones",
-    "habjuegos",
-    "haycartel",
-    "hidromasaje",
-    "hilomusical",
-    "hospitales",
-    "idArea",
-    "informe_ite",
-    "interesan",
-    "jacuzzi",
-    "jardin",
-    "key_loca",
-    "key_tipo",
-    "key_zona",
-    "keyacci",
-    "keyagente",
-    "keycalefa",
-    "keycalle",
-    "keycarpin",
-    "keycarpinext",
-    "keycli",
-    "keyelectricidad",
-    "keyfachada",
-    "keymedio",
-    "keyori",
-    "keysuelo",
-    "keytecho",
-    "keyvista",
-    "latitud",
-    "lavanderia",
-    "linea_tlf",
-    "longitud",
-    "luminoso",
-    "luz",
-    "m_altillo",
-    "m_buhardilla",
-    "m_cocina",
-    "m_comedor",
-    "m_cons",
-    "m_parcela",
-    "m_patio",
-    "m_pplanta",
-    "m_salon",
-    "m_sotano",
-    "m_terraza",
-    "m_utiles",
-    "metro",
-    "mirador",
-    "montacargas",
-    "montana",
-    "mtfachada",
-    "mtpuerta",
-    "muebles",
-    "nodisponible",
-    "nplazasparking",
-    "num_contrato",
-    "numagencia",
-    "numero",
-    "numfotos",
-    "numllave",
-    "numpanos",
-    "numplanta",
-    "numplantas",
-    "numpuerta",
-    "numsucursal",
-    "numvistos",
-    "ojobuey",
-    "opcioncompra",
-    "outlet",
-    "parking",
-    "parques",
-    "patio",
-    "pergola",
-    "piscina_com",
-    "piscina_prop",
-    "piso",
-    "planta",
-    "plaza_gara",
-    "porcen",
-    "porceniva",
-    "porcentaje_calidad",
-    "precio",
-    "precio_maximo",
-    "precioalq",
-    "precioinmo",
-    "precioiva",
-    "preciotraspaso",
-    "preinstaacc",
-    "preinsthmusi",
-    "primera_line",
-    "puerta",
-    "puerta_blin",
-    "puertasauto",
-    "ref",
-    "refcertificado",
-    "referencia_vpo",
-    "referenciacol",
-    "reflicenciauso",
-    "reftemporada",
-    "regimen",
-    "riegoauto",
-    "rural",
-    "salida_humos",
-    "salon",
-    "satelite",
-    "sauna",
-    "solarium",
-    "sotano",
-    "soyprospecto",
-    "supermercados",
-    "tanteo",
-    "tenis",
-    "teniscom",
-    "terraza",
-    "terrazaacris",
-    "tgascom",
-    "tinterior",
-    "tipo_terreno",
-    "tipomensual",
-    "tituloaleman",
-    "titulochino",
-    "tituloes",
-    "titulofrances",
-    "tituloingles",
-    "tituloportugues",
-    "tituloruso",
-    "todoext",
-    "tour",
-    "tranvia",
-    "trastero",
-    "tren",
-    "trifasica",
-    "tv",
-    "urbanizacion",
-    "vallado",
-    "valor_referencia",
-    "valorcastral",
-    "valorfiscal",
-    "vercalle",
-    "vestuarios",
-    "video_port",
-    "vigilancia_24",
-    "vistasalmar",
-    "vistasdespejadas",
-    "zona de paso",
-    "zonaauxiliar",
-    "zonasinfantiles"
-  ]
+  "checked": [
+    {
+      "cod_ofer": 29809878,
+      "ref": "YR00039"
+    },
+    {
+      "cod_ofer": 29645697,
+      "ref": "YR00026"
+    },
+    {
+      "cod_ofer": 29610346,
+      "ref": "YR00017"
+    },
+    {
+      "cod_ofer": 29908521,
+      "ref": "YR00060"
+    },
+    {
+      "cod_ofer": 29645847,
+      "ref": "YR00027"
+    },
+    {
+      "cod_ofer": 29644773,
+      "ref": "YR00020"
+    },
+    {
+      "cod_ofer": 29851214,
+      "ref": "YR00053"
+    },
+    {
+      "cod_ofer": 29828256,
+      "ref": "YR00041"
+    },
+    {
+      "cod_ofer": 29899048,
+      "ref": "YR00059"
+    },
+    {
+      "cod_ofer": 29888966,
+      "ref": "YR00056"
+    },
+    {
+      "cod_ofer": 29889089,
+      "ref": "YR00058"
+    },
+    {
+      "cod_ofer": 29889035,
+      "ref": "YR00057"
+    },
+    {
+      "cod_ofer": 29886931,
+      "ref": "YR00055"
+    },
+    {
+      "cod_ofer": 29886930,
+      "ref": "YR00054"
+    },
+    {
+      "cod_ofer": 29851183,
+      "ref": "YR00052"
+    }
+  ],
+  "yr_candidates_total": 60
 }
