@@ -12,70 +12,130 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch all properties (full detail)
+      - name: Fetch all properties (full detail, rate-limit safe, incremental commits)
         env:
           TOKEN: ${{ secrets.INMOVILLA_TOKEN }}
         run: |
-          python3 - <<'EOF'
-          import json, os, urllib.request, time
+          python3 - <<'PYEOF'
+          import json, os, urllib.request, urllib.error, time, subprocess, traceback
 
           token = os.environ["TOKEN"]
           headers = {"Content-Type": "application/json", "Token": token}
+          OUT_FILE = "properties_raw.json"
 
-          def call(url):
-              req = urllib.request.Request(url, headers=headers)
-              with urllib.request.urlopen(req, timeout=30) as resp:
-                  return resp.status, json.loads(resp.read().decode())
+          def call(url, retries=3):
+              last_err = None
+              for attempt in range(retries):
+                  try:
+                      req = urllib.request.Request(url, headers=headers)
+                      with urllib.request.urlopen(req, timeout=30) as resp:
+                          return resp.status, json.loads(resp.read().decode())
+                  except urllib.error.HTTPError as e:
+                      last_err = e
+                      if e.code in (408, 429):
+                          print(f"rate limited (HTTP {e.code}), backing off 60s...")
+                          time.sleep(60)
+                          continue
+                      raise
+                  except Exception as e:
+                      last_err = e
+                      print(f"call error: {e}, retrying in 15s...")
+                      time.sleep(15)
+              raise last_err
+
+          def load_existing():
+              if os.path.exists(OUT_FILE):
+                  try:
+                      with open(OUT_FILE) as f:
+                          return json.load(f)
+                  except Exception:
+                      return None
+              return None
+
+          def commit_progress(msg):
+              subprocess.run(["git", "config", "user.name", "github-actions[bot]"], check=False)
+              subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], check=False)
+              subprocess.run(["git", "add", OUT_FILE], check=False)
+              r = subprocess.run(["git", "commit", "-m", msg], check=False)
+              subprocess.run(["git", "push"], check=False)
+
+          existing = load_existing()
+          done_ids = set()
+          properties = []
+          errors = []
+          if existing and isinstance(existing.get("properties"), list):
+              properties = existing["properties"]
+              errors = existing.get("errors", [])
+              done_ids = {p["cod_ofer"] for p in properties}
+              print(f"resuming: {len(done_ids)} properties already fetched")
 
           st, listado = call("https://procesos.inmovilla.com/api/v1/propiedades/?listado")
           print(f"listado status={st} count={len(listado)}")
 
-          properties = []
-          errors = []
-          for i, p in enumerate(listado):
-              cod_ofer = p["cod_ofer"]
-              try:
-                  time.sleep(6.2)
-                  st, detail = call(f"https://procesos.inmovilla.com/api/v1/propiedades/?cod_ofer={cod_ofer}")
-                  # keep only the fields we actually need, to keep the file small
-                  slim = {
-                      "cod_ofer": detail.get("cod_ofer"),
-                      "ref": detail.get("ref"),
-                      "keyacci": detail.get("keyacci"),
-                      "estadoficha": detail.get("estadoficha"),
-                      "nodisponible": detail.get("nodisponible"),
-                      "precioinmo": detail.get("precioinmo"),
-                      "precioalq": detail.get("precioalq"),
-                      "comision": detail.get("comision"),
-                      "cesioncom": detail.get("cesioncom"),
-                      "fecha": detail.get("fecha"),
-                      "fechaact": detail.get("fechaact"),
-                      "fechacambio": detail.get("fechacambio"),
-                      "keyagente": detail.get("keyagente"),
-                      "captadopor": detail.get("captadopor"),
-                      "key_tipo": detail.get("key_tipo"),
-                      "key_loca": detail.get("key_loca"),
-                  }
-                  properties.append(slim)
-              except Exception as e:
-                  errors.append({"cod_ofer": cod_ofer, "error": str(e)})
-              if (i+1) % 20 == 0:
-                  print(f"progress: {i+1}/{len(listado)}")
+          call_count_window = []  # timestamps of recent calls for 10-min window pacing
 
-          out = {"total": len(listado), "fetched": len(properties), "errors": errors, "properties": properties}
-          with open("properties_raw.json", "w") as f:
-              json.dump(out, f, indent=2, ensure_ascii=False)
-          print("done")
-          EOF
+          def pace():
+              now = time.time()
+              call_count_window.append(now)
+              # drop timestamps older than 10 min
+              while call_count_window and now - call_count_window[0] > 600:
+                  call_count_window.pop(0)
+              if len(call_count_window) >= 45:  # safety margin under 50/10min
+                  sleep_for = 600 - (now - call_count_window[0]) + 5
+                  if sleep_for > 0:
+                      print(f"approaching 10-min limit, sleeping {sleep_for:.0f}s")
+                      time.sleep(sleep_for)
+              time.sleep(6.5)  # respect 10/min
 
-      - name: Commit raw properties data
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add properties_raw.json
-          git diff --staged --quiet || git commit -m "Sync: full raw properties data from Inmovilla API"
-          git push
+          try:
+              for i, p in enumerate(listado):
+                  cod_ofer = p["cod_ofer"]
+                  if cod_ofer in done_ids:
+                      continue
+                  pace()
+                  try:
+                      st, detail = call(f"https://procesos.inmovilla.com/api/v1/propiedades/?cod_ofer={cod_ofer}")
+                      slim = {
+                          "cod_ofer": detail.get("cod_ofer"),
+                          "ref": detail.get("ref"),
+                          "keyacci": detail.get("keyacci"),
+                          "estadoficha": detail.get("estadoficha"),
+                          "nodisponible": detail.get("nodisponible"),
+                          "precioinmo": detail.get("precioinmo"),
+                          "precioalq": detail.get("precioalq"),
+                          "comision": detail.get("comision"),
+                          "cesioncom": detail.get("cesioncom"),
+                          "fecha": detail.get("fecha"),
+                          "fechaact": detail.get("fechaact"),
+                          "fechacambio": detail.get("fechacambio"),
+                          "keyagente": detail.get("keyagente"),
+                          "captadopor": detail.get("captadopor"),
+                          "key_tipo": detail.get("key_tipo"),
+                          "key_loca": detail.get("key_loca"),
+                      }
+                      properties.append(slim)
+                      done_ids.add(cod_ofer)
+                  except Exception as e:
+                      print(f"error on cod_ofer={cod_ofer}: {e}")
+                      errors.append({"cod_ofer": cod_ofer, "error": str(e)})
+
+                  if len(properties) % 15 == 0:
+                      out = {"total": len(listado), "fetched": len(properties), "errors": errors, "properties": properties}
+                      with open(OUT_FILE, "w") as f:
+                          json.dump(out, f, indent=2, ensure_ascii=False)
+                      commit_progress(f"Sync progress: {len(properties)}/{len(listado)} properties")
+                      print(f"progress: {len(properties)}/{len(listado)}")
+          except Exception as e:
+              print("FATAL ERROR:", e)
+              traceback.print_exc()
+          finally:
+              out = {"total": len(listado), "fetched": len(properties), "errors": errors, "properties": properties}
+              with open(OUT_FILE, "w") as f:
+                  json.dump(out, f, indent=2, ensure_ascii=False)
+              commit_progress(f"Sync final: {len(properties)}/{len(listado)} properties")
+              print("done, final commit attempted")
+          PYEOF
