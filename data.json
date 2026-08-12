@@ -39,19 +39,20 @@
     "commissionNote": "",
     "totalLeads": 571,
     "totalLeadsNote": "",
-    "visits": 14,
-    "visitsSale": 0,
-    "visitsRental": 14,
-    "visitsNote": "last 30 days"
+    "visits": 21,
+    "visitsSale": null,
+    "visitsRental": null,
+    "visitsNote": "from 07 Jul 2026, incl. scheduled"
   },
   "brokerPerformance": {
     "asOf": "2026-08-12",
-    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses); 571 active in total, 519 across these four. Visits = sum of the \"Visitas\" counter on each opportunity record inside the Visitas Totais grouping (6 opportunities, read individually on 2026-08-12).",
+    "period": "2026-07-07 onwards (incl. scheduled)",
+    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses); 571 active in total, 519 across these four. Visits = Agenda entries of type Visita (both Visita categories, all subtypes; Tarefas Ativas + Concluídas) from 07/07/2026, including visits already scheduled for the days ahead — 21 in total.",
     "agents": [
-      { "name": "Eugénia Miranda", "leads": 186, "visits": 0, "closedDeals": null },
-      { "name": "Sandra Dantas", "leads": 151, "visits": 0, "closedDeals": null },
-      { "name": "Joana Côrte-Real", "leads": 150, "visits": 0, "closedDeals": null },
-      { "name": "Teresa Archer", "leads": 32, "visits": 4, "closedDeals": null }
+      { "name": "Sandra Dantas", "leads": 151, "visits": 9, "closedDeals": null },
+      { "name": "Eugénia Miranda", "leads": 186, "visits": 8, "closedDeals": null },
+      { "name": "Teresa Archer", "leads": 32, "visits": 4, "closedDeals": null },
+      { "name": "Joana Côrte-Real", "leads": 150, "visits": 0, "closedDeals": null }
     ]
   },
   "quarterlyComparisonCounts": [

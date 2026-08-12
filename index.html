@@ -454,7 +454,7 @@ function renderKPIs(){
     { label:'Commission (Assignment)', value: has(api.commissionAssignment) ? fmtEUR.format(api.commissionAssignment) : null },
     { label:'Total Commission', value: has(api.totalCommission) ? fmtEUR.format(api.totalCommission) : null },
     { label:'Total Leads', value: has(api.totalLeads) ? fmtNum.format(api.totalLeads) : null, note:`as of ${asOf}` },
-    { label:'Visits (Sale | Rental)', value: visitsVal, note: api.visitsNote || '' },
+    { label:'Visits', value: visitsVal, note: api.visitsNote || '' },
   ];
   const grid = document.getElementById('kpiGrid');
   grid.innerHTML = cards.map((c,i)=>`
