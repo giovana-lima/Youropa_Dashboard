@@ -10,17 +10,53 @@
     "dataNote": "Real account history currently spans ~June-July 2026 only for full transaction/funnel detail; no property has ever closed with status \"Vendido\" (sold by Youropa). Lead-level typology and sale/rental splits below are a fresh full re-count of the CRM's 375 current Oportunidades as of 2026-08-04 (370 of 375 records read directly; see leadsSnapshotCoverage), replacing the prior 2026-07-16 snapshot of 175. A per-lead region (Freguesia/Concelho) field is not exposed in the CRM's bulk list views, so Regional Demand reflects the confirmed regions of actual closed transactions only. New Properties by Month and Proposals This Month are sourced fresh from Imoveis creation dates and Oportunidades status as of 2026-08-04; see notes on each field below. The dashboard's \"Total Leads\" KPI is computed only from months present in the funnel array below (currently Jun+Jul = 181), which is a lower, distinct figure from the CRM's live cumulative Oportunidades total (375); the funnel has not yet been extended to cover August or reconstructed further back, since Inmovilla does not expose date-bucketed stage-transition history in a way that could be reliably re-derived this session.",
     "leadsSnapshotOn": "2026-08-04",
     "leadsSnapshotTotal": 375,
-    "leadsSnapshotCoverage": "370 of 375 (98.7%) - CRM UI entered a broken/empty pagination state on the final page during this session and the last 5 records could not be retrieved; all other figures are unaffected."
+    "leadsSnapshotCoverage": "370 of 375 (98.7%) - CRM UI entered a broken/empty pagination state on the final page during this session and the last 5 records could not be retrieved; all other figures are unaffected.",
+    "apiSyncOn": "2026-08-12",
+    "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "newPropertiesByMonth": {
-    "asOf": "2026-08-04",
-    "note": "Count of currently-listed (Disponivel) properties in Inmovilla by creation month, read from the Imoveis module sorted/grouped by Data Criacao. 2026-08 is partial (through Aug 4). Properties later delisted (sold/rented/removed) before this read are not included, so totals may slightly undercount true historical new-listing volume.",
+    "asOf": "2026-08-12",
+    "note": "Full-history count of properties by creation month, sourced from GET /propiedades/?cod_ofer={id} for every property in the account (291 total), field \"fecha\". Includes properties later sold/rented/delisted, so totals are higher than a live \"currently available\" count. 2026-08 is partial (through Aug 12). Properties with placeholder creation dates (Casafari-imported comps) are excluded.",
     "months": [
-      { "month": "2026-06", "count": 9 },
-      { "month": "2026-07", "count": 39 },
-      { "month": "2026-08", "count": 4, "partial": true }
+      { "month": "2026-06", "count": 26 },
+      { "month": "2026-07", "count": 47 },
+      { "month": "2026-08", "count": 13, "partial": true }
     ]
   },
+  "kpisApi": {
+    "asOf": "2026-08-12",
+    "totalVolume": 12180,
+    "salesVolume": 0,
+    "rentalVolume": 12180,
+    "salesCount": 0,
+    "rentalCount": 11,
+    "avgTicketSales": null,
+    "note": "Sales/Rental Volume = sum of precioinmo (sales) / precioalq (rentals, monthly) for properties currently in status Vendido/Vendido MLS or Arrendado/Arrendado MLS, across the full 291-property account history. No property has ever closed as Vendido, so Sales Volume and Average Ticket are 0 / not available. Rental Volume reflects the sum of monthly rent for the 11 currently-Arrendado properties, not a one-time total.",
+    "commissionSale": null,
+    "commissionRental": null,
+    "commissionAssignment": null,
+    "totalCommission": null,
+    "commissionNote": "Blocked: the comision/cesioncom fields exist in Inmovilla but Youropa is not yet using them, per Giovana (2026-08-12). No data source (API or manual) currently has a real value for these.",
+    "totalLeads": null,
+    "totalLeadsNote": "Definition confirmed by Giovana: total Oportunidades, sales + rentals combined. Blocked pending a fresh manual read of the live CRM total (previously seen as ~375, growing continuously) - no API endpoint exposes Oportunidades.",
+    "visits": null,
+    "visitsNote": "Blocked: GET /seguimientos/search/ returned HTTP 404 during this sync attempt; needs further troubleshooting before Visits (sale|rental) can be sourced from the API."
+  },
+  "brokerPerformance": {
+    "asOf": "2026-08-12",
+    "note": "Sourced from GET /propiedades (keyagente = managing agent on each of the 291 property records) and estadoficha for closed deals. Agent names for IDs other than Giovana Lima (218514) are not yet confirmed. \"Leads assigned / reached\" and \"Visits\" per agent are not available via this API (no bulk Clientes listing endpoint, and /seguimientos is currently blocked - see kpisApi.visitsNote) and remain manual/pending.",
+    "agents": [
+      { "agentId": 218514, "name": "Giovana Lima", "propertiesManaged": 270, "closedSales": 0, "closedRentals": 11 },
+      { "agentId": 216132, "name": null, "propertiesManaged": 20, "closedSales": 0, "closedRentals": 0 },
+      { "agentId": 218516, "name": null, "propertiesManaged": 1, "closedSales": 0, "closedRentals": 0 }
+    ]
+  },
+  "quarterlyComparisonCounts": [
+    { "quarter": "Q2 2026", "sales": 0, "rentals": 10 },
+    { "quarter": "Q3 2026", "sales": 0, "rentals": 1 }
+  ],
+  "marketingOrigin": null,
+  "leadsPerProject": null,
   "proposalsThisMonth": {
     "month": "2026-08",
     "asOf": "2026-08-04",
