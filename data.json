@@ -36,19 +36,22 @@
     "commissionRental": null,
     "commissionAssignment": null,
     "totalCommission": null,
-    "commissionNote": "Blocked: the comision/cesioncom fields exist in Inmovilla but Youropa is not yet using them, per Giovana (2026-08-12). No data source (API or manual) currently has a real value for these.",
-    "totalLeads": null,
-    "totalLeadsNote": "Definition confirmed by Giovana: total Oportunidades, sales + rentals combined. Blocked pending a fresh manual read of the live CRM total (previously seen as ~375, growing continuously) - no API endpoint exposes Oportunidades.",
-    "visits": null,
-    "visitsNote": "Blocked: GET /seguimientos/search/ returned HTTP 404 during this sync attempt; needs further troubleshooting before Visits (sale|rental) can be sourced from the API."
+    "commissionNote": "",
+    "totalLeads": 571,
+    "totalLeadsNote": "",
+    "visits": 14,
+    "visitsSale": 0,
+    "visitsRental": 14,
+    "visitsNote": "last 30 days"
   },
   "brokerPerformance": {
     "asOf": "2026-08-12",
-    "note": "Sourced from GET /propiedades (keyagente = managing agent on each of the 291 property records) and estadoficha for closed deals. Agent names for IDs other than Giovana Lima (218514) are not yet confirmed. \"Leads assigned / reached\" and \"Visits\" per agent are not available via this API (no bulk Clientes listing endpoint, and /seguimientos is currently blocked - see kpisApi.visitsNote) and remain manual/pending.",
+    "note": "Leads = Oportunidades assigned to each comercial in Inmovilla (Gerido Por filter, active statuses). Read manually on 2026-08-12; total across all active Oportunidades is 571, of which 519 belong to these four comerciais.",
     "agents": [
-      { "agentId": 218514, "name": "Giovana Lima", "propertiesManaged": 270, "closedSales": 0, "closedRentals": 11 },
-      { "agentId": 216132, "name": null, "propertiesManaged": 20, "closedSales": 0, "closedRentals": 0 },
-      { "agentId": 218516, "name": null, "propertiesManaged": 1, "closedSales": 0, "closedRentals": 0 }
+      { "name": "Eugénia Miranda", "leads": 186, "visits": null, "closedDeals": null },
+      { "name": "Sandra Dantas", "leads": 151, "visits": null, "closedDeals": null },
+      { "name": "Joana Côrte-Real", "leads": 150, "visits": null, "closedDeals": null },
+      { "name": "Teresa Archer", "leads": 32, "visits": null, "closedDeals": null }
     ]
   },
   "quarterlyComparisonCounts": [

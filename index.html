@@ -137,8 +137,8 @@ select#periodFilter:focus{outline:2px solid var(--gold);outline-offset:1px;}
 .mini-table td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-mid);text-align:right;}
 .mini-table td:first-child{color:var(--text-hi);font-weight:600;}
 .mini-table tr:hover td{background:rgba(226,189,122,0.05);}
-.pending-block{padding:18px 4px;color:var(--text-low);font-size:13px;line-height:1.5;text-align:center;border:1px dashed var(--line);border-radius:var(--radius-sm);background:rgba(255,255,255,0.02);}
-.kpi-value.pending{font-size:16px;color:var(--text-low);font-weight:600;}
+.pending-block{min-height:120px;border:1px dashed var(--line);border-radius:var(--radius-sm);background:rgba(255,255,255,0.02);}
+.kpi-value.pending{min-height:28px;}
 
 .funnel-row{display:flex;flex-direction:column;gap:6px;}
 .funnel-stage{display:grid;grid-template-columns:130px 1fr 60px;align-items:center;gap:10px;font-size:12px;}
@@ -434,33 +434,34 @@ function deltaHTML(d, periodLabel){
 
 const PERIOD_LABELS = { 1:'previous month', 3:'previous 3 months', 6:'previous 6 months', 12:'previous 12 months', 24:'earlier history' };
 
-function pendingCard(label, note){
-  return { label, value: '–', pending: true, note: note || 'Pending data' };
-}
+function has(v){ return v!==null && v!==undefined; }
 
 function renderKPIs(){
   const api = RAW_DATA.kpisApi || {};
   const asOf = api.asOf || RAW_DATA.meta.generatedOn;
+  const visitsVal = has(api.visits)
+    ? (has(api.visitsSale) && has(api.visitsRental)
+        ? `${fmtNum.format(api.visitsSale)} | ${fmtNum.format(api.visitsRental)}`
+        : fmtNum.format(api.visits))
+    : null;
   const cards = [
     { label:'Total Volume', value: fmtEUR.format(api.totalVolume||0), note:`as of ${asOf}` },
     { label:'Sales Volume', value: fmtEUR.format(api.salesVolume||0), note:`as of ${asOf}` },
     { label:'Rental Volume', value: fmtEUR.format(api.rentalVolume||0), note:`monthly, as of ${asOf}` },
-    api.avgTicketSales!==null && api.avgTicketSales!==undefined
-      ? { label:'Average Ticket (Sales)', value: fmtEURdec.format(api.avgTicketSales), note:`as of ${asOf}` }
-      : pendingCard('Average Ticket (Sales)', 'No sales closed yet'),
-    api.commissionSale!==null ? { label:'Commission (Sale)', value: fmtEUR.format(api.commissionSale), note:`as of ${asOf}` } : pendingCard('Commission (Sale)', api.commissionNote),
-    api.commissionRental!==null ? { label:'Commission (Rental)', value: fmtEUR.format(api.commissionRental), note:`as of ${asOf}` } : pendingCard('Commission (Rental)', api.commissionNote),
-    api.commissionAssignment!==null ? { label:'Commission (Assignment)', value: fmtEUR.format(api.commissionAssignment), note:`as of ${asOf}` } : pendingCard('Commission (Assignment)', api.commissionNote),
-    api.totalCommission!==null ? { label:'Total Commission', value: fmtEUR.format(api.totalCommission), note:`as of ${asOf}` } : pendingCard('Total Commission', api.commissionNote),
-    api.totalLeads!==null ? { label:'Total Leads', value: fmtNum.format(api.totalLeads), note:`as of ${asOf}` } : pendingCard('Total Leads', api.totalLeadsNote),
-    api.visits!==null ? { label:'Visits (Sale | Rental)', value: fmtNum.format(api.visits), note:`as of ${asOf}` } : pendingCard('Visits (Sale | Rental)', api.visitsNote),
+    { label:'Average Ticket (Sales)', value: has(api.avgTicketSales) ? fmtEURdec.format(api.avgTicketSales) : null },
+    { label:'Commission (Sale)', value: has(api.commissionSale) ? fmtEUR.format(api.commissionSale) : null },
+    { label:'Commission (Rental)', value: has(api.commissionRental) ? fmtEUR.format(api.commissionRental) : null },
+    { label:'Commission (Assignment)', value: has(api.commissionAssignment) ? fmtEUR.format(api.commissionAssignment) : null },
+    { label:'Total Commission', value: has(api.totalCommission) ? fmtEUR.format(api.totalCommission) : null },
+    { label:'Total Leads', value: has(api.totalLeads) ? fmtNum.format(api.totalLeads) : null, note:`as of ${asOf}` },
+    { label:'Visits (Sale | Rental)', value: visitsVal, note: api.visitsNote || '' },
   ];
   const grid = document.getElementById('kpiGrid');
   grid.innerHTML = cards.map((c,i)=>`
-    <div class="kpi-card fade-in d${Math.min(i+1,7)}" ${c.note ? `title="${c.note.replace(/"/g,'&quot;')}"` : ''}>
+    <div class="kpi-card fade-in d${Math.min(i+1,7)}">
       <div class="kpi-label">${c.label}</div>
-      <div class="kpi-value ${c.pending?'pending':''}">${c.value}</div>
-      <div class="kpi-delta flat">— <span class="vs">${c.note || ''}</span></div>
+      <div class="kpi-value ${c.value===null?'pending':''}">${c.value===null ? '' : c.value}</div>
+      ${ c.value!==null && c.note ? `<div class="kpi-delta flat"><span class="vs">${c.note}</span></div>` : '' }
     </div>
   `).join('');
 }
@@ -495,15 +496,16 @@ function renderBrokerPerformance(){
     document.getElementById('insightBroker').innerHTML = '';
     return;
   }
-  const rows = [...src.agents].sort((a,b)=> (b.closedSales+b.closedRentals) - (a.closedSales+a.closedRentals));
+  const cell = v => (v===null || v===undefined) ? '' : fmtNum.format(v);
+  const rows = [...src.agents].sort((a,b)=> (b.leads||0) - (a.leads||0));
   el.innerHTML = `<table class="mini-table"><thead><tr>
-      <th>Agent</th><th>Properties</th><th>Sales Closed</th><th>Rentals Closed</th>
+      <th>Broker</th><th>Leads</th><th>Visits</th><th>Closed Deals</th>
     </tr></thead><tbody>
     ${rows.map(a=>`<tr>
-      <td>${a.name || ('Agent ' + a.agentId)}</td>
-      <td>${fmtNum.format(a.propertiesManaged)}</td>
-      <td>${fmtNum.format(a.closedSales)}</td>
-      <td>${fmtNum.format(a.closedRentals)}</td>
+      <td>${a.name}</td>
+      <td>${cell(a.leads)}</td>
+      <td>${cell(a.visits)}</td>
+      <td>${cell(a.closedDeals)}</td>
     </tr>`).join('')}
     </tbody></table>`;
   document.getElementById('insightBroker').innerHTML = `${src.note || ''}${src.asOf ? ` (as of ${src.asOf})` : ''}`;
@@ -514,7 +516,7 @@ function renderMarketingOrigin(){
   const src = RAW_DATA.marketingOrigin;
   const el = document.getElementById('marketingOriginBody');
   if(!src){
-    el.innerHTML = '<div class="pending-block">Pending — leads-by-channel data from the Inmovilla API (GET /propiedades/?leads) has not been synced yet.</div>';
+    el.innerHTML = '<div class="pending-block"></div>';
     document.getElementById('insightMarketing').innerHTML = '';
     return;
   }
@@ -530,7 +532,7 @@ function renderLeadsPerProject(){
   const src = RAW_DATA.leadsPerProject;
   const el = document.getElementById('leadsPerProjectBody');
   if(!src){
-    el.innerHTML = '<div class="pending-block">Pending — the "Projeto" field is not exposed by the Inmovilla REST API. Waiting on a reply from Inmovilla support before this can be automated.</div>';
+    el.innerHTML = '<div class="pending-block"></div>';
     document.getElementById('insightLeadsPerProject').innerHTML = '';
     return;
   }
