@@ -1,16 +1,17 @@
 {
   "meta": {
-    "generatedOn": "2026-08-04",
+    "generatedOn": "2026-08-12",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
-      "2026-07"
+      "2026-07",
+      "2026-08"
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
-    "dataNote": "Real account history currently spans ~June-July 2026 only for full transaction/funnel detail; no property has ever closed with status \"Vendido\" (sold by Youropa). Lead-level typology and sale/rental splits below are a fresh full re-count of the CRM's 375 current Oportunidades as of 2026-08-04 (370 of 375 records read directly; see leadsSnapshotCoverage), replacing the prior 2026-07-16 snapshot of 175. A per-lead region (Freguesia/Concelho) field is not exposed in the CRM's bulk list views, so Regional Demand reflects the confirmed regions of actual closed transactions only. New Properties by Month and Proposals This Month are sourced fresh from Imoveis creation dates and Oportunidades status as of 2026-08-04; see notes on each field below. The dashboard's \"Total Leads\" KPI is computed only from months present in the funnel array below (currently Jun+Jul = 181), which is a lower, distinct figure from the CRM's live cumulative Oportunidades total (375); the funnel has not yet been extended to cover August or reconstructed further back, since Inmovilla does not expose date-bucketed stage-transition history in a way that could be reliably re-derived this session.",
-    "leadsSnapshotOn": "2026-08-04",
-    "leadsSnapshotTotal": 375,
-    "leadsSnapshotCoverage": "370 of 375 (98.7%) - CRM UI entered a broken/empty pagination state on the final page during this session and the last 5 records could not be retrieved; all other figures are unaffected.",
+    "dataNote": "Leads (Oportunidades) are counted per creation month directly from the Inmovilla Oportunidades list: Jun 65 (52 rental / 13 sale), Jul 226 (204/22), Aug 285 (275/10) - 576 of 579 records read on 2026-08-12. Funnel stage 'Qualified' uses those real monthly counts; 'Visit Scheduled' uses Agenda entries under both Visita categories (Jun 3, Jul 13, Aug 8 - all rentals, since the CRM's 'Visitas com Compradores' widget is 0); 'Commission Paid' uses properties that reached status Arrendado/Vendido, dated by fechacambio (Jun 10, Jul 1). 'Offer' and 'Contract Signed' are not tracked as distinct states in this CRM setup and are therefore 0. Property-level figures (volumes, new listings) come from the Inmovilla REST API; Oportunidades and Agenda figures are read from the CRM screen, as no API endpoint exposes them.",
+    "leadsSnapshotOn": "2026-08-12",
+    "leadsSnapshotTotal": 579,
+    "leadsSnapshotCoverage": "576 of 579 (99.5%) read row-by-row from the Oportunidades list on 2026-08-12; the CRM total moves during the day as new portal leads arrive.",
     "apiSyncOn": "2026-08-12",
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
@@ -18,9 +19,19 @@
     "asOf": "2026-08-12",
     "note": "Full-history count of properties by creation month, sourced from GET /propiedades/?cod_ofer={id} for every property in the account (291 total), field \"fecha\". Includes properties later sold/rented/delisted, so totals are higher than a live \"currently available\" count. 2026-08 is partial (through Aug 12). Properties with placeholder creation dates (Casafari-imported comps) are excluded.",
     "months": [
-      { "month": "2026-06", "count": 26 },
-      { "month": "2026-07", "count": 47 },
-      { "month": "2026-08", "count": 13, "partial": true }
+      {
+        "month": "2026-06",
+        "count": 26
+      },
+      {
+        "month": "2026-07",
+        "count": 47
+      },
+      {
+        "month": "2026-08",
+        "count": 13,
+        "partial": true
+      }
     ]
   },
   "kpisApi": {
@@ -37,27 +48,55 @@
     "commissionAssignment": null,
     "totalCommission": null,
     "commissionNote": "",
-    "totalLeads": 571,
+    "totalLeads": 579,
     "totalLeadsNote": "",
-    "visits": 21,
-    "visitsSale": null,
-    "visitsRental": null,
-    "visitsNote": "from 07 Jul 2026, incl. scheduled"
+    "visits": 24,
+    "visitsSale": 0,
+    "visitsRental": 24,
+    "visitsNote": "Jun–Aug 2026, incl. scheduled"
   },
   "brokerPerformance": {
     "asOf": "2026-08-12",
-    "period": "2026-07-07 onwards (incl. scheduled)",
-    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses); 571 active in total, 519 across these four. Visits = Agenda entries of type Visita (both Visita categories, all subtypes; Tarefas Ativas + Concluídas) from 07/07/2026, including visits already scheduled for the days ahead — 21 in total.",
+    "period": "full history (Jun-Aug 2026)",
+    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses). Visits = Agenda entries under both Visita categories (all subtypes; Tarefas Ativas + Concluídas) across Jun/Jul/Aug 2026, including visits already scheduled ahead — 24 in total, none cancelled.",
     "agents": [
-      { "name": "Sandra Dantas", "leads": 151, "visits": 9, "closedDeals": null },
-      { "name": "Eugénia Miranda", "leads": 186, "visits": 8, "closedDeals": null },
-      { "name": "Teresa Archer", "leads": 32, "visits": 4, "closedDeals": null },
-      { "name": "Joana Côrte-Real", "leads": 150, "visits": 0, "closedDeals": null }
+      {
+        "name": "Sandra Dantas",
+        "leads": 151,
+        "visits": 11,
+        "closedDeals": null
+      },
+      {
+        "name": "Eugénia Miranda",
+        "leads": 186,
+        "visits": 8,
+        "closedDeals": null
+      },
+      {
+        "name": "Teresa Archer",
+        "leads": 32,
+        "visits": 5,
+        "closedDeals": null
+      },
+      {
+        "name": "Joana Côrte-Real",
+        "leads": 150,
+        "visits": 0,
+        "closedDeals": null
+      }
     ]
   },
   "quarterlyComparisonCounts": [
-    { "quarter": "Q2 2026", "sales": 0, "rentals": 10 },
-    { "quarter": "Q3 2026", "sales": 0, "rentals": 1 }
+    {
+      "quarter": "Q2 2026",
+      "sales": 0,
+      "rentals": 10
+    },
+    {
+      "quarter": "Q3 2026",
+      "sales": 0,
+      "rentals": 1
+    }
   ],
   "marketingOrigin": null,
   "leadsPerProject": null,
@@ -71,7 +110,8 @@
   },
   "monthlyMargin": {
     "2026-06": 0.85,
-    "2026-07": 0.85
+    "2026-07": 0.85,
+    "2026-08": 0.85
   },
   "transactions": [
     {
@@ -146,7 +186,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 34
+      "count": 52
     },
     {
       "month": "2026-06",
@@ -174,14 +214,14 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "win",
-      "count": 1
+      "count": 10
     },
     {
       "month": "2026-06",
       "quarter": "Q2 2026",
       "type": "sale",
       "stage": "opportunity",
-      "count": 2
+      "count": 13
     },
     {
       "month": "2026-06",
@@ -216,7 +256,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 137
+      "count": 204
     },
     {
       "month": "2026-07",
@@ -230,35 +270,35 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "offer",
-      "count": 2
+      "count": 0
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "contract_signed",
-      "count": 2
+      "count": 0
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 4
+      "count": 1
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "opportunity",
-      "count": 8
+      "count": 22
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "visit_scheduled",
-      "count": 1
+      "count": 0
     },
     {
       "month": "2026-07",
@@ -276,6 +316,76 @@
     },
     {
       "month": "2026-07",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "win",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "opportunity",
+      "count": 275
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "visit_scheduled",
+      "count": 8
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "win",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "opportunity",
+      "count": 10
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "visit_scheduled",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
@@ -301,7 +411,7 @@
     }
   ],
   "leadsByOperation": {
-    "sale": 38,
-    "rental": 332
+    "sale": 45,
+    "rental": 531
   }
 }

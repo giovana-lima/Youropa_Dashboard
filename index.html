@@ -678,7 +678,7 @@ function renderLeadsQuarter(type){
   });
   const n = QUARTER_ORDER.length;
   const dq = delta(values[n-1], values[n-2]);
-  document.getElementById('insightLeadsQuarter').innerHTML = `Lead volume ${dq!==null && dq>=0 ? 'grew' : 'declined'} <b>${dq!==null?fmtPct(Math.abs(dq)).replace('+',''):'—'}%</b> quarter-over-quarter.`;
+  document.getElementById('insightLeadsQuarter').innerHTML = `Lead volume ${dq!==null && dq>=0 ? 'grew' : 'declined'} <b>${dq!==null?fmtPct(Math.abs(dq)).replace('+',''):'—'}</b> quarter-over-quarter.`;
 }
 
 /* ---------- Table ---------- */
