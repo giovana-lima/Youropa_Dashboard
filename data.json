@@ -46,9 +46,9 @@
   },
   "brokerPerformance": {
     "asOf": "2026-08-12",
-    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses); 571 active in total, 519 across these four. Visits = Oportunidades with at least one visit (Visitas Totais widget, last 30 days) — 6 opportunities covering 14 individual visits.",
+    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses); 571 active in total, 519 across these four. Visits = sum of the \"Visitas\" counter on each opportunity record inside the Visitas Totais grouping (6 opportunities, read individually on 2026-08-12).",
     "agents": [
-      { "name": "Eugénia Miranda", "leads": 186, "visits": 2, "closedDeals": null },
+      { "name": "Eugénia Miranda", "leads": 186, "visits": 0, "closedDeals": null },
       { "name": "Sandra Dantas", "leads": 151, "visits": 0, "closedDeals": null },
       { "name": "Joana Côrte-Real", "leads": 150, "visits": 0, "closedDeals": null },
       { "name": "Teresa Archer", "leads": 32, "visits": 4, "closedDeals": null }
