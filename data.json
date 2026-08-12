@@ -46,12 +46,12 @@
   },
   "brokerPerformance": {
     "asOf": "2026-08-12",
-    "note": "Leads = Oportunidades assigned to each comercial in Inmovilla (Gerido Por filter, active statuses). Read manually on 2026-08-12; total across all active Oportunidades is 571, of which 519 belong to these four comerciais.",
+    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses); 571 active in total, 519 across these four. Visits = Oportunidades with at least one visit (Visitas Totais widget, last 30 days) — 6 opportunities covering 14 individual visits.",
     "agents": [
-      { "name": "Eugénia Miranda", "leads": 186, "visits": null, "closedDeals": null },
-      { "name": "Sandra Dantas", "leads": 151, "visits": null, "closedDeals": null },
-      { "name": "Joana Côrte-Real", "leads": 150, "visits": null, "closedDeals": null },
-      { "name": "Teresa Archer", "leads": 32, "visits": null, "closedDeals": null }
+      { "name": "Eugénia Miranda", "leads": 186, "visits": 2, "closedDeals": null },
+      { "name": "Sandra Dantas", "leads": 151, "visits": 0, "closedDeals": null },
+      { "name": "Joana Côrte-Real", "leads": 150, "visits": 0, "closedDeals": null },
+      { "name": "Teresa Archer", "leads": 32, "visits": 4, "closedDeals": null }
     ]
   },
   "quarterlyComparisonCounts": [
