@@ -438,32 +438,53 @@ function has(v){ return v!==null && v!==undefined; }
 
 function renderKPIs(){
   const api = RAW_DATA.kpisApi || {};
-  const asOf = api.asOf || RAW_DATA.meta.generatedOn;
-  const visitsVal = has(api.visits)
-    ? (has(api.visitsSale) && has(api.visitsRental)
-        ? `${fmtNum.format(api.visitsSale)} | ${fmtNum.format(api.visitsRental)}`
-        : fmtNum.format(api.visits))
-    : null;
+  const { current, previous } = currentAndPrevious();
+  const pLabel = PERIOD_LABELS[state.period];
+
+  const calc = (months) => {
+    if(!months || !months.length) return null;
+    const tx = filterTx(months, state.type);
+    const fn = filterFunnel(months, state.type);
+    const salesTx = tx.filter(t=>t.type==='sale');
+    const salesVol = sum(salesTx, t=>t.amount);
+    return {
+      totalVol: sum(tx, t=>t.amount),
+      salesVol,
+      rentalVol: sum(tx.filter(t=>t.type==='rental'), t=>t.amount),
+      avgTicket: salesTx.length ? salesVol/salesTx.length : null,
+      leads: sum(fn.filter(r=>r.stage==='opportunity'), r=>r.count),
+      visits: sum(fn.filter(r=>r.stage==='visit_scheduled'), r=>r.count),
+    };
+  };
+  const k = calc(current), p = calc(previous);
+  const d = (a,b) => (p ? delta(a,b) : null);
+
   const cards = [
-    { label:'Total Volume', value: fmtEUR.format(api.totalVolume||0), note:`as of ${asOf}` },
-    { label:'Sales Volume', value: fmtEUR.format(api.salesVolume||0), note:`as of ${asOf}` },
-    { label:'Rental Volume', value: fmtEUR.format(api.rentalVolume||0), note:`monthly, as of ${asOf}` },
-    { label:'Average Ticket (Sales)', value: has(api.avgTicketSales) ? fmtEURdec.format(api.avgTicketSales) : null },
+    { label:'Total Volume', value: fmtEUR.format(k.totalVol), d: d(k.totalVol, p&&p.totalVol) },
+    { label:'Sales Volume', value: fmtEUR.format(k.salesVol), d: d(k.salesVol, p&&p.salesVol) },
+    { label:'Rental Volume', value: fmtEUR.format(k.rentalVol), d: d(k.rentalVol, p&&p.rentalVol), note:'monthly rent' },
+    { label:'Average Ticket (Sales)', value: k.avgTicket!==null ? fmtEURdec.format(k.avgTicket) : null },
     { label:'Commission (Sale)', value: has(api.commissionSale) ? fmtEUR.format(api.commissionSale) : null },
     { label:'Commission (Rental)', value: has(api.commissionRental) ? fmtEUR.format(api.commissionRental) : null },
     { label:'Commission (Assignment)', value: has(api.commissionAssignment) ? fmtEUR.format(api.commissionAssignment) : null },
     { label:'Total Commission', value: has(api.totalCommission) ? fmtEUR.format(api.totalCommission) : null },
-    { label:'Total Leads', value: has(api.totalLeads) ? fmtNum.format(api.totalLeads) : null, note:`as of ${asOf}` },
-    { label:'Visits', value: visitsVal, note: api.visitsNote || '' },
+    { label:'Total Leads', value: fmtNum.format(k.leads), d: d(k.leads, p&&p.leads) },
+    { label:'Visits', value: fmtNum.format(k.visits), d: d(k.visits, p&&p.visits) },
   ];
   const grid = document.getElementById('kpiGrid');
-  grid.innerHTML = cards.map((c,i)=>`
+  grid.innerHTML = cards.map((c,i)=>{
+    let footer = '';
+    if(c.value!==null){
+      if(c.d!==undefined && c.d!==null) footer = deltaHTML(c.d, pLabel);
+      else if(c.note) footer = `<div class="kpi-delta flat"><span class="vs">${c.note}</span></div>`;
+    }
+    return `
     <div class="kpi-card fade-in d${Math.min(i+1,7)}">
       <div class="kpi-label">${c.label}</div>
       <div class="kpi-value ${c.value===null?'pending':''}">${c.value===null ? '' : c.value}</div>
-      ${ c.value!==null && c.note ? `<div class="kpi-delta flat"><span class="vs">${c.note}</span></div>` : '' }
-    </div>
-  `).join('');
+      ${footer}
+    </div>`;
+  }).join('');
 }
 
 /* ---------- Chart.js shared config ---------- */
@@ -544,7 +565,7 @@ function renderLeadsPerProject(){
 }
 
 /* New Listings by Month — count of new Inmovilla listings created, per month (full account history) */
-function renderNewProperties(){
+function renderNewProperties(months){
   const src = RAW_DATA.newPropertiesByMonth;
   destroyChart('newProperties');
   const ctx = document.getElementById('chartNewProperties');
@@ -552,7 +573,12 @@ function renderNewProperties(){
     document.getElementById('insightNewProperties').innerHTML = 'No new-listings data available.';
     return;
   }
-  const rows = src.months;
+  const set = months ? new Set(months) : null;
+  const rows = set ? src.months.filter(r => set.has(r.month)) : src.months;
+  if(!rows.length){
+    document.getElementById('insightNewProperties').innerHTML = 'No new listings in the selected period.';
+    return;
+  }
   const labels = rows.map(r => MONTH_LABEL(r.month) + (r.partial ? ' (partial)' : ''));
   const values = rows.map(r => r.count);
   charts.newProperties = new Chart(ctx, {
@@ -588,10 +614,12 @@ function renderProposals(){
 
 /* Quarterly comparison — number of closed deals, sales vs rentals (counts, not volume) */
 function renderQuarterly(){
-  const rows = RAW_DATA.quarterlyComparisonCounts || [];
-  const labels = rows.map(r=>r.quarter);
-  const saleValues = rows.map(r=>r.sales||0);
-  const rentalValues = rows.map(r=>r.rentals||0);
+  const tx = state.type==='all' ? RAW_DATA.transactions : RAW_DATA.transactions.filter(t=>t.type===state.type);
+  const order = [];
+  RAW_DATA.meta.months.forEach(mk => { const q = quarterOfMonth(mk); if(!order.includes(q)) order.push(q); });
+  const labels = order;
+  const saleValues = order.map(q => tx.filter(t=>t.quarter===q && t.type==='sale').length);
+  const rentalValues = order.map(q => tx.filter(t=>t.quarter===q && t.type==='rental').length);
   destroyChart('quarterly');
   const ctx = document.getElementById('chartQuarterly');
   charts.quarterly = new Chart(ctx, {
@@ -606,7 +634,7 @@ function renderQuarterly(){
       scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:10} } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ precision:0 } } }
     }
   });
-  const n = rows.length;
+  const n = labels.length;
   const cur = n ? (saleValues[n-1]+rentalValues[n-1]) : 0;
   const prevQ = n>=2 ? (saleValues[n-2]+rentalValues[n-2]) : null;
   const dq = prevQ!==null ? delta(cur, prevQ) : null;
@@ -725,7 +753,7 @@ function renderAll(){
   updatePeriodLabel();
   renderKPIs();
   const { current } = currentAndPrevious();
-  renderNewProperties();
+  renderNewProperties(current);
   renderBrokerPerformance();
   renderMarketingOrigin();
   renderLeadsPerProject();
