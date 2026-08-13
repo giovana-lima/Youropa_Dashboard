@@ -529,7 +529,7 @@ function renderBrokerPerformance(){
       <td>${cell(a.closedDeals)}</td>
     </tr>`).join('')}
     </tbody></table>`;
-  document.getElementById('insightBroker').innerHTML = `${src.note || ''}${src.asOf ? ` (as of ${src.asOf})` : ''}`;
+  document.getElementById('insightBroker').innerHTML = src.note ? `${src.note}${src.asOf ? ` (as of ${src.asOf})` : ''}` : '';
 }
 
 /* Marketing — Origin (pending: no bulk leads endpoint wired up yet) */

@@ -58,7 +58,7 @@
   "brokerPerformance": {
     "asOf": "2026-08-12",
     "period": "full history (Jun-Aug 2026)",
-    "note": "Leads = Oportunidades assigned to each comercial (Gerido Por filter, active statuses). Visits = Agenda entries under both Visita categories (all subtypes; Tarefas Ativas + Concluídas) across Jun/Jul/Aug 2026, including visits already scheduled ahead — 24 in total, none cancelled.",
+    "note": "",
     "agents": [
       {
         "name": "Sandra Dantas",
