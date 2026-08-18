@@ -1,8 +1,9 @@
 {
   "meta": {
-    "generatedOn": "2026-08-12",
+    "generatedOn": "2026-08-18",
     "reportingThrough": "2026-08",
     "months": [
+      "2017-09",
       "2026-06",
       "2026-07",
       "2026-08"
@@ -16,9 +17,13 @@
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "newPropertiesByMonth": {
-    "asOf": "2026-08-12",
+    "asOf": "2026-08-18",
     "note": "Full-history count of properties by creation month, sourced from GET /propiedades/?cod_ofer={id} for every property in the account (291 total), field \"fecha\". Includes properties later sold/rented/delisted, so totals are higher than a live \"currently available\" count. 2026-08 is partial (through Aug 12). Properties with placeholder creation dates (Casafari-imported comps) are excluded.",
     "months": [
+      {
+        "month": "2017-09",
+        "count": 1
+      },
       {
         "month": "2026-06",
         "count": 26
@@ -29,18 +34,18 @@
       },
       {
         "month": "2026-08",
-        "count": 13,
+        "count": 20,
         "partial": true
       }
     ]
   },
   "kpisApi": {
-    "asOf": "2026-08-12",
-    "totalVolume": 12180,
+    "asOf": "2026-08-18",
+    "totalVolume": 14280.0,
     "salesVolume": 0,
-    "rentalVolume": 12180,
+    "rentalVolume": 14280.0,
     "salesCount": 0,
-    "rentalCount": 11,
+    "rentalCount": 13,
     "avgTicketSales": null,
     "note": "Volumes are computed from the 11 properties that reached status Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume is the sum of monthly rent, not a one-time amount. No property has ever closed as Vendido, so Sales Volume and Average Ticket are 0 / not available.",
     "commissionSale": null,
@@ -88,9 +93,14 @@
   },
   "quarterlyComparisonCounts": [
     {
+      "quarter": "Q3 2017",
+      "sales": 0,
+      "rentals": 0
+    },
+    {
       "quarter": "Q2 2026",
       "sales": 0,
-      "rentals": 10
+      "rentals": 12
     },
     {
       "quarter": "Q3 2026",
@@ -109,6 +119,7 @@
     "rejected": 0
   },
   "monthlyMargin": {
+    "2017-09": 0.85,
     "2026-06": 0.85,
     "2026-07": 0.85,
     "2026-08": 0.85
@@ -121,7 +132,7 @@
       "type": "rental",
       "channel": "",
       "category": "",
-      "project": "Ref. 35018926",
+      "project": "Ref. 34878363",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
@@ -129,6 +140,45 @@
     },
     {
       "id": "R00002",
+      "date": "2026-06-23",
+      "amount": 1000.0,
+      "type": "rental",
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00008",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00003",
+      "date": "2026-06-12",
+      "amount": 1100.0,
+      "type": "rental",
+      "channel": "",
+      "category": "",
+      "project": "Ref. 35018926",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00004",
+      "date": "2026-07-13",
+      "amount": 780.0,
+      "type": "rental",
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00033",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-07"
+    },
+    {
+      "id": "R00005",
       "date": "2026-06-12",
       "amount": 1000.0,
       "type": "rental",
@@ -141,7 +191,20 @@
       "month": "2026-06"
     },
     {
-      "id": "R00003",
+      "id": "R00006",
+      "date": "2026-06-23",
+      "amount": 950.0,
+      "type": "rental",
+      "channel": "",
+      "category": "",
+      "project": "Ref. N1.6",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00007",
       "date": "2026-06-12",
       "amount": 1000.0,
       "type": "rental",
@@ -154,65 +217,13 @@
       "month": "2026-06"
     },
     {
-      "id": "R00004",
+      "id": "R00008",
       "date": "2026-06-12",
       "amount": 1200.0,
       "type": "rental",
       "channel": "",
       "category": "",
       "project": "Ref. YR00031",
-      "region": "",
-      "clientId": "",
-      "quarter": "Q2 2026",
-      "month": "2026-06"
-    },
-    {
-      "id": "R00005",
-      "date": "2026-06-12",
-      "amount": 1200.0,
-      "type": "rental",
-      "channel": "",
-      "category": "",
-      "project": "Ref. 35040352",
-      "region": "",
-      "clientId": "",
-      "quarter": "Q2 2026",
-      "month": "2026-06"
-    },
-    {
-      "id": "R00006",
-      "date": "2026-06-12",
-      "amount": 1600.0,
-      "type": "rental",
-      "channel": "",
-      "category": "",
-      "project": "Ref. 34901438",
-      "region": "",
-      "clientId": "",
-      "quarter": "Q2 2026",
-      "month": "2026-06"
-    },
-    {
-      "id": "R00007",
-      "date": "2026-06-12",
-      "amount": 1300.0,
-      "type": "rental",
-      "channel": "",
-      "category": "",
-      "project": "Ref. 34944151",
-      "region": "",
-      "clientId": "",
-      "quarter": "Q2 2026",
-      "month": "2026-06"
-    },
-    {
-      "id": "R00008",
-      "date": "2026-06-23",
-      "amount": 950.0,
-      "type": "rental",
-      "channel": "",
-      "category": "",
-      "project": "Ref. N1.6",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
@@ -233,6 +244,19 @@
     },
     {
       "id": "R00010",
+      "date": "2026-06-12",
+      "amount": 1200.0,
+      "type": "rental",
+      "channel": "",
+      "category": "",
+      "project": "Ref. 35040352",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00011",
       "date": "2026-06-23",
       "amount": 1150.0,
       "type": "rental",
@@ -245,20 +269,103 @@
       "month": "2026-06"
     },
     {
-      "id": "R00011",
-      "date": "2026-07-13",
-      "amount": 780.0,
+      "id": "R00012",
+      "date": "2026-06-12",
+      "amount": 1600.0,
       "type": "rental",
       "channel": "",
       "category": "",
-      "project": "Ref. YR00033",
+      "project": "Ref. 34901438",
       "region": "",
       "clientId": "",
-      "quarter": "Q3 2026",
-      "month": "2026-07"
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00013",
+      "date": "2026-06-12",
+      "amount": 1300.0,
+      "type": "rental",
+      "channel": "",
+      "category": "",
+      "project": "Ref. 34944151",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
     }
   ],
   "funnel": [
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "rental",
+      "stage": "opportunity",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "rental",
+      "stage": "visit_scheduled",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "rental",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "rental",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "rental",
+      "stage": "win",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "sale",
+      "stage": "opportunity",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "sale",
+      "stage": "visit_scheduled",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "sale",
+      "stage": "offer",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "sale",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2017-09",
+      "quarter": "Q3 2017",
+      "type": "sale",
+      "stage": "win",
+      "count": 0
+    },
     {
       "month": "2026-06",
       "quarter": "Q2 2026",
@@ -292,7 +399,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "win",
-      "count": 10
+      "count": 12
     },
     {
       "month": "2026-06",
