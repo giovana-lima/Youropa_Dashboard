@@ -1,6 +1,9 @@
 name: Inmovilla Property Sync
 
 on:
+  push:
+    paths:
+      - '.github/workflows/inmovilla-full-sync.yml'
   schedule:
     - cron: '0 5 */3 * *'
   workflow_dispatch:
