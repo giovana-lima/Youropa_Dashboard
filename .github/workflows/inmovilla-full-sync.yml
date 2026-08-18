@@ -1,9 +1,8 @@
-name: Inmovilla Full Property Sync
+name: Inmovilla Property Sync
 
 on:
-  push:
-    paths:
-      - '.github/workflows/inmovilla-full-sync.yml'
+  schedule:
+    - cron: '0 5 */3 * *'
   workflow_dispatch:
 
 permissions:
@@ -16,126 +15,155 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch all properties (full detail, rate-limit safe, incremental commits)
+      - name: Fetch all properties from the Inmovilla API
         env:
           TOKEN: ${{ secrets.INMOVILLA_TOKEN }}
         run: |
           python3 - <<'PYEOF'
-          import json, os, urllib.request, urllib.error, time, subprocess, traceback
+          import json, os, urllib.request, urllib.error, time
 
           token = os.environ["TOKEN"]
           headers = {"Content-Type": "application/json", "Token": token}
-          OUT_FILE = "properties_raw.json"
 
           def call(url, retries=3):
-              last_err = None
-              for attempt in range(retries):
+              last = None
+              for _ in range(retries):
                   try:
                       req = urllib.request.Request(url, headers=headers)
-                      with urllib.request.urlopen(req, timeout=30) as resp:
-                          return resp.status, json.loads(resp.read().decode())
+                      with urllib.request.urlopen(req, timeout=30) as r:
+                          return json.loads(r.read().decode())
                   except urllib.error.HTTPError as e:
-                      last_err = e
+                      last = e
                       if e.code in (408, 429):
-                          print(f"rate limited (HTTP {e.code}), backing off 60s...")
-                          time.sleep(60)
-                          continue
+                          time.sleep(60); continue
                       raise
                   except Exception as e:
-                      last_err = e
-                      print(f"call error: {e}, retrying in 15s...")
-                      time.sleep(15)
-              raise last_err
+                      last = e; time.sleep(15)
+              raise last
 
-          def load_existing():
-              if os.path.exists(OUT_FILE):
-                  try:
-                      with open(OUT_FILE) as f:
-                          return json.load(f)
-                  except Exception:
-                      return None
-              return None
+          listado = call("https://procesos.inmovilla.com/api/v1/propiedades/?listado")
+          print("properties:", len(listado))
 
-          def commit_progress(msg):
-              subprocess.run(["git", "config", "user.name", "github-actions[bot]"], check=False)
-              subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], check=False)
-              subprocess.run(["git", "add", OUT_FILE], check=False)
-              r = subprocess.run(["git", "commit", "-m", msg], check=False)
-              subprocess.run(["git", "push"], check=False)
+          props, window = [], []
+          for i, p in enumerate(listado):
+              now = time.time(); window.append(now)
+              while window and now - window[0] > 600: window.pop(0)
+              if len(window) >= 45:
+                  time.sleep(max(0, 600 - (now - window[0]) + 5))
+              time.sleep(6.5)
+              try:
+                  d = call("https://procesos.inmovilla.com/api/v1/propiedades/?cod_ofer=%s" % p['cod_ofer'])
+                  props.append({k: d.get(k) for k in
+                      ("cod_ofer","ref","keyacci","estadoficha","nodisponible","precioinmo",
+                       "precioalq","comision","cesioncom","fecha","fechaact","fechacambio",
+                       "keyagente","captadopor","key_tipo","key_loca")})
+              except Exception as e:
+                  print("skip", p.get("cod_ofer"), e)
+              if (i+1) % 25 == 0: print("%d/%d" % (i+1, len(listado)))
 
-          existing = load_existing()
-          done_ids = set()
-          properties = []
-          errors = []
-          if existing and isinstance(existing.get("properties"), list):
-              properties = existing["properties"]
-              errors = existing.get("errors", [])
-              done_ids = {p["cod_ofer"] for p in properties}
-              print(f"resuming: {len(done_ids)} properties already fetched")
-
-          st, listado = call("https://procesos.inmovilla.com/api/v1/propiedades/?listado")
-          print(f"listado status={st} count={len(listado)}")
-
-          call_count_window = []  # timestamps of recent calls for 10-min window pacing
-
-          def pace():
-              now = time.time()
-              call_count_window.append(now)
-              # drop timestamps older than 10 min
-              while call_count_window and now - call_count_window[0] > 600:
-                  call_count_window.pop(0)
-              if len(call_count_window) >= 45:  # safety margin under 50/10min
-                  sleep_for = 600 - (now - call_count_window[0]) + 5
-                  if sleep_for > 0:
-                      print(f"approaching 10-min limit, sleeping {sleep_for:.0f}s")
-                      time.sleep(sleep_for)
-              time.sleep(6.5)  # respect 10/min
-
-          try:
-              for i, p in enumerate(listado):
-                  cod_ofer = p["cod_ofer"]
-                  if cod_ofer in done_ids:
-                      continue
-                  pace()
-                  try:
-                      st, detail = call(f"https://procesos.inmovilla.com/api/v1/propiedades/?cod_ofer={cod_ofer}")
-                      slim = {
-                          "cod_ofer": detail.get("cod_ofer"),
-                          "ref": detail.get("ref"),
-                          "keyacci": detail.get("keyacci"),
-                          "estadoficha": detail.get("estadoficha"),
-                          "nodisponible": detail.get("nodisponible"),
-                          "precioinmo": detail.get("precioinmo"),
-                          "precioalq": detail.get("precioalq"),
-                          "comision": detail.get("comision"),
-                          "cesioncom": detail.get("cesioncom"),
-                          "fecha": detail.get("fecha"),
-                          "fechaact": detail.get("fechaact"),
-                          "fechacambio": detail.get("fechacambio"),
-                          "keyagente": detail.get("keyagente"),
-                          "captadopor": detail.get("captadopor"),
-                          "key_tipo": detail.get("key_tipo"),
-                          "key_loca": detail.get("key_loca"),
-                      }
-                      properties.append(slim)
-                      done_ids.add(cod_ofer)
-                  except Exception as e:
-                      print(f"error on cod_ofer={cod_ofer}: {e}")
-                      errors.append({"cod_ofer": cod_ofer, "error": str(e)})
-
-                  if len(properties) % 15 == 0:
-                      out = {"total": len(listado), "fetched": len(properties), "errors": errors, "properties": properties}
-                      with open(OUT_FILE, "w") as f:
-                          json.dump(out, f, indent=2, ensure_ascii=False)
-                      commit_progress(f"Sync progress: {len(properties)}/{len(listado)} properties")
-                      print(f"progress: {len(properties)}/{len(listado)}")
-          except Exception as e:
-              print("FATAL ERROR:", e)
-              traceback.print_exc()
-          finally:
-              out = {"total": len(listado), "fetched": len(properties), "errors": errors, "properties": properties}
-              with open(OUT_FILE, "w") as f:
-                  json.dump(out, f, indent=2, ensure_ascii=False)
-              commit_progress(f"Sync final: {len(properties)}/{len(listado)} properties")
-              print("done, final commit attempted")
+          json.dump({"total": len(listado), "fetched": len(props), "properties": props},
+                    open("properties_raw.json","w"), indent=2, ensure_ascii=False)
           PYEOF
+
+      - name: Recompute the API-sourced parts of data.json
+        run: |
+          python3 - <<'PYEOF'
+          import json, datetime
+          from collections import defaultdict
+
+          raw = json.load(open("properties_raw.json"))["properties"]
+          d = json.load(open("data.json"))
+          today = datetime.date.today()
+
+          SOLD, RENTED = {3, 14}, {2, 13}
+
+          by_month = defaultdict(int)
+          for p in raw:
+              f = p.get("fecha") or ""
+              if f[:4].isdigit() and not f.startswith("0000"):
+                  by_month[f[:7]] += 1
+          months = sorted(by_month)
+          cur = today.strftime("%Y-%m")
+          d["newPropertiesByMonth"]["months"] = [
+              ({"month": m, "count": by_month[m], "partial": True} if m == cur
+               else {"month": m, "count": by_month[m]}) for m in months]
+          d["newPropertiesByMonth"]["asOf"] = today.isoformat()
+
+          def quarter(mk):
+              y, m = mk.split("-"); return "Q%d %s" % ((int(m)-1)//3+1, y)
+
+          tx, n = [], 0
+          for p in raw:
+              st = p.get("estadoficha")
+              fc = (p.get("fechacambio") or "")[:10]
+              if st not in SOLD and st not in RENTED: continue
+              if not fc or fc.startswith("0000"): continue
+              n += 1
+              is_sale = st in SOLD
+              amount = float((p.get("precioinmo") if is_sale else p.get("precioalq")) or 0)
+              tx.append({"id": "R%05d" % n, "date": fc, "amount": amount,
+                         "type": "sale" if is_sale else "rental",
+                         "channel": "", "category": "", "project": "Ref. %s" % p.get("ref"),
+                         "region": "", "clientId": "",
+                         "quarter": quarter(fc[:7]), "month": fc[:7]})
+          if tx: d["transactions"] = tx
+
+          sales = [t for t in tx if t["type"] == "sale"]
+          rentals = [t for t in tx if t["type"] == "rental"]
+          k = d["kpisApi"]
+          k["asOf"] = today.isoformat()
+          k["salesVolume"] = sum(t["amount"] for t in sales)
+          k["rentalVolume"] = sum(t["amount"] for t in rentals)
+          k["totalVolume"] = k["salesVolume"] + k["rentalVolume"]
+          k["salesCount"], k["rentalCount"] = len(sales), len(rentals)
+          k["avgTicketSales"] = (k["salesVolume"]/len(sales)) if sales else None
+
+          com_sale = sum(float(p.get("comision") or 0) for p in raw if p.get("estadoficha") in SOLD)
+          com_rent = sum(float(p.get("comision") or 0) for p in raw if p.get("estadoficha") in RENTED)
+          com_assign = sum(float(p.get("cesioncom") or 0) for p in raw)
+          if com_sale or com_rent or com_assign:
+              k["commissionSale"], k["commissionRental"] = com_sale, com_rent
+              k["commissionAssignment"] = com_assign
+              k["totalCommission"] = com_sale + com_rent + com_assign
+
+          all_months = sorted(set(months) | set(t["month"] for t in tx) |
+                              set(d["meta"].get("months", [])))
+          d["meta"]["months"] = all_months
+          d["meta"]["generatedOn"] = today.isoformat()
+          d["meta"]["reportingThrough"] = cur
+          d["monthlyMargin"] = dict((m, d.get("monthlyMargin", {}).get(m, 0.85)) for m in all_months)
+
+          qc = defaultdict(lambda: {"sales": 0, "rentals": 0})
+          for t in tx:
+              qc[t["quarter"]]["sales" if t["type"] == "sale" else "rentals"] += 1
+          order = []
+          for m in all_months:
+              q = quarter(m)
+              if q not in order: order.append(q)
+          d["quarterlyComparisonCounts"] = [
+              {"quarter": q, "sales": qc[q]["sales"], "rentals": qc[q]["rentals"]} for q in order]
+
+          existing = dict(((f["month"], f["type"], f["stage"]), f["count"]) for f in d.get("funnel", []))
+          stages = ["opportunity", "visit_scheduled", "offer", "contract_signed", "win"]
+          wins = defaultdict(int)
+          for t in tx: wins[(t["month"], t["type"])] += 1
+          funnel = []
+          for m in all_months:
+              for typ in ("rental", "sale"):
+                  for s in stages:
+                      c = wins[(m, typ)] if s == "win" else existing.get((m, typ, s), 0)
+                      funnel.append({"month": m, "quarter": quarter(m), "type": typ,
+                                     "stage": s, "count": c})
+          d["funnel"] = funnel
+
+          json.dump(d, open("data.json", "w"), indent=2, ensure_ascii=False)
+          print("updated through", cur, "| transactions:", len(tx))
+          PYEOF
+
+      - name: Commit and publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json properties_raw.json
+          git diff --staged --quiet || git commit -m "Auto-sync: Inmovilla property data ($(date +%F))"
+          git push
