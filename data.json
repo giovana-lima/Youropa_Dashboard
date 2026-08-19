@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedOn": "2026-08-18",
+    "generatedOn": "2026-08-19",
     "reportingThrough": "2026-08",
     "months": [
       "2017-09",
@@ -17,7 +17,7 @@
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "newPropertiesByMonth": {
-    "asOf": "2026-08-18",
+    "asOf": "2026-08-19",
     "note": "Full-history count of properties by creation month, sourced from GET /propiedades/?cod_ofer={id} for every property in the account (291 total), field \"fecha\". Includes properties later sold/rented/delisted, so totals are higher than a live \"currently available\" count. 2026-08 is partial (through Aug 12). Properties with placeholder creation dates (Casafari-imported comps) are excluded.",
     "months": [
       {
@@ -40,18 +40,18 @@
     ]
   },
   "kpisApi": {
-    "asOf": "2026-08-18",
-    "totalVolume": 14280.0,
-    "salesVolume": 0,
+    "asOf": "2026-08-19",
+    "totalVolume": 329280.0,
+    "salesVolume": 315000.0,
     "rentalVolume": 14280.0,
-    "salesCount": 0,
+    "salesCount": 1,
     "rentalCount": 13,
-    "avgTicketSales": null,
+    "avgTicketSales": 315000.0,
     "note": "Volumes are computed from the 11 properties that reached status Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume is the sum of monthly rent, not a one-time amount. No property has ever closed as Vendido, so Sales Volume and Average Ticket are 0 / not available.",
-    "commissionSale": null,
-    "commissionRental": null,
-    "commissionAssignment": null,
-    "totalCommission": null,
+    "commissionSale": 15750.0,
+    "commissionRental": 0.0,
+    "commissionAssignment": 0.0,
+    "totalCommission": 15750.0,
     "commissionNote": "",
     "totalLeads": 579,
     "totalLeadsNote": "",
@@ -104,7 +104,7 @@
     },
     {
       "quarter": "Q3 2026",
-      "sales": 0,
+      "sales": 1,
       "rentals": 1
     }
   ],
@@ -127,6 +127,19 @@
   "transactions": [
     {
       "id": "R00001",
+      "date": "2026-07-09",
+      "amount": 315000.0,
+      "type": "sale",
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00026",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-07"
+    },
+    {
+      "id": "R00002",
       "date": "2026-06-12",
       "amount": 1100.0,
       "type": "rental",
@@ -139,7 +152,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00002",
+      "id": "R00003",
       "date": "2026-06-23",
       "amount": 1000.0,
       "type": "rental",
@@ -152,7 +165,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00003",
+      "id": "R00004",
       "date": "2026-06-12",
       "amount": 1100.0,
       "type": "rental",
@@ -165,7 +178,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00004",
+      "id": "R00005",
       "date": "2026-07-13",
       "amount": 780.0,
       "type": "rental",
@@ -178,7 +191,7 @@
       "month": "2026-07"
     },
     {
-      "id": "R00005",
+      "id": "R00006",
       "date": "2026-06-12",
       "amount": 1000.0,
       "type": "rental",
@@ -191,7 +204,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00006",
+      "id": "R00007",
       "date": "2026-06-23",
       "amount": 950.0,
       "type": "rental",
@@ -204,7 +217,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00007",
+      "id": "R00008",
       "date": "2026-06-12",
       "amount": 1000.0,
       "type": "rental",
@@ -217,7 +230,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00008",
+      "id": "R00009",
       "date": "2026-06-12",
       "amount": 1200.0,
       "type": "rental",
@@ -230,7 +243,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00009",
+      "id": "R00010",
       "date": "2026-06-23",
       "amount": 900.0,
       "type": "rental",
@@ -243,7 +256,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00010",
+      "id": "R00011",
       "date": "2026-06-12",
       "amount": 1200.0,
       "type": "rental",
@@ -256,7 +269,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00011",
+      "id": "R00012",
       "date": "2026-06-23",
       "amount": 1150.0,
       "type": "rental",
@@ -269,7 +282,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00012",
+      "id": "R00013",
       "date": "2026-06-12",
       "amount": 1600.0,
       "type": "rental",
@@ -282,7 +295,7 @@
       "month": "2026-06"
     },
     {
-      "id": "R00013",
+      "id": "R00014",
       "date": "2026-06-12",
       "amount": 1300.0,
       "type": "rental",
@@ -504,7 +517,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 0
+      "count": 1
     },
     {
       "month": "2026-08",
