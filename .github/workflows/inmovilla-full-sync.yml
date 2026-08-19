@@ -129,9 +129,18 @@ jobs:
               k["commissionAssignment"] = com_assign
               k["totalCommission"] = com_sale + com_rent + com_assign
 
-          all_months = sorted(set(months) | set(t["month"] for t in tx) |
-                              set(d["meta"].get("months", [])))
+          # Ignore stray historical months: the account really starts at the first
+          # month that has opportunities (CRM-sourced) or a closed transaction.
+          opp_months = set(f["month"] for f in d.get("funnel", [])
+                           if f["stage"] == "opportunity" and f["count"])
+          anchor = min(opp_months | set(t["month"] for t in tx) | {cur})
+          all_months = sorted(m for m in
+                              (set(months) | set(t["month"] for t in tx) |
+                               set(d["meta"].get("months", [])))
+                              if m >= anchor)
           d["meta"]["months"] = all_months
+          d["newPropertiesByMonth"]["months"] = [
+              r for r in d["newPropertiesByMonth"]["months"] if r["month"] >= anchor]
           d["meta"]["generatedOn"] = today.isoformat()
           d["meta"]["reportingThrough"] = cur
           d["monthlyMargin"] = dict((m, d.get("monthlyMargin", {}).get(m, 0.85)) for m in all_months)
