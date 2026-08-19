@@ -120,6 +120,10 @@ jobs:
           k["totalVolume"] = k["salesVolume"] + k["rentalVolume"]
           k["salesCount"], k["rentalCount"] = len(sales), len(rentals)
           k["avgTicketSales"] = (k["salesVolume"]/len(sales)) if sales else None
+          k["note"] = ("Volumes come from properties that reached status Vendido/Vendido MLS or "
+                       "Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume "
+                       "is the sum of monthly rent, not a one-time amount. Commission figures use the "
+                       "comision/cesioncom fields and only appear once they are filled in for a given deal.")
 
           com_sale = sum(float(p.get("comision") or 0) for p in raw if p.get("estadoficha") in SOLD)
           com_rent = sum(float(p.get("comision") or 0) for p in raw if p.get("estadoficha") in RENTED)

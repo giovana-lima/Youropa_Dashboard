@@ -3,7 +3,6 @@
     "generatedOn": "2026-08-19",
     "reportingThrough": "2026-08",
     "months": [
-      "2017-09",
       "2026-06",
       "2026-07",
       "2026-08"
@@ -18,12 +17,8 @@
   },
   "newPropertiesByMonth": {
     "asOf": "2026-08-19",
-    "note": "Full-history count of properties by creation month, sourced from GET /propiedades/?cod_ofer={id} for every property in the account (291 total), field \"fecha\". Includes properties later sold/rented/delisted, so totals are higher than a live \"currently available\" count. 2026-08 is partial (through Aug 12). Properties with placeholder creation dates (Casafari-imported comps) are excluded.",
+    "note": "Count of properties by creation month from the Inmovilla API (field \"fecha\"). Includes properties later sold/rented/delisted. The current month is partial. Properties with placeholder creation dates (Casafari-imported comparables) are excluded.",
     "months": [
-      {
-        "month": "2017-09",
-        "count": 1
-      },
       {
         "month": "2026-06",
         "count": 26
@@ -47,7 +42,7 @@
     "salesCount": 1,
     "rentalCount": 13,
     "avgTicketSales": 315000.0,
-    "note": "Volumes are computed from the 11 properties that reached status Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume is the sum of monthly rent, not a one-time amount. No property has ever closed as Vendido, so Sales Volume and Average Ticket are 0 / not available.",
+    "note": "Volumes come from properties that reached status Vendido/Vendido MLS or Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume is the sum of monthly rent, not a one-time amount. Commission figures use the comision/cesioncom fields and only appear once they are filled in for a given deal.",
     "commissionSale": 15750.0,
     "commissionRental": 0.0,
     "commissionAssignment": 0.0,
@@ -93,11 +88,6 @@
   },
   "quarterlyComparisonCounts": [
     {
-      "quarter": "Q3 2017",
-      "sales": 0,
-      "rentals": 0
-    },
-    {
       "quarter": "Q2 2026",
       "sales": 0,
       "rentals": 12
@@ -119,7 +109,6 @@
     "rejected": 0
   },
   "monthlyMargin": {
-    "2017-09": 0.85,
     "2026-06": 0.85,
     "2026-07": 0.85,
     "2026-08": 0.85
@@ -309,76 +298,6 @@
     }
   ],
   "funnel": [
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "rental",
-      "stage": "opportunity",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "rental",
-      "stage": "visit_scheduled",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "rental",
-      "stage": "offer",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "rental",
-      "stage": "contract_signed",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "rental",
-      "stage": "win",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "sale",
-      "stage": "opportunity",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "sale",
-      "stage": "visit_scheduled",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "sale",
-      "stage": "offer",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "sale",
-      "stage": "contract_signed",
-      "count": 0
-    },
-    {
-      "month": "2017-09",
-      "quarter": "Q3 2017",
-      "type": "sale",
-      "stage": "win",
-      "count": 0
-    },
     {
       "month": "2026-06",
       "quarter": "Q2 2026",
