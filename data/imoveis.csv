@@ -1,0 +1,287 @@
+cod_ofer,ref,projeto,origem_contacto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,comissao,comissao_cessao,data_criacao,data_alteracao_estado,agente_gestor,agente_captador,estado_ganho_data,estado_ganho_utilizador,proposta_data,historico_lido
+29480962,29480962,,Israel Youropa Team,Vender,Eliminado,36,539000,,,0.0,2026-06-22,2026-06-20,218514,218514,,,,sim
+29412554,33234169,,,Vender,Nao Disponivel,5,240000,,,0.0,2017-09-14,2026-06-12,218514,218514,,,,nao_aplicavel
+29412553,33376960,,,Vender,Nao Disponivel,5,270000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412552,33433927,,,Vender,Nao Disponivel,5,235000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412551,33494928,,,Vender,Nao Disponivel,5,280000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412550,33501821,,,Vender,Nao Disponivel,5,230000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412549,33505413,,,Vender,Nao Disponivel,5,215000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412548,33506027,,,Vender,Nao Disponivel,5,225000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412547,33507120,,,Vender,Nao Disponivel,5,270000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412546,33507341,,,Vender,Nao Disponivel,5,155000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412545,33507987,,,Vender,Nao Disponivel,5,102000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412544,33508140,,,Vender,Nao Disponivel,5,120000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412543,33510732,,,Vender,Nao Disponivel,5,175000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412542,33572126,,,Vender,Nao Disponivel,5,175000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412541,33575929,,,Vender,Nao Disponivel,5,200000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412540,33576153,,,Vender,Nao Disponivel,5,199000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412539,33656453,,,Arrendar,Nao Disponivel,5,,1350,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412538,33656566,,,Arrendar,Nao Disponivel,5,,1200,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412537,33656607,,,Arrendar,Nao Disponivel,5,,2400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412536,33656694,,,Vender,Nao Disponivel,5,330000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412535,33836568,,,Arrendar,Nao Disponivel,5,,1300,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412534,33877889,,,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412533,33878012,,,Arrendar,Nao Disponivel,5,,1250,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412532,33878066,,,Arrendar,Nao Disponivel,5,,950,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412531,33891936,,,Arrendar,Nao Disponivel,5,,1150,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412530,33894111,,,Arrendar,Nao Disponivel,5,,840,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412529,33894119,,,Arrendar,Nao Disponivel,5,,1070,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412528,33894205,,,Arrendar,Nao Disponivel,5,,1350,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412527,33915916,,,Vender,Nao Disponivel,5,215000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412525,33916021,,,Vender,Nao Disponivel,5,226000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412524,33916200,,,Vender,Nao Disponivel,5,220000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412365,33923012,Riverline,,Vender,Disponivel,1,535000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412523,33923131,,,Vender,Nao Disponivel,5,430000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412522,33923200,,,Vender,Nao Disponivel,5,950000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412521,33931270,,,Vender,Nao Disponivel,5,190000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412520,33936578,,,Vender,Nao Disponivel,5,250000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412519,33938556,,,Vender,Nao Disponivel,5,305000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412518,33938620,,,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412517,33939363,,,Arrendar,Nao Disponivel,5,,1470,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412516,33955859,,,Arrendar,Nao Disponivel,5,,1080,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412515,33956087,,,Vender,Nao Disponivel,5,212500,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412514,33958456,,,Vender,Nao Disponivel,5,260000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412513,33958792,,,Vender,Nao Disponivel,5,320000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412512,33966669,,,Vender,Nao Disponivel,5,270000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412511,33984915,,,Vender,Nao Disponivel,5,225000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412510,33984986,,,Arrendar,Nao Disponivel,5,,1150,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412509,33985109,,,Arrendar,Nao Disponivel,5,,1670,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412508,33990308,,,Vender,Nao Disponivel,5,238000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412507,34004275,,,Vender,Nao Disponivel,5,290000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412506,34006879,,,Vender,Nao Disponivel,5,335000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412505,34025645,,,Vender,Nao Disponivel,5,129000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412504,34027867,,,Arrendar,Nao Disponivel,5,,1250,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412503,34037806,,,Arrendar,Nao Disponivel,5,,1020,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412502,34045679,,,Vender,Nao Disponivel,5,1200000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412501,34046107,,,Vender,Nao Disponivel,5,2200000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412500,34048118,,,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412499,34048417,,,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412498,34050342,,,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412496,34092975,,,Vender,Nao Disponivel,5,269000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412495,34096107,,,Arrendar,Nao Disponivel,5,,3200,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412494,34099972,,,Arrendar,Nao Disponivel,5,,1300,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412493,34110964,,,Vender,Nao Disponivel,5,210000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412492,34111553,,,Vender,Nao Disponivel,5,215000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412491,34126248,,,Vender,Nao Disponivel,5,265000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412490,34132053,,,Vender,Nao Disponivel,5,220000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412489,34141118,,,Vender,Nao Disponivel,5,206700,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412488,34141151,,,Vender,Nao Disponivel,5,228000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412487,34143734,,,Vender,Nao Disponivel,5,250000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412486,34144098,,,Vender,Nao Disponivel,5,480000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412485,34166384,,,Vender,Nao Disponivel,5,398000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412484,34180089,,,Vender,Nao Disponivel,5,320000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412483,34184684,,,Vender,Nao Disponivel,5,299000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412482,34191199,,,Arrendar,Nao Disponivel,5,,1050,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412481,34194478,,,Arrendar,Nao Disponivel,5,,1200,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412480,34207940,,,Arrendar,Nao Disponivel,5,,1150,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412479,34208866,,,Vender,Nao Disponivel,5,252000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412478,34215473,,,Arrendar,Nao Disponivel,5,,1570,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412477,34219032,,,Arrendar,Nao Disponivel,5,,1050,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412475,34234984,,,Arrendar,Nao Disponivel,5,,1080,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412474,34238989,,,Vender,Nao Disponivel,5,273000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412473,34239655,,,Vender,Nao Disponivel,5,129000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412472,34240629,,,Vender,Nao Disponivel,5,220860,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412471,34246326,,Israel Youropa Team,Vender,Disponivel,1,240000,,12000,0.0,,2026-06-12,218514,218514,,,,sim
+29412470,34269289,,,Arrendar,Nao Disponivel,5,,1050,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412469,34293437,,,Arrendar,Nao Disponivel,5,,950,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412468,34299913,,,Arrendar,Nao Disponivel,5,,850,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412467,34331526,,,Vender,Nao Disponivel,5,220000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412466,34345671,,,Arrendar,Nao Disponivel,5,,900,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412465,34347613,,,Vender,Nao Disponivel,5,325000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412464,34347782,,,Arrendar,Nao Disponivel,5,,1390,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412463,34347937,,,Vender,Nao Disponivel,5,225000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412462,34348055,,,Vender,Nao Disponivel,5,292000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412461,34351352,,,Arrendar,Nao Disponivel,5,,850,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412460,34360812,,,Arrendar,Nao Disponivel,5,,900,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412459,34433382,,,Vender,Nao Disponivel,5,230000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412458,34433432,,,Arrendar,Nao Disponivel,5,,1100,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412457,34433476,,,Arrendar,Nao Disponivel,5,,1100,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412456,34435887,,,Vender,Nao Disponivel,5,239000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412455,34450557,,,Vender,Nao Disponivel,5,312000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412454,34452400,,,Vender,Nao Disponivel,5,325000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412452,34461021,,,Arrendar,Nao Disponivel,5,,1000,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412451,34462314,,,Vender,Nao Disponivel,5,265000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412450,34469685,,,Vender,Nao Disponivel,5,184323,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412374,34469800,,,Vender,Disponivel,1,220000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412449,34474564,,,Vender,Nao Disponivel,5,350000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412448,34474652,,,Vender,Nao Disponivel,5,325000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412447,34477512,,,Vender,Nao Disponivel,5,410000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412446,34483860,,,Vender,Nao Disponivel,5,108000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412445,34483886,,,Vender,Nao Disponivel,5,216480,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412444,34483929,,,Vender,Nao Disponivel,5,225000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412443,34491500,,,Arrendar,Nao Disponivel,5,,1450,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412442,34493869,,,Vender,Nao Disponivel,5,240000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412441,34501966,,,Vender,Nao Disponivel,5,205000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412440,34506172,,,Vender,Nao Disponivel,5,410000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412439,34522151,,,Vender,Nao Disponivel,5,265000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412438,34526062,,,Vender,Nao Disponivel,5,299000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412437,34526065,,,Vender,Nao Disponivel,5,410000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412436,34526149,,,Vender,Nao Disponivel,5,280000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412435,34526208,,,Vender,Nao Disponivel,5,190000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412434,34544103,,,Vender,Nao Disponivel,5,240000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412433,34544217,,,Vender,Nao Disponivel,5,345000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412432,34546268,,,Vender,Nao Disponivel,5,275000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412430,34603199,,,Arrendar,Nao Disponivel,5,,800,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412429,34603249,,,Arrendar,Nao Disponivel,5,,750,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412428,34606285,,,Vender,Nao Disponivel,5,262650,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412427,34610184,,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412426,34615250,,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412425,34616795,,,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412424,34631101,,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412423,34635972,,,Vender,Nao Disponivel,5,418000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412422,34636130,,,Vender,Nao Disponivel,5,418000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412364,34643373,,,Arrendar,Assinatura pendente,42,2200,2600,,0.0,,2026-06-12,218514,218514,,,2026-07-08,sim
+29412421,34643589,,,Arrendar,Nao Disponivel,5,,2400,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412420,34645580,,,Arrendar,Nao Disponivel,5,,1000,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412419,34648076,,,Arrendar,Nao Disponivel,5,,700,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412362,34649651,,Israel Youropa Team,Vender,Disponivel,1,330000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412418,34671067,,,Arrendar,Nao Disponivel,5,,850,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412417,34671170,,,Arrendar,Nao Disponivel,5,,825,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412356,34674607,,,Vender,Arquivado,23,214000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412416,34687868,,,Vender,Nao Disponivel,5,500000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412415,34691543,,,Arrendar,Nao Disponivel,5,,1100,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412414,34706671,,,Arrendar,Nao Disponivel,5,,1250,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412413,34733891,,,Vender,Nao Disponivel,5,267000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412367,34734420,Jardins da Seara,,Vender,Disponivel,1,315000,,15750,0.0,,2026-06-12,218514,218514,,,,sim
+29412412,34734447,,,Vender,Nao Disponivel,5,108000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412411,34738986,,,Vender,Nao Disponivel,5,154000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412410,34746785,,,Arrendar,Nao Disponivel,5,,1050,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412409,34770598,,,Vender,Nao Disponivel,5,370000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412368,34775273,,,Vender,Reservado,7,280000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412407,34775289,,,Vender,Nao Disponivel,5,220860,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412378,34780653,,,Vender,Disponivel,1,335000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412406,34794953,,,Arrendar,Nao Disponivel,5,,2000,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412405,34797514,,,Vender,Nao Disponivel,5,280000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412404,34798342,,,Vender,Nao Disponivel,5,500000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412403,34805914,,,Vender,Nao Disponivel,5,285000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412402,34807258,,,Vender,Nao Disponivel,5,500000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412401,34832284,,,Vender,Nao Disponivel,5,380000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412400,34834393,,,Vender,Nao Disponivel,5,280000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412399,34837840,,,Vender,Nao Disponivel,5,500000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412398,34840658,,,Arrendar,Nao Disponivel,5,,900,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412379,34840825,,,Vender,Disponivel,1,480000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412397,34843376,,,Vender,Nao Disponivel,5,149000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412396,34852165,,,Vender,Nao Disponivel,5,145000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412355,34869552,Douro Nobilis,,Arrendar,Arrendado,2,,1000,,0.0,,2026-06-12,218514,218514,2026-07-09,,2026-07-01,sim
+29412395,34873429,,,Arrendar,Nao Disponivel,5,,975,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412350,34878363,Jardins da Seara,,Arrendar,Arrendado,2,,1100,,0.0,,2026-06-12,218514,218514,2026-08-12,,,sim
+29412369,34878450,Jardins da Seara,,Arrendar,Com Proposta,18,,1300,,0.0,,2026-06-12,218514,218514,,,,sim
+29412358,34878517,Jardins da Seara,,Arrendar,Disponivel,1,,950,,0.0,,2026-06-12,218514,218514,,,,sim
+29412394,34880860,,,Arrendar,Nao Disponivel,5,,1700,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412393,34890004,,,Vender,Nao Disponivel,5,230000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412392,34894216,,,Vender,Nao Disponivel,5,299000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412391,34901438,Douro Nobilis,,Arrendar,Arrendado,2,,1600,,0.0,,2026-06-12,218514,218514,2026-07-07,,,sim
+29412390,34922277,,,Vender,Nao Disponivel,5,365000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412372,34924224,,,Vender,Reservado,7,299000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412377,34932610,,,Vender,Reservado,7,330000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412366,34944151,Douro Nobilis,,Arrendar,Arrendado,2,,1300,,0.0,,2026-06-12,218514,218514,2026-06-19,,,sim
+29412370,34957181,Jardins da Seara,,Vender,Disponivel,1,300000,,,0.0,,2026-06-12,218514,218514,,,2026-08-20,sim
+29412389,34964759,,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412388,34964776,,,Vender,Disponivel,1,490000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412387,34971224,,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412371,34981289,Riverline,Israel Youropa Team,Arrendar,Disponivel,1,,2400,,0.0,,2026-06-12,218514,218514,,,,sim
+29412386,34984452,,,Arrendar,Nao Disponivel,5,,1950,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412385,34984541,,,Arrendar,Nao Disponivel,5,,1950,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412361,34984557,,,Arrendar,Reservado,7,,1950,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412384,35014081,,,Vender,Nao Disponivel,5,317000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412383,35014103,,,Vender,Nao Disponivel,5,235000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412373,35018926,,,Arrendar,Arrendado,2,,1100,,0.0,,2026-06-12,218514,218514,2026-07-27,,2026-07-01,sim
+29412354,35019309,Riverline,Israel Youropa Team,Arrendar,Arquivado,23,,4500,,0.0,,2026-06-12,218514,218514,,,,sim
+29412381,35025094,,,Vender,Nao Disponivel,5,245000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
+29412363,35030571,,,Vender,Reservado,7,245000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412360,35030596,Riverline,,Arrendar,Disponivel,1,,2100,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412353,35033378,Riverline,Israel Youropa Team,Vender,Arquivado,23,750000,,,0.0,,2026-06-12,218514,218514,,,,sim
+29412351,35040352,Prime Living,,Arrendar,Arrendado,2,,1200,,0.0,,2026-06-12,218514,218514,2026-07-11,,,sim
+29412357,35040552,Douro Nobilis,,Arrendar,Disponivel,1,,1350,,0.0,,2026-06-12,218514,218514,,,,sim
+29412359,35055141,Riverline,,Arrendar,Com Proposta,18,,1750,,0.0,,2026-06-12,218514,218514,,,,sim
+29412349,35073131,White Tower,,Arrendar,Reservado,7,,1150,,0.0,,2026-06-12,218514,218514,2026-08-20,,2026-07-24,sim
+29412375,4.2,Riverline,,Arrendar,Disponivel,1,,1400,,0.0,,2026-06-12,218514,218514,,,,sim
+29412376,4.7,Riverline,,Arrendar,Disponivel,1,,1300,,0.0,,2026-06-12,218514,218514,,,,sim
+29475558,5.1,,Israel Youropa Team,Vender,Eliminado,36,539000,,,0.0,2026-06-20,2026-06-20,218514,218514,,,,sim
+29442092,534534,,,Arrendar,Disponivel,1,,1100,,0.0,2026-06-17,2026-06-17,218514,218514,,,,sim
+29461279,AT,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,199500,,7980,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29461580,AY,,Israel Youropa Team,Vender,Eliminado,36,283000,,11320,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29461811,BK,,Israel Youropa Team,Vender,Eliminado,36,288500,,11540,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29462687,BL,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,197500,,7900,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29463032,BN,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,205000,,8200,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29463200,BS.,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,288500,,11540,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29465264,BT,,,Vender,Eliminado,36,285500,,11420,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29465299,CE,,,Vender,Eliminado,36,293000,,11720,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29482527,CG,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,307500,,12300,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29482656,CL,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,202500,,8100,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29482742,CN,,Israel Youropa Team,Vender,Eliminado,36,290000,,11600,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29482790,CU,,Israel Youropa Team,Vender,Eliminado,36,287500,,11500,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29482875,CW,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,350000,,14000,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29483006,CY,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,207500,,8300,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29483171,DB,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,295000,,11800,0.0,2026-06-22,2026-06-18,216132,216132,,,,sim
+29455263,G,,Israel Youropa Team,Vender,Eliminado,36,290000,,11600,0.0,2026-06-18,2026-06-18,216132,216132,,,,sim
+29455233,H,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,207500,,8300,0.0,2026-06-18,2026-06-18,216132,216132,,,,sim
+29460240,J,,Israel Youropa Team,Vender,Eliminado,36,290000,,11600,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29460953,N,,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,283000,,11320,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29501323,N1.6,Prime Living,Israel Youropa Team,Arrendar,Arrendado,2,,950,,0.0,2026-06-23,2026-06-23,218514,218514,2026-07-28,,2026-07-22,sim
+29401646,PR00003,,idealista,Arrendar,Ja Nao Arrendam,38,,1200,,0.0,2026-06-11,2026-06-11,218514,218514,,,,sim
+29401886,PR00005,,idealista,Arrendar,Ja Nao Arrendam,38,,1300,,0.0,2026-06-11,2026-06-11,218514,218514,,,,sim
+29581131,YR00001,Douro Nobilis,,Arrendar,Disponivel,1,,1000,,0.0,2026-07-02,2026-06-12,218514,218514,,,,sim
+29581225,YR00002,Douro Nobilis,,Arrendar,Disponivel,1,,1250,,0.0,2026-07-02,2026-06-12,218514,218514,,,,sim
+29594643,YR00003,Prime Living,Israel Youropa Team,Arrendar,Arrendado,2,,1150,,0.0,2026-07-04,2026-06-23,218514,218514,2026-07-10,,2026-07-08,sim
+29594644,YR00004,Prime Living,Israel Youropa Team,Arrendar,Com Proposta,18,,1000,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-20,,,sim
+29594645,YR00005,Prime Living,Israel Youropa Team,Arrendar,Disponivel,1,,1399,,0.0,2026-07-04,2026-06-23,218514,218514,,,,sim
+29594646,YR00006,Prime Living,Israel Youropa Team,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-20,,2026-07-30,sim
+29594647,YR00007,Prime Living,Israel Youropa Team,Arrendar,Arrendado,2,,900,,0.0,2026-07-04,2026-06-23,218514,218514,2026-07-21,,2026-07-09,sim
+29594755,YR00008,Prime Living,Israel Youropa Team,Arrendar,Arrendado,2,,1000,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-12,,,sim
+29597723,YR00009,Douro Nobilis,Israel Youropa Team,Arrendar,Disponivel,1,,1250,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29597724,YR00010,,,Arrendar,Apenas Follow-up,9,,10,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29609419,YR00011,White Tower,,Arrendar,Disponivel,1,,1200,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29609616,YR00012,Jardins da Seara,,Arrendar,Disponivel,1,,850,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29609673,YR00014,Jardins da Seara,,Arrendar,Disponivel,1,,1000,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29609674,YR00015,Jardins da Seara,,Arrendar,Disponivel,1,,950,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29609793,YR00016,Santos Pousada,Israel Youropa Team,Arrendar,Disponivel,1,,1500,,0.0,2026-07-06,2026-07-06,218514,218514,,,,sim
+29619107,YR00018,Douro Nobilis,,Arrendar,Eliminado,36,,1350,,0.0,2026-07-07,2026-06-12,218514,218514,,,2026-07-07,sim
+29622188,YR00019,,,Arrendar,Nao Disponivel,5,,1100,,0.0,2026-07-07,2026-07-07,218516,218516,,,,nao_aplicavel
+29644773,YR00020,Jardins da Seara,,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
+29644774,YR00021,Jardins da Seara,,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
+29644775,YR00022,Jardins da Seara,,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
+29644776,YR00023,Jardins da Seara,,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,2026-08-20,,,sim
+29644777,YR00024,Jardins da Seara,Israel Youropa Team,Arrendar,Arrendado,2,,1000,,0.0,2026-07-09,2026-06-12,218514,218514,2026-07-28,,2026-07-28,sim
+29645596,YR00025,Jardins da Seara,Israel Youropa Team,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
+29645697,YR00026,Jardins da Seara,Israel Youropa Team,Vender,Vendido,3,315000,,15750,0.0,2026-07-09,2026-07-09,218514,218514,2026-08-19,,2026-08-11,sim
+29645847,YR00027,Prime Living,Israel Youropa Team,Vender,Disponivel,1,327000,,16350,0.0,2026-07-09,2026-07-09,218514,218514,,,,sim
+29656824,YR00028,Jardins da Seara,Israel Youropa Team,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-08-20,,,sim
+29656825,YR00029,Jardins da Seara,Israel Youropa Team,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
+29656826,YR00030,Jardins da Seara,Israel Youropa Team,Arrendar,Disponivel,1,,1300,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
+29656827,YR00031,Jardins da Seara,Israel Youropa Team,Arrendar,Arrendado,2,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-07-21,,,sim
+29656828,YR00032,Jardins da Seara,Israel Youropa Team,Arrendar,Disponivel,1,,950,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
+29668739,YR00033,,Israel Youropa Team,Arrendar,Arrendado,2,,780,,0.0,2026-07-13,2026-07-13,218514,218514,2026-08-07,,2026-07-22,sim
+29716025,YR00034,Riverline,Israel Youropa Team,Arrendar,Disponivel,1,,2290,,0.0,2026-07-16,2026-06-12,218514,218514,,,2026-06-19,sim
+29716231,YR00035,Riverline,,Arrendar,Disponivel,1,,2200,,0.0,2026-07-16,2026-06-12,218514,218514,,,2026-06-19,sim
+29772395,YR00036,Jardins do Marquês,Israel Youropa Team,Vender,Disponivel,1,415000,,16600,0.0,2026-07-22,2026-07-22,218514,218514,,,,sim
+29809239,YR00038,Green Park,Israel Youropa Team,Vender,Disponivel,1,240000,,8400,0.0,2026-07-28,2026-07-27,218514,218514,,,,sim
+29809878,YR00039,Celta Residences,Israel Youropa Team,Vender,Vendido por Outra Agencia,11,335000,,11725,0.0,2026-07-28,2026-07-28,218514,218514,,,,sim
+29810578,YR00040,Haizea,Israel Youropa Team,Vender,Disponivel,1,290000,,10150,0.0,2026-07-28,2026-07-28,218514,218514,,,,sim
+29828256,YR00041,Jardins do Marquês,Israel Youropa Team,Arrendar,Disponivel,1,,1000,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
+29828353,YR00042,Jardins do Marquês,Israel Youropa Team,Arrendar,Disponivel,1,,1300,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
+29828354,YR00043,Jardins do Marquês,Israel Youropa Team,Arrendar,Disponivel,1,,1500,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
+29829013,YR00044,Jardins da Seara,Israel Youropa Team,Vender,Disponivel,1,330000,,13200,0.0,2026-07-30,2026-06-12,218514,218514,,,,sim
+29830337,YR00045,Jardins do Marquês,Israel Youropa Team,Vender,Eliminado,36,415000,,16600,0.0,2026-07-30,2026-07-22,218514,218514,,,,sim
+29830344,YR00046,Jardins do Marquês,Israel Youropa Team,Vender,Disponivel,1,235000,,9400,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
+29843912,YR00047,Jardins do Marquês,Israel Youropa Team,Vender,Disponivel,1,370000,,14800,0.0,2026-07-31,2026-07-30,218514,218514,,,,sim
+29851097,YR00048,,,Arrendar,Nao Disponivel,5,,1700,,0.0,2026-08-01,2026-08-01,218514,218514,,,,nao_aplicavel
+29851164,YR00049,,Israel Youropa Team,Arrendar,Eliminado,36,,1700,,0.0,2026-08-01,2026-08-01,218514,218514,,,,sim
+29851165,YR00050,,Israel Youropa Team,Arrendar,Eliminado,36,,1700,,0.0,2026-08-01,2026-08-01,218514,218514,,,,sim
+29851182,YR00051,,,Arrendar,Nao Disponivel,5,,1700,,0.0,2026-08-01,2026-08-01,218514,218514,,,,nao_aplicavel
+29851183,YR00052,,,Arrendar,Nao Disponivel,5,,3200,,0.0,2026-08-01,2026-08-01,218514,218514,,,,nao_aplicavel
+29851214,YR00053,Prime Living,Israel Youropa Team,Arrendar,Com Proposta,18,,1000,,0.0,2026-08-01,2026-06-23,218514,218514,,,,sim
+29886930,YR00054,Prime Living,Israel Youropa Team,Arrendar,Disponivel,1,,1350,,0.0,2026-08-07,2026-06-23,218514,218514,2026-07-30,,2026-07-30,sim
+29886931,YR00055,Prime Living,Israel Youropa Team,Arrendar,Disponivel,1,,1350,,0.0,2026-08-07,2026-06-23,218514,218514,2026-07-30,,2026-07-30,sim
+29888966,YR00056,Jardins da Seara,Israel Youropa Team,Arrendar,Arrendado por Outra Agencia,10,,1300,,0.0,2026-08-07,2026-06-12,218514,218514,,,,sim
+29889035,YR00057,Prime Living,Israel Youropa Team,Arrendar,Com Proposta,18,,1000,,0.0,2026-08-07,2026-06-23,218514,218514,,,,sim
+29889089,YR00058,Prime Living,Israel Youropa Team,Arrendar,Disponivel,1,,1390,,0.0,2026-08-07,2026-06-23,218514,218514,,,,sim
+29899048,YR00059,Magnolia,,Arrendar,Disponivel,1,,850,,0.0,2026-08-10,2026-06-12,218514,218514,,,,sim
+29908521,YR00060,Oporto Luxury,Israel Youropa Team,Vender,Disponivel,1,290000,,11600,0.0,2026-08-11,2026-07-06,218514,218514,,,,sim
+29932385,YR00061,,Israel Youropa Team,Vender,Disponivel,1,290000,,11600,0.0,2026-08-12,2026-08-12,218514,218514,,,,sim
+29945360,YR00062,Prime Living,Israel Youropa Team,Arrendar,Disponivel,1,,1000,,0.0,2026-08-14,2026-06-23,218514,218514,,,,sim
+29949571,YR00063,Riverline,,Vender,Disponivel,1,535000,,,0.0,2026-08-14,2026-06-12,218514,218514,,,2026-06-19,sim
+29965679,YR00064,Jardins da Seara,Israel Youropa Team,Vender,Disponivel,1,300000,,12000,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
+29965680,YR00065,Jardins da Seara,Israel Youropa Team,Vender,Disponivel,1,330000,,16500,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
+29965951,YR00066,Riverline,,Arrendar,Disponivel,1,,1850,,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
+29966466,YR00068,Vintage Garden,Israel Youropa Team,Vender,Por Validar,8,370000,,,0.0,2026-08-17,2026-08-17,218514,218514,,,,sim
