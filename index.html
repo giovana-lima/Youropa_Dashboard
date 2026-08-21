@@ -217,7 +217,7 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
   <div class="charts-grid">
     <div class="chart-card span-6 fade-in d1">
       <div class="section-title">New Listings by Month</div>
-      <div class="section-sub">New property listings created in Inmovilla, month over month (full account history)</div>
+      <div class="section-sub">Month over month — full history, not affected by the date filter</div>
       <div class="canvas-wrap"><canvas id="chartNewProperties"></canvas></div>
       <div class="insight" id="insightNewProperties"></div>
     </div>
@@ -242,15 +242,15 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
     </div>
 
     <div class="chart-card span-12 fade-in d2">
-      <div class="section-title">Proposals This Month</div>
-      <div class="section-sub">Sales &amp; rental proposals in the current month, by outcome</div>
+      <div class="section-title">Proposals</div>
+      <div class="section-sub">Proposals in the selected period, by outcome</div>
       <div class="proposals-row" id="proposalsRow"></div>
       <div class="insight" id="insightProposals"></div>
     </div>
 
     <div class="chart-card span-12 fade-in d3">
       <div class="section-title">Quarterly Comparison<span class="tag" id="quarterlyTag"></span></div>
-      <div class="section-sub">Number of closed deals by quarter, sales vs rentals</div>
+      <div class="section-sub">Closed deals by quarter — full history, not affected by the date filter</div>
       <div class="canvas-wrap" style="min-height:260px;"><canvas id="chartQuarterly"></canvas></div>
       <div class="insight" id="insightQuarterly"></div>
     </div>
@@ -270,13 +270,13 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
 
     <div class="chart-card span-6 fade-in d5">
       <div class="section-title">Leads by Month</div>
-      <div class="section-sub">Opportunities entered the funnel, by month</div>
+      <div class="section-sub">By month — full history, not affected by the date filter</div>
       <div class="canvas-wrap"><canvas id="chartLeadsMonth"></canvas></div>
       <div class="insight" id="insightLeadsMonth"></div>
     </div>
     <div class="chart-card span-6 fade-in d5">
       <div class="section-title">Leads by Quarter</div>
-      <div class="section-sub">Opportunities entered the funnel, by quarter</div>
+      <div class="section-sub">By quarter — full history, not affected by the date filter</div>
       <div class="canvas-wrap"><canvas id="chartLeadsQuarter"></canvas></div>
       <div class="insight" id="insightLeadsQuarter"></div>
     </div>
@@ -284,7 +284,7 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
 
   <div class="table-card fade-in d6">
     <div class="section-title">Monthly Summary</div>
-    <div class="section-sub">Detailed volume, sales and rentals by month, for the selected period</div>
+    <div class="section-sub">Volume, sales and rentals by month — full history, not affected by the date filter</div>
     <div style="overflow-x:auto;">
       <table class="summary" id="summaryTable">
         <thead>
@@ -371,6 +371,20 @@ const selOffers   = () => REC().offers.filter(r=>inRange(r[0]) && typeOk(r[1]));
 const selWins     = () => REC().wins.filter(r=>inRange(r[0]) && typeOk(r[1]));
 const selListings = () => REC().listings.filter(r=>inRange(r[0]));
 const selTx       = () => RAW_DATA.transactions.filter(t=>inRange(t.date) && typeOk(t.type));
+
+// Comparison views deliberately ignore the date range — comparing months or
+// quarters only makes sense over the whole history. They still follow the
+// Sales/Rental filter.
+const allOpp      = () => REC().opportunities.filter(r=>typeOk(r[1]));
+const allListings = () => REC().listings;
+const allTx       = () => RAW_DATA.transactions.filter(t=>typeOk(t.type));
+function allMonths(){
+  const ms = new Set();
+  REC().opportunities.forEach(r=>ms.add(r[0].slice(0,7)));
+  REC().listings.forEach(r=>ms.add(r[0].slice(0,7)));
+  RAW_DATA.transactions.forEach(t=>ms.add(t.month));
+  return [...ms].sort();
+}
 
 function previousRange(){
   const f=new Date(state.from), t=new Date(state.to);
@@ -578,9 +592,9 @@ function renderLeadsPerProject(){
 /* New Listings by Month — count of new Inmovilla listings created, per month (full account history) */
 function renderNewProperties(){
   destroyChart('newProperties');
-  const months = rangeMonths();
+  const months = allMonths();
   const byM={}; months.forEach(m=>byM[m]=0);
-  selListings().forEach(r=>{ const m=r[0].slice(0,7); if(m in byM) byM[m]++; });
+  allListings().forEach(r=>{ const m=r[0].slice(0,7); if(m in byM) byM[m]++; });
   const values = months.map(m=>byM[m]);
   charts.newProperties = new Chart(document.getElementById('chartNewProperties'), {
     type:'bar',
@@ -591,7 +605,7 @@ function renderNewProperties(){
   });
   const tot = values.reduce((a,b)=>a+b,0);
   document.getElementById('insightNewProperties').innerHTML =
-    `<b>${fmtNum.format(tot)}</b> new listings in the selected period.`;
+    `<b>${fmtNum.format(tot)}</b> new listings across the full history.`;
 }
 
 /* Proposals This Month — closed / open / rejected outcome breakdown */
@@ -609,7 +623,7 @@ function renderProposals(){
 
 /* Quarterly comparison — number of closed deals, sales vs rentals (counts, not volume) */
 function renderQuarterly(){
-  const tx = selTx();
+  const tx = allTx();
   const order=[], bySale={}, byRent={};
   tx.forEach(t=>{ const q=t.quarter;
     if(!(q in bySale)){ order.push(q); bySale[q]=0; byRent[q]=0; }
@@ -665,9 +679,9 @@ function renderFunnel(containerId, months, type){
 
 /* 9. Leads by month */
 function renderLeadsMonth(){
-  const months = rangeMonths();
+  const months = allMonths();
   const byM={}; months.forEach(m=>byM[m]=0);
-  selOpp().forEach(r=>{ const m=r[0].slice(0,7); if(m in byM) byM[m]++; });
+  allOpp().forEach(r=>{ const m=r[0].slice(0,7); if(m in byM) byM[m]++; });
   const values = months.map(m=>byM[m]);
   destroyChart('leadsMonth');
   charts.leadsMonth = new Chart(document.getElementById('chartLeadsMonth'), {
@@ -678,12 +692,12 @@ function renderLeadsMonth(){
       scales:{ x:{grid:{display:false}, ticks:{maxRotation:0,autoSkip:true,font:{size:10}}}, y:{grid:{color:GRID_COLOR}} } }
   });
   document.getElementById('insightLeadsMonth').innerHTML =
-    `<b>${fmtNum.format(values.reduce((a,b)=>a+b,0))}</b> leads in the selected period.`;
+    `<b>${fmtNum.format(values.reduce((a,b)=>a+b,0))}</b> leads across the full history.`;
 }
 
 function renderLeadsQuarter(){
   const byQ={}, order=[];
-  selOpp().forEach(r=>{ const q=quarterOfMonth(r[0].slice(0,7));
+  allOpp().forEach(r=>{ const q=quarterOfMonth(r[0].slice(0,7));
     if(!(q in byQ)){ byQ[q]=0; order.push(q); } byQ[q]++; });
   order.sort();
   const values = order.map(q=>byQ[q]);
@@ -704,7 +718,7 @@ function renderLeadsQuarter(){
 
 /* ---------- Table ---------- */
 function renderTable(){
-  const months = rangeMonths(), tx = selTx();
+  const months = allMonths(), tx = allTx();
   document.getElementById('summaryTbody').innerHTML = [...months].reverse().map(mk=>{
     const m = tx.filter(t=>t.month===mk);
     const sales=m.filter(t=>t.type==='sale'), rentals=m.filter(t=>t.type==='rental');

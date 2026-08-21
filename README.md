@@ -40,9 +40,15 @@ lead/visit KPIs. It deliberately leaves the API-sourced money figures untouched.
 
 ## Date filter
 
-The dashboard has no fixed periods. Two date pickers define any range you want, and
-**every** section recalculates — KPIs, brokers, marketing origin, leads per project,
-funnels and tables.
+The dashboard has no fixed periods. Two date pickers define any range you want.
+
+**Follows the date range:** KPIs, Brokers Performance, Marketing Origin, Leads per Project,
+Proposals and both conversion funnels.
+
+**Deliberately ignores it:** New Listings by Month, Quarterly Comparison, Leads by Month,
+Leads by Quarter and the Monthly Summary. These exist to compare periods against each
+other, so they always show the full history — narrowing the range would leave nothing to
+compare. They still follow the Sales/Rental filter.
 
 Each time the page opens it defaults to **the 1st of the current month → today**, so the
 link always shows the month in progress without anyone touching the filter. The
