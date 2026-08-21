@@ -228,13 +228,13 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
 
     <div class="chart-card span-6 fade-in d2">
       <div class="section-title">Marketing — Origin</div>
-      <div class="section-sub">Leads by acquisition channel</div>
+      <div class="section-sub">Where each opportunity came from</div>
       <div id="marketingOriginBody"></div>
       <div class="insight" id="insightMarketing"></div>
     </div>
     <div class="chart-card span-6 fade-in d2">
       <div class="section-title">Leads per Project</div>
-      <div class="section-sub">Leads grouped by development/project</div>
+      <div class="section-sub">Opportunities by development, via the properties they consulted</div>
       <div id="leadsPerProjectBody"></div>
       <div class="insight" id="insightLeadsPerProject"></div>
     </div>
@@ -541,11 +541,15 @@ function renderMarketingOrigin(){
     document.getElementById('insightMarketing').innerHTML = '';
     return;
   }
-  const entries = Object.entries(src.byChannel || {});
-  el.innerHTML = `<table class="mini-table"><thead><tr><th>Channel</th><th>Leads</th></tr></thead><tbody>
-    ${entries.map(([ch,ct])=>`<tr><td>${ch}</td><td>${fmtNum.format(ct)}</td></tr>`).join('')}
+  const entries = Object.entries(src.byChannel || {}).sort((a,b)=>b[1]-a[1]);
+  const tot = entries.reduce((s,e)=>s+e[1],0) || 1;
+  el.innerHTML = `<table class="mini-table"><thead><tr><th>Channel</th><th>Leads</th><th>Share</th></tr></thead><tbody>
+    ${entries.map(([ch,ct])=>`<tr><td>${ch}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
     </tbody></table>`;
-  document.getElementById('insightMarketing').innerHTML = src.note || '';
+  const top = entries[0];
+  document.getElementById('insightMarketing').innerHTML = top
+    ? `<b>${top[0]}</b> brings ${(top[1]/tot*100).toFixed(0)}% of all leads (${fmtNum.format(top[1])} of ${fmtNum.format(tot)}).`
+    : '';
 }
 
 /* Leads per Project (pending: blocked on Inmovilla support exposing the custom "Projeto" field via API) */
@@ -557,11 +561,15 @@ function renderLeadsPerProject(){
     document.getElementById('insightLeadsPerProject').innerHTML = '';
     return;
   }
-  const entries = Object.entries(src.byProject || {});
-  el.innerHTML = `<table class="mini-table"><thead><tr><th>Project</th><th>Leads</th></tr></thead><tbody>
-    ${entries.map(([p,ct])=>`<tr><td>${p}</td><td>${fmtNum.format(ct)}</td></tr>`).join('')}
+  const entries = Object.entries(src.byProject || {}).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const tot = Object.values(src.byProject||{}).reduce((s,v)=>s+v,0) || 1;
+  el.innerHTML = `<table class="mini-table"><thead><tr><th>Project</th><th>Leads</th><th>Share</th></tr></thead><tbody>
+    ${entries.map(([p,ct])=>`<tr><td>${p}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
     </tbody></table>`;
-  document.getElementById('insightLeadsPerProject').innerHTML = src.note || '';
+  const top = entries[0];
+  document.getElementById('insightLeadsPerProject').innerHTML = top
+    ? `<b>${top[0]}</b> is the most requested development, with ${fmtNum.format(top[1])} leads.`
+    : '';
 }
 
 /* New Listings by Month — count of new Inmovilla listings created, per month (full account history) */

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedOn": "2026-08-19",
+    "generatedOn": "2026-08-21",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
@@ -8,10 +8,10 @@
       "2026-08"
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
-    "dataNote": "Leads (Oportunidades) are counted per creation month directly from the Inmovilla Oportunidades list: Jun 65 (52 rental / 13 sale), Jul 226 (204/22), Aug 285 (275/10) - 576 of 579 records read on 2026-08-12. Funnel stage 'Qualified' uses those real monthly counts; 'Visit Scheduled' uses Agenda entries under both Visita categories (Jun 3, Jul 13, Aug 8 - all rentals, since the CRM's 'Visitas com Compradores' widget is 0); 'Commission Paid' uses properties that reached status Arrendado/Vendido, dated by fechacambio (Jun 10, Jul 1). 'Offer' and 'Contract Signed' are not tracked as distinct states in this CRM setup and are therefore 0. Property-level figures (volumes, new listings) come from the Inmovilla REST API; Oportunidades and Agenda figures are read from the CRM screen, as no API endpoint exposes them.",
-    "leadsSnapshotOn": "2026-08-12",
-    "leadsSnapshotTotal": 579,
-    "leadsSnapshotCoverage": "576 of 579 (99.5%) read row-by-row from the Oportunidades list on 2026-08-12; the CRM total moves during the day as new portal leads arrive.",
+    "dataNote": "All lead, visit and project figures now come from the CSV spreadsheets in /data, built by reading every Oportunidade and every active Imóvel record in Inmovilla. oportunidades.csv holds 666 opportunities with contact origin and the properties each one consulted; imoveis.csv holds 118 active properties with their project, proposal date and the broker who moved them to Ganho; visitas.csv holds 49 visits from the Agenda. Property-level money figures (volumes, commissions, new listings) still come from the Inmovilla REST API and are refreshed automatically every 3 days.",
+    "leadsSnapshotOn": "2026-08-21",
+    "leadsSnapshotTotal": 666,
+    "leadsSnapshotCoverage": "",
     "apiSyncOn": "2026-08-12",
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
@@ -48,41 +48,41 @@
     "commissionAssignment": 0.0,
     "totalCommission": 15750.0,
     "commissionNote": "",
-    "totalLeads": 579,
+    "totalLeads": 666,
     "totalLeadsNote": "",
-    "visits": 24,
+    "visits": 49,
     "visitsSale": 0,
-    "visitsRental": 24,
-    "visitsNote": "Jun–Aug 2026, incl. scheduled"
+    "visitsRental": 49,
+    "visitsNote": ""
   },
   "brokerPerformance": {
-    "asOf": "2026-08-12",
-    "period": "full history (Jun-Aug 2026)",
+    "asOf": "2026-08-21",
+    "period": "Jun-Aug 2026",
     "note": "",
     "agents": [
       {
-        "name": "Sandra Dantas",
-        "leads": 151,
-        "visits": 11,
-        "closedDeals": null
-      },
-      {
         "name": "Eugénia Miranda",
-        "leads": 186,
-        "visits": 8,
-        "closedDeals": null
+        "leads": 235,
+        "visits": 11,
+        "closedDeals": 5
       },
       {
-        "name": "Teresa Archer",
-        "leads": 32,
-        "visits": 5,
-        "closedDeals": null
+        "name": "Sandra Dantas",
+        "leads": 187,
+        "visits": 31,
+        "closedDeals": 4
       },
       {
         "name": "Joana Côrte-Real",
-        "leads": 150,
-        "visits": 0,
-        "closedDeals": null
+        "leads": 173,
+        "visits": 1,
+        "closedDeals": 2
+      },
+      {
+        "name": "Teresa Archer",
+        "leads": 24,
+        "visits": 6,
+        "closedDeals": 5
       }
     ]
   },
@@ -98,8 +98,35 @@
       "rentals": 1
     }
   ],
-  "marketingOrigin": null,
-  "leadsPerProject": null,
+  "marketingOrigin": {
+    "asOf": "2026-08-21",
+    "byChannel": {
+      "idealista": 347,
+      "imovirtual": 64,
+      "Referência de cliente": 1,
+      "Broker circulo pessoal": 1,
+      "Meta": 247,
+      "Website": 4
+    },
+    "note": "Contact origin recorded on each Oportunidade record."
+  },
+  "leadsPerProject": {
+    "asOf": "2026-08-21",
+    "byProject": {
+      "Jardins do Marquês": 259,
+      "Prime Living": 124,
+      "Jardins da Seara": 119,
+      "Douro Nobilis": 35,
+      "Magnolia": 26,
+      "White Tower": 24,
+      "Riverline": 18,
+      "Santos Pousada": 9,
+      "Celta Residences": 3,
+      "Haizea": 2,
+      "Green Park": 1
+    },
+    "note": "Opportunities linked to a project through the properties they consulted."
+  },
   "proposalsThisMonth": {
     "month": "2026-08",
     "asOf": "2026-08-04",
@@ -303,7 +330,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 52
+      "count": 50
     },
     {
       "month": "2026-06",
@@ -317,33 +344,33 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "offer",
-      "count": 0
+      "count": 5
     },
     {
       "month": "2026-06",
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "contract_signed",
-      "count": 0
+      "count": 1
     },
     {
       "month": "2026-06",
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "win",
+      "count": 1
+    },
+    {
+      "month": "2026-06",
+      "quarter": "Q2 2026",
+      "type": "sale",
+      "stage": "opportunity",
       "count": 12
     },
     {
       "month": "2026-06",
       "quarter": "Q2 2026",
       "type": "sale",
-      "stage": "opportunity",
-      "count": 13
-    },
-    {
-      "month": "2026-06",
-      "quarter": "Q2 2026",
-      "type": "sale",
       "stage": "visit_scheduled",
       "count": 0
     },
@@ -352,7 +379,7 @@
       "quarter": "Q2 2026",
       "type": "sale",
       "stage": "offer",
-      "count": 0
+      "count": 6
     },
     {
       "month": "2026-06",
@@ -373,42 +400,42 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 204
+      "count": 187
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "visit_scheduled",
-      "count": 13
+      "count": 16
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "offer",
-      "count": 0
+      "count": 16
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "contract_signed",
-      "count": 0
+      "count": 11
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 1
+      "count": 11
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "opportunity",
-      "count": 22
+      "count": 21
     },
     {
       "month": "2026-07",
@@ -436,49 +463,49 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 1
+      "count": 0
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 275
+      "count": 364
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "visit_scheduled",
+      "count": 30
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "offer",
+      "count": 5
+    },
+    {
+      "month": "2026-08",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "contract_signed",
       "count": 8
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "rental",
-      "stage": "offer",
-      "count": 0
-    },
-    {
-      "month": "2026-08",
-      "quarter": "Q3 2026",
-      "type": "rental",
-      "stage": "contract_signed",
-      "count": 0
-    },
-    {
-      "month": "2026-08",
-      "quarter": "Q3 2026",
-      "type": "rental",
       "stage": "win",
-      "count": 0
+      "count": 8
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "opportunity",
-      "count": 10
+      "count": 32
     },
     {
       "month": "2026-08",
@@ -492,21 +519,21 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "offer",
-      "count": 0
+      "count": 2
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "contract_signed",
-      "count": 0
+      "count": 1
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 0
+      "count": 1
     }
   ],
   "leadsByTypology": [
