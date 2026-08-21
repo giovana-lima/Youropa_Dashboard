@@ -16,16 +16,16 @@
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "newPropertiesByMonth": {
-    "asOf": "2026-08-19",
+    "asOf": "2026-08-21",
     "note": "Count of properties by creation month from the Inmovilla API (field \"fecha\"). Includes properties later sold/rented/delisted. The current month is partial. Properties with placeholder creation dates (Casafari-imported comparables) are excluded.",
     "months": [
       {
         "month": "2026-06",
-        "count": 25
+        "count": 26
       },
       {
         "month": "2026-07",
-        "count": 44
+        "count": 47
       },
       {
         "month": "2026-08",
@@ -35,12 +35,12 @@
     ]
   },
   "kpisApi": {
-    "asOf": "2026-08-19",
-    "totalVolume": 329280.0,
+    "asOf": "2026-08-21",
+    "totalVolume": 336510.0,
     "salesVolume": 315000.0,
-    "rentalVolume": 14280.0,
+    "rentalVolume": 21510.0,
     "salesCount": 1,
-    "rentalCount": 13,
+    "rentalCount": 19,
     "avgTicketSales": 315000.0,
     "note": "Volumes come from properties that reached status Vendido/Vendido MLS or Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume is the sum of monthly rent, not a one-time amount. Commission figures use the comision/cesioncom fields and only appear once they are filled in for a given deal.",
     "commissionSale": 15750.0,
@@ -90,7 +90,7 @@
     {
       "quarter": "Q2 2026",
       "sales": 0,
-      "rentals": 12
+      "rentals": 18
     },
     {
       "quarter": "Q3 2026",
@@ -143,213 +143,303 @@
   "transactions": [
     {
       "id": "R00001",
+      "date": "2026-06-12",
+      "amount": 1700.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. 35055141",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00002",
+      "date": "2026-06-23",
+      "amount": 1000.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00004",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00003",
+      "date": "2026-06-12",
+      "amount": 1050.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. 35073131",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00004",
+      "date": "2026-06-23",
+      "amount": 1150.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00006",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00005",
+      "date": "2026-06-12",
+      "amount": 1130.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00023",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00006",
+      "date": "2026-06-12",
+      "amount": 1200.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00028",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q2 2026",
+      "month": "2026-06"
+    },
+    {
+      "id": "R00007",
       "date": "2026-07-09",
       "amount": 315000.0,
       "type": "sale",
+      "commission": 15750.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00026",
       "region": "",
       "clientId": "",
       "quarter": "Q3 2026",
-      "month": "2026-07",
-      "commission": 15750.0,
-      "assignmentCommission": 0.0
+      "month": "2026-07"
     },
     {
-      "id": "R00002",
+      "id": "R00008",
       "date": "2026-06-12",
       "amount": 1100.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. 34878363",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00003",
+      "id": "R00009",
       "date": "2026-06-23",
       "amount": 1000.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00008",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00004",
+      "id": "R00010",
       "date": "2026-06-12",
       "amount": 1100.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. 35018926",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00005",
+      "id": "R00011",
       "date": "2026-07-13",
       "amount": 780.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00033",
       "region": "",
       "clientId": "",
       "quarter": "Q3 2026",
-      "month": "2026-07",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-07"
     },
     {
-      "id": "R00006",
+      "id": "R00012",
       "date": "2026-06-12",
       "amount": 1000.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00024",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00007",
+      "id": "R00013",
       "date": "2026-06-23",
       "amount": 950.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. N1.6",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00008",
+      "id": "R00014",
       "date": "2026-06-12",
       "amount": 1000.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. 34869552",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00009",
+      "id": "R00015",
       "date": "2026-06-12",
       "amount": 1200.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00031",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00010",
+      "id": "R00016",
       "date": "2026-06-23",
       "amount": 900.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00007",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00011",
+      "id": "R00017",
       "date": "2026-06-12",
       "amount": 1200.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. 35040352",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00012",
+      "id": "R00018",
       "date": "2026-06-23",
       "amount": 1150.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. YR00003",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00013",
+      "id": "R00019",
       "date": "2026-06-12",
       "amount": 1600.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. 34901438",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     },
     {
-      "id": "R00014",
+      "id": "R00020",
       "date": "2026-06-12",
       "amount": 1300.0,
       "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
       "project": "Ref. 34944151",
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06",
-      "commission": 0.0,
-      "assignmentCommission": 0.0
+      "month": "2026-06"
     }
   ],
   "funnel": [
@@ -386,7 +476,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "win",
-      "count": 1
+      "count": 18
     },
     {
       "month": "2026-06",
@@ -456,7 +546,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 11
+      "count": 1
     },
     {
       "month": "2026-07",
@@ -491,7 +581,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 0
+      "count": 1
     },
     {
       "month": "2026-08",
@@ -526,7 +616,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 8
+      "count": 0
     },
     {
       "month": "2026-08",
@@ -561,7 +651,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 1
+      "count": 0
     }
   ],
   "leadsByTypology": [
