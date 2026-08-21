@@ -38,6 +38,19 @@ python3 scripts/build_dashboard.py
 That rebuilds the funnel, marketing origin, leads per project, broker performance and the
 lead/visit KPIs. It deliberately leaves the API-sourced money figures untouched.
 
+## Date filter
+
+The dashboard has no fixed periods. Two date pickers define any range you want, and
+**every** section recalculates — KPIs, brokers, marketing origin, leads per project,
+funnels and tables.
+
+Each time the page opens it defaults to **the 1st of the current month → today**, so the
+link always shows the month in progress without anyone touching the filter. The
+"This month" button returns to that default.
+
+This works because `data.json` carries the individual records (dates only, no personal
+data) under `records`, not pre-aggregated monthly totals.
+
 ## Privacy
 
 The repository is public, so the CSVs carry **no client names, phone numbers or emails** —

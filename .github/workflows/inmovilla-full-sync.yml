@@ -106,6 +106,8 @@ jobs:
               amount = float((p.get("precioinmo") if is_sale else p.get("precioalq")) or 0)
               tx.append({"id": "R%05d" % n, "date": fc, "amount": amount,
                          "type": "sale" if is_sale else "rental",
+                         "commission": float(p.get("comision") or 0),
+                         "assignmentCommission": float(p.get("cesioncom") or 0),
                          "channel": "", "category": "", "project": "Ref. %s" % p.get("ref"),
                          "region": "", "clientId": "",
                          "quarter": quarter(fc[:7]), "month": fc[:7]})

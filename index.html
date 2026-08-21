@@ -66,11 +66,16 @@ header.top{
 
 .period-row{display:flex;align-items:center;gap:10px;}
 .period-row label{font-size:12px;color:var(--text-low);text-transform:uppercase;letter-spacing:0.08em;}
-select#periodFilter{
+.period-row input[type=date]{
   background:var(--card-2);color:var(--text-hi);border:1px solid var(--line);border-radius:10px;
-  padding:8px 14px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500;
+  padding:7px 12px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500;color-scheme:dark;
 }
-select#periodFilter:focus{outline:2px solid var(--gold);outline-offset:1px;}
+.period-row input[type=date]:focus{outline:2px solid var(--gold);outline-offset:1px;}
+#resetRange{
+  background:transparent;color:var(--text-mid);border:1px solid var(--line);border-radius:10px;
+  padding:7px 12px;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600;
+}
+#resetRange:hover{color:var(--text-hi);border-color:var(--gold);background:rgba(226,189,122,0.08);}
 
 /* ---------- KPI grid ---------- */
 .kpi-grid{
@@ -198,14 +203,11 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
         <button data-type="rental">Rental</button>
       </div>
       <div class="period-row">
-        <label for="periodFilter">Period</label>
-        <select id="periodFilter">
-          <option value="1">This month</option>
-          <option value="3">3 months</option>
-          <option value="6">6 months</option>
-          <option value="12" selected>12 months</option>
-          <option value="24">All (full history)</option>
-        </select>
+        <label for="dateFrom">From</label>
+        <input type="date" id="dateFrom">
+        <label for="dateTo">To</label>
+        <input type="date" id="dateTo">
+        <button type="button" id="resetRange" title="Back to the current month">This month</button>
       </div>
     </div>
   </header>
@@ -347,26 +349,48 @@ function initFromData(){
   MONTHS.forEach(mk=>{ const q=quarterOfMonth(mk); if(!QUARTER_ORDER.includes(q)) QUARTER_ORDER.push(q); });
 }
 
-let state = { period: 12, type: 'all' };
+let state = { from: null, to: null, type: 'all' };
+
+const iso = (d) => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');   // local date, never shifted by UTC
+function defaultRange(){
+  const now = new Date();
+  return { from: iso(new Date(now.getFullYear(), now.getMonth(), 1)), to: iso(now) };
+}
+const inRange = (d) => d && d >= state.from && d <= state.to;
+function rangeMonths(){
+  const out=[]; const [fy,fm]=state.from.split('-').map(Number); const [ty,tm]=state.to.split('-').map(Number);
+  let y=fy,m=fm;
+  while(y<ty || (y===ty && m<=tm)){ out.push(y+'-'+String(m).padStart(2,'0')); m++; if(m>12){m=1;y++;} }
+  return out;
+}
+const REC = () => (RAW_DATA.records || {opportunities:[],visits:[],offers:[],wins:[],listings:[]});
+const typeOk = (t) => state.type==='all' || state.type===t;
+const selOpp      = () => REC().opportunities.filter(r=>inRange(r[0]) && typeOk(r[1]));
+const selVisits   = () => REC().visits.filter(r=>inRange(r[0]));
+const selOffers   = () => REC().offers.filter(r=>inRange(r[0]) && typeOk(r[1]));
+const selWins     = () => REC().wins.filter(r=>inRange(r[0]) && typeOk(r[1]));
+const selListings = () => REC().listings.filter(r=>inRange(r[0]));
+const selTx       = () => RAW_DATA.transactions.filter(t=>inRange(t.date) && typeOk(t.type));
+
+function previousRange(){
+  const f=new Date(state.from), t=new Date(state.to);
+  const days=Math.round((t-f)/864e5)+1;
+  const pt=new Date(f); pt.setDate(pt.getDate()-1);
+  const pf=new Date(pt); pf.setDate(pf.getDate()-days+1);
+  return { from: iso(pf), to: iso(pt) };
+}
+function withRange(r, fn){
+  const keep={from:state.from,to:state.to};
+  state.from=r.from; state.to=r.to;
+  try { return fn(); } finally { state.from=keep.from; state.to=keep.to; }
+}
 
 function monthRange(endIdxExclusive, count){
   const start = Math.max(0, endIdxExclusive-count);
   return MONTHS.slice(start, endIdxExclusive);
 }
 
-function currentAndPrevious(){
-  const totalMonths = MONTHS.length;
-  const count = state.period; // 1,3,6,12,24
-  const current = monthRange(totalMonths, count);
-  let previous = null;
-  const prevEnd = totalMonths - count;
-  if(prevEnd - count >= 0){
-    previous = monthRange(prevEnd, count);
-  } else if (prevEnd > 0) {
-    previous = monthRange(prevEnd, prevEnd); // shorter, partial — still show as best-effort
-  }
-  return { current, previous };
-}
+function currentAndPrevious(){ return { current: rangeMonths(), previous: null }; }
 
 function filterTx(months, type){
   const set = new Set(months);
@@ -437,53 +461,43 @@ const PERIOD_LABELS = { 1:'previous month', 3:'previous 3 months', 6:'previous 6
 function has(v){ return v!==null && v!==undefined; }
 
 function renderKPIs(){
-  const api = RAW_DATA.kpisApi || {};
-  const { current, previous } = currentAndPrevious();
-  const pLabel = PERIOD_LABELS[state.period];
-
-  const calc = (months) => {
-    if(!months || !months.length) return null;
-    const tx = filterTx(months, state.type);
-    const fn = filterFunnel(months, state.type);
-    const salesTx = tx.filter(t=>t.type==='sale');
-    const salesVol = sum(salesTx, t=>t.amount);
-    return {
-      totalVol: sum(tx, t=>t.amount),
-      salesVol,
-      rentalVol: sum(tx.filter(t=>t.type==='rental'), t=>t.amount),
-      avgTicket: salesTx.length ? salesVol/salesTx.length : null,
-      leads: sum(fn.filter(r=>r.stage==='opportunity'), r=>r.count),
-      visits: sum(fn.filter(r=>r.stage==='visit_scheduled'), r=>r.count),
-    };
+  const calc = () => {
+    const tx = selTx();
+    const sales = tx.filter(t=>t.type==='sale');
+    const salesVol = sum(sales, t=>t.amount);
+    const rentalVol = sum(tx.filter(t=>t.type==='rental'), t=>t.amount);
+    const comSale = sum(sales, t=>t.commission||0);
+    const comRent = sum(tx.filter(t=>t.type==='rental'), t=>t.commission||0);
+    const comAssign = sum(tx, t=>t.assignmentCommission||0);
+    return { totalVol: salesVol+rentalVol, salesVol, rentalVol,
+             avgTicket: sales.length ? salesVol/sales.length : null,
+             comSale, comRent, comAssign, comTotal: comSale+comRent+comAssign,
+             leads: selOpp().length, visits: selVisits().length };
   };
-  const k = calc(current), p = calc(previous);
-  const d = (a,b) => (p ? delta(a,b) : null);
-
+  const k = calc();
+  const p = withRange(previousRange(), calc);
   const cards = [
-    { label:'Total Volume', value: fmtEUR.format(k.totalVol), d: d(k.totalVol, p&&p.totalVol) },
-    { label:'Sales Volume', value: fmtEUR.format(k.salesVol), d: d(k.salesVol, p&&p.salesVol) },
-    { label:'Rental Volume', value: fmtEUR.format(k.rentalVol), d: d(k.rentalVol, p&&p.rentalVol), note:'monthly rent' },
+    { label:'Total Volume', value: fmtEUR.format(k.totalVol), d: delta(k.totalVol, p.totalVol) },
+    { label:'Sales Volume', value: fmtEUR.format(k.salesVol), d: delta(k.salesVol, p.salesVol) },
+    { label:'Rental Volume', value: fmtEUR.format(k.rentalVol), d: delta(k.rentalVol, p.rentalVol), note:'monthly rent' },
     { label:'Average Ticket (Sales)', value: k.avgTicket!==null ? fmtEURdec.format(k.avgTicket) : null },
-    { label:'Commission (Sale)', value: has(api.commissionSale) ? fmtEUR.format(api.commissionSale) : null },
-    { label:'Commission (Rental)', value: has(api.commissionRental) ? fmtEUR.format(api.commissionRental) : null },
-    { label:'Commission (Assignment)', value: has(api.commissionAssignment) ? fmtEUR.format(api.commissionAssignment) : null },
-    { label:'Total Commission', value: has(api.totalCommission) ? fmtEUR.format(api.totalCommission) : null },
-    { label:'Total Leads', value: fmtNum.format(k.leads), d: d(k.leads, p&&p.leads) },
-    { label:'Visits', value: fmtNum.format(k.visits), d: d(k.visits, p&&p.visits) },
+    { label:'Commission (Sale)', value: k.comSale ? fmtEUR.format(k.comSale) : null },
+    { label:'Commission (Rental)', value: k.comRent ? fmtEUR.format(k.comRent) : null },
+    { label:'Commission (Assignment)', value: k.comAssign ? fmtEUR.format(k.comAssign) : null },
+    { label:'Total Commission', value: k.comTotal ? fmtEUR.format(k.comTotal) : null, d: delta(k.comTotal, p.comTotal) },
+    { label:'Total Leads', value: fmtNum.format(k.leads), d: delta(k.leads, p.leads) },
+    { label:'Visits', value: fmtNum.format(k.visits), d: delta(k.visits, p.visits) },
   ];
-  const grid = document.getElementById('kpiGrid');
-  grid.innerHTML = cards.map((c,i)=>{
-    let footer = '';
+  document.getElementById('kpiGrid').innerHTML = cards.map((c,i)=>{
+    let footer='';
     if(c.value!==null){
-      if(c.d!==undefined && c.d!==null) footer = deltaHTML(c.d, pLabel);
+      if(c.d!==undefined && c.d!==null) footer = deltaHTML(c.d, 'previous period');
       else if(c.note) footer = `<div class="kpi-delta flat"><span class="vs">${c.note}</span></div>`;
     }
-    return `
-    <div class="kpi-card fade-in d${Math.min(i+1,7)}">
+    return `<div class="kpi-card fade-in d${Math.min(i+1,7)}">
       <div class="kpi-label">${c.label}</div>
-      <div class="kpi-value ${c.value===null?'pending':''}">${c.value===null ? '' : c.value}</div>
-      ${footer}
-    </div>`;
+      <div class="kpi-value ${c.value===null?'pending':''}">${c.value===null?'':c.value}</div>
+      ${footer}</div>`;
   }).join('');
 }
 
@@ -510,147 +524,117 @@ function tooltipBase(){
 
 /* Brokers Performance — properties managed & deals closed, by agent */
 function renderBrokerPerformance(){
-  const src = RAW_DATA.brokerPerformance;
   const el = document.getElementById('brokerTable');
-  if(!src || !src.agents || !src.agents.length){
-    el.innerHTML = '<div class="pending-block">No broker data available.</div>';
-    document.getElementById('insightBroker').innerHTML = '';
-    return;
-  }
-  const cell = v => (v===null || v===undefined) ? '' : fmtNum.format(v);
-  const rows = [...src.agents].sort((a,b)=> (b.leads||0) - (a.leads||0));
+  const leads={}, visits={}, closed={};
+  selOpp().forEach(r=>{ if(r[2]) leads[r[2]]=(leads[r[2]]||0)+1; });
+  selVisits().forEach(r=>{ if(r[1]) visits[r[1]]=(visits[r[1]]||0)+1; });
+  selWins().forEach(r=>{ if(r[2]) closed[r[2]]=(closed[r[2]]||0)+1; });
+  const known = ((RAW_DATA.brokerPerformance||{}).agents||[]).map(a=>a.name);
+  const names = known.filter(n=>true);
+  if(!names.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightBroker').innerHTML=''; return; }
+  const rows = names.map(n=>({name:n, leads:leads[n]||0, visits:visits[n]||0, closed:closed[n]||0}))
+                    .sort((x,y)=>y.leads-x.leads);
   el.innerHTML = `<table class="mini-table"><thead><tr>
-      <th>Broker</th><th>Leads</th><th>Visits</th><th>Closed Deals</th>
-    </tr></thead><tbody>
-    ${rows.map(a=>`<tr>
-      <td>${a.name}</td>
-      <td>${cell(a.leads)}</td>
-      <td>${cell(a.visits)}</td>
-      <td>${cell(a.closedDeals)}</td>
-    </tr>`).join('')}
+      <th>Broker</th><th>Leads</th><th>Visits</th><th>Closed Deals</th></tr></thead><tbody>
+    ${rows.map(a=>`<tr><td>${a.name}</td><td>${fmtNum.format(a.leads)}</td><td>${fmtNum.format(a.visits)}</td><td>${fmtNum.format(a.closed)}</td></tr>`).join('')}
     </tbody></table>`;
-  document.getElementById('insightBroker').innerHTML = src.note ? `${src.note}${src.asOf ? ` (as of ${src.asOf})` : ''}` : '';
+  document.getElementById('insightBroker').innerHTML = '';
 }
 
 /* Marketing — Origin (pending: no bulk leads endpoint wired up yet) */
 function renderMarketingOrigin(){
-  const src = RAW_DATA.marketingOrigin;
   const el = document.getElementById('marketingOriginBody');
-  if(!src){
-    el.innerHTML = '<div class="pending-block"></div>';
-    document.getElementById('insightMarketing').innerHTML = '';
-    return;
-  }
-  const entries = Object.entries(src.byChannel || {}).sort((a,b)=>b[1]-a[1]);
-  const tot = entries.reduce((s,e)=>s+e[1],0) || 1;
+  const c={};
+  selOpp().forEach(r=>{ let o=(r[3]||'').trim(); if(!o) return;
+    const low=o.toLowerCase();
+    if(low.includes('idealista')) o='idealista'; else if(low.includes('imovirtual')) o='imovirtual';
+    c[o]=(c[o]||0)+1; });
+  const entries = Object.entries(c).sort((a,b)=>b[1]-a[1]);
+  if(!entries.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightMarketing').innerHTML=''; return; }
+  const tot = entries.reduce((s,e)=>s+e[1],0);
   el.innerHTML = `<table class="mini-table"><thead><tr><th>Channel</th><th>Leads</th><th>Share</th></tr></thead><tbody>
     ${entries.map(([ch,ct])=>`<tr><td>${ch}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
     </tbody></table>`;
-  const top = entries[0];
-  document.getElementById('insightMarketing').innerHTML = top
-    ? `<b>${top[0]}</b> brings ${(top[1]/tot*100).toFixed(0)}% of all leads (${fmtNum.format(top[1])} of ${fmtNum.format(tot)}).`
-    : '';
+  const top=entries[0];
+  document.getElementById('insightMarketing').innerHTML =
+    `<b>${top[0]}</b> brings ${(top[1]/tot*100).toFixed(0)}% of leads in this period (${fmtNum.format(top[1])} of ${fmtNum.format(tot)}).`;
 }
 
 /* Leads per Project (pending: blocked on Inmovilla support exposing the custom "Projeto" field via API) */
 function renderLeadsPerProject(){
-  const src = RAW_DATA.leadsPerProject;
   const el = document.getElementById('leadsPerProjectBody');
-  if(!src){
-    el.innerHTML = '<div class="pending-block"></div>';
-    document.getElementById('insightLeadsPerProject').innerHTML = '';
-    return;
-  }
-  const entries = Object.entries(src.byProject || {}).sort((a,b)=>b[1]-a[1]).slice(0,8);
-  const tot = Object.values(src.byProject||{}).reduce((s,v)=>s+v,0) || 1;
+  const c={};
+  selOpp().forEach(r=>{ (r[4]||'').split(';').filter(Boolean).forEach(p=>{ c[p]=(c[p]||0)+1; }); });
+  const all = Object.entries(c).sort((a,b)=>b[1]-a[1]);
+  if(!all.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightLeadsPerProject').innerHTML=''; return; }
+  const tot = all.reduce((s,e)=>s+e[1],0);
   el.innerHTML = `<table class="mini-table"><thead><tr><th>Project</th><th>Leads</th><th>Share</th></tr></thead><tbody>
-    ${entries.map(([p,ct])=>`<tr><td>${p}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
+    ${all.slice(0,8).map(([p,ct])=>`<tr><td>${p}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
     </tbody></table>`;
-  const top = entries[0];
-  document.getElementById('insightLeadsPerProject').innerHTML = top
-    ? `<b>${top[0]}</b> is the most requested development, with ${fmtNum.format(top[1])} leads.`
-    : '';
+  document.getElementById('insightLeadsPerProject').innerHTML =
+    `<b>${all[0][0]}</b> is the most requested development, with ${fmtNum.format(all[0][1])} leads.`;
 }
 
 /* New Listings by Month — count of new Inmovilla listings created, per month (full account history) */
-function renderNewProperties(months){
-  const src = RAW_DATA.newPropertiesByMonth;
+function renderNewProperties(){
   destroyChart('newProperties');
-  const ctx = document.getElementById('chartNewProperties');
-  if(!src || !src.months || !src.months.length){
-    document.getElementById('insightNewProperties').innerHTML = 'No new-listings data available.';
-    return;
-  }
-  const set = months ? new Set(months) : null;
-  const rows = set ? src.months.filter(r => set.has(r.month)) : src.months;
-  if(!rows.length){
-    document.getElementById('insightNewProperties').innerHTML = 'No new listings in the selected period.';
-    return;
-  }
-  const labels = rows.map(r => MONTH_LABEL(r.month) + (r.partial ? ' (partial)' : ''));
-  const values = rows.map(r => r.count);
-  charts.newProperties = new Chart(ctx, {
+  const months = rangeMonths();
+  const byM={}; months.forEach(m=>byM[m]=0);
+  selListings().forEach(r=>{ const m=r[0].slice(0,7); if(m in byM) byM[m]++; });
+  const values = months.map(m=>byM[m]);
+  charts.newProperties = new Chart(document.getElementById('chartNewProperties'), {
     type:'bar',
-    data:{ labels, datasets:[{ data: values, backgroundColor: rows.map(r=>r.partial?'#6fb3d9':GOLD), borderRadius:6, maxBarThickness:46 }] },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} new properties` } } },
-      scales:{ x:{ grid:{ display:false } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ precision:0 } } }
-    }
+    data:{ labels: months.map(MONTH_LABEL), datasets:[{ data: values, backgroundColor:GOLD, borderRadius:6, maxBarThickness:46 }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=>` ${fmtNum.format(c.raw)} new listings` } } },
+      scales:{ x:{grid:{display:false}}, y:{grid:{color:GRID_COLOR}, ticks:{precision:0}} } }
   });
-  const last = rows[rows.length-1], prev = rows[rows.length-2];
-  const d = (prev && !last.partial) ? delta(last.count, prev.count) : null;
-  const trendTxt = last.partial
-    ? `<b>${fmtNum.format(last.count)}</b> new properties so far in ${MONTH_LABEL(last.month)} (month in progress).`
-    : (d!==null ? `<b>${fmtNum.format(last.count)}</b> new properties in ${MONTH_LABEL(last.month)}, ${fmtPct(d)} vs the prior month.` : `<b>${fmtNum.format(last.count)}</b> new properties in ${MONTH_LABEL(last.month)}.`);
-  document.getElementById('insightNewProperties').innerHTML = trendTxt + ` (as of ${src.asOf || RAW_DATA.meta.generatedOn})`;
+  const tot = values.reduce((a,b)=>a+b,0);
+  document.getElementById('insightNewProperties').innerHTML =
+    `<b>${fmtNum.format(tot)}</b> new listings in the selected period.`;
 }
 
 /* Proposals This Month — closed / open / rejected outcome breakdown */
 function renderProposals(){
-  const src = RAW_DATA.proposalsThisMonth;
-  const el = document.getElementById('proposalsRow');
-  if(!src){ el.innerHTML=''; document.getElementById('insightProposals').innerHTML = 'No proposals data available.'; return; }
-  const total = (src.closed||0) + (src.open||0) + (src.rejected||0);
-  el.innerHTML = `
-    <div class="proposal-stat closed"><div class="val">${fmtNum.format(src.closed)}</div><div class="lbl">Closed</div></div>
-    <div class="proposal-stat open"><div class="val">${fmtNum.format(src.open)}</div><div class="lbl">Open</div></div>
-    <div class="proposal-stat rejected"><div class="val">${fmtNum.format(src.rejected)}</div><div class="lbl">Rejected</div></div>
-  `;
-  document.getElementById('insightProposals').innerHTML = `<b>${fmtNum.format(total)}</b> total proposals tracked in ${MONTH_LABEL(src.month)} — ${fmtNum.format(src.closed)} closed, ${fmtNum.format(src.open)} still open, ${fmtNum.format(src.rejected)} rejected (as of ${src.asOf || RAW_DATA.meta.generatedOn}).`;
+  const offers = selOffers().length, won = selWins().length;
+  const openDeals = Math.max(offers-won, 0);
+  document.getElementById('proposalsRow').innerHTML = `
+    <div class="proposal-stat closed"><div class="val">${fmtNum.format(won)}</div><div class="lbl">Closed</div></div>
+    <div class="proposal-stat open"><div class="val">${fmtNum.format(openDeals)}</div><div class="lbl">Open</div></div>
+    <div class="proposal-stat rejected"><div class="val">0</div><div class="lbl">Rejected</div></div>`;
+  document.getElementById('insightProposals').innerHTML = offers
+    ? `<b>${fmtNum.format(offers)}</b> proposals in this period — ${fmtNum.format(won)} closed, ${fmtNum.format(openDeals)} still open.`
+    : 'No proposals in the selected period.';
 }
 
 /* Quarterly comparison — number of closed deals, sales vs rentals (counts, not volume) */
 function renderQuarterly(){
-  const tx = state.type==='all' ? RAW_DATA.transactions : RAW_DATA.transactions.filter(t=>t.type===state.type);
-  const order = [];
-  RAW_DATA.meta.months.forEach(mk => { const q = quarterOfMonth(mk); if(!order.includes(q)) order.push(q); });
-  const labels = order;
-  const saleValues = order.map(q => tx.filter(t=>t.quarter===q && t.type==='sale').length);
-  const rentalValues = order.map(q => tx.filter(t=>t.quarter===q && t.type==='rental').length);
+  const tx = selTx();
+  const order=[], bySale={}, byRent={};
+  tx.forEach(t=>{ const q=t.quarter;
+    if(!(q in bySale)){ order.push(q); bySale[q]=0; byRent[q]=0; }
+    if(t.type==='sale') bySale[q]++; else byRent[q]++; });
+  order.sort();
+  const saleValues=order.map(q=>bySale[q]), rentalValues=order.map(q=>byRent[q]);
   destroyChart('quarterly');
-  const ctx = document.getElementById('chartQuarterly');
-  charts.quarterly = new Chart(ctx, {
+  charts.quarterly = new Chart(document.getElementById('chartQuarterly'), {
     type:'bar',
-    data:{ labels, datasets:[
+    data:{ labels: order, datasets:[
       { label:'Sales', data:saleValues, backgroundColor:GOLD, borderRadius:6, maxBarThickness:30 },
-      { label:'Rentals', data:rentalValues, backgroundColor:'#7ed9a7', borderRadius:6, maxBarThickness:30 },
-    ]},
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ labels:{ usePointStyle:true, boxWidth:8 } }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${c.dataset.label}: ${fmtNum.format(c.raw)} deals` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:10} } }, y:{ grid:{ color:GRID_COLOR }, ticks:{ precision:0 } } }
-    }
+      { label:'Rentals', data:rentalValues, backgroundColor:'#7ed9a7', borderRadius:6, maxBarThickness:30 }]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{labels:{usePointStyle:true,boxWidth:8}}, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=>` ${c.dataset.label}: ${fmtNum.format(c.raw)} deals` } } },
+      scales:{ x:{grid:{display:false}, ticks:{font:{size:10}}}, y:{grid:{color:GRID_COLOR}, ticks:{precision:0}} } }
   });
-  const n = labels.length;
-  const cur = n ? (saleValues[n-1]+rentalValues[n-1]) : 0;
-  const prevQ = n>=2 ? (saleValues[n-2]+rentalValues[n-2]) : null;
-  const dq = prevQ!==null ? delta(cur, prevQ) : null;
-  const tagEl = document.getElementById('quarterlyTag');
-  if (tagEl) tagEl.textContent = n + (n===1 ? ' Q' : ' Qs');
+  const n=order.length;
+  const tagEl=document.getElementById('quarterlyTag');
+  if(tagEl) tagEl.textContent = n + (n===1?' Q':' Qs');
+  const cur = n ? saleValues[n-1]+rentalValues[n-1] : 0;
+  const prev = n>=2 ? saleValues[n-2]+rentalValues[n-2] : null;
+  const dq = prev!==null ? delta(cur,prev) : null;
   document.getElementById('insightQuarterly').innerHTML = n
-    ? `Current quarter (<b>${labels[n-1]}</b>): <b>${fmtNum.format(cur)}</b> deals closed, ${dq!==null?fmtPct(dq)+' vs previous quarter':'no prior quarter yet'}.`
-    : 'No quarterly data available.';
+    ? `<b>${fmtNum.format(cur)}</b> deals closed in ${order[n-1]}${dq!==null? ', '+fmtPct(dq)+' vs the previous quarter':''}.`
+    : 'No deals closed in the selected period.';
 }
 
 /* 7 & 8. Funnels */
@@ -658,85 +642,77 @@ const STAGE_LABELS = { opportunity:'Qualified', visit_scheduled:'Visit Scheduled
 const STAGE_ORDER = ['opportunity','visit_scheduled','offer','contract_signed','win'];
 
 function renderFunnel(containerId, months, type){
-  const rows = filterFunnel(months, type);
-  const totals = {};
-  STAGE_ORDER.forEach(s=> totals[s] = sum(rows.filter(r=>r.stage===s), r=>r.count));
-  const maxV = totals['opportunity'] || 1;
-  const el = document.getElementById(containerId);
-  el.innerHTML = STAGE_ORDER.map((s,i)=>{
-    const v = totals[s];
-    const pct = maxV ? (v/maxV*100) : 0;
+  const totals = {
+    opportunity: selOpp().filter(r=>r[1]===type).length,
+    visit_scheduled: type==='rental' ? selVisits().length : 0,
+    offer: selOffers().filter(r=>r[1]===type).length,
+    contract_signed: selWins().filter(r=>r[1]===type).length,
+    win: selWins().filter(r=>r[1]===type).length,
+  };
+  const maxV = totals.opportunity || 1;
+  document.getElementById(containerId).innerHTML = STAGE_ORDER.map((st,i)=>{
+    const v=totals[st], pct = maxV ? (v/maxV*100) : 0;
     const prevV = i>0 ? totals[STAGE_ORDER[i-1]] : null;
     const stepPct = (i>0 && prevV) ? (v/prevV*100) : null;
     const stepHtml = i>0 ? `<div class="funnel-step-pct">${stepPct!==null ? stepPct.toFixed(0)+'% ↓' : '—'}</div>` : '';
     return `${stepHtml}<div class="funnel-stage">
-      <div class="label">${STAGE_LABELS[s]}</div>
+      <div class="label">${STAGE_LABELS[st]}</div>
       <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:${pct}%"></div></div>
-      <div class="pct">${fmtNum.format(v)}</div>
-    </div>`;
+      <div class="pct">${fmtNum.format(v)}</div></div>`;
   }).join('');
   return totals;
 }
 
 /* 9. Leads by month */
-function renderLeadsMonth(months, type){
-  const rows = filterFunnel(months, type).filter(r=>r.stage==='opportunity');
-  const values = months.map(mk => sum(rows.filter(r=>r.month===mk), r=>r.count));
+function renderLeadsMonth(){
+  const months = rangeMonths();
+  const byM={}; months.forEach(m=>byM[m]=0);
+  selOpp().forEach(r=>{ const m=r[0].slice(0,7); if(m in byM) byM[m]++; });
+  const values = months.map(m=>byM[m]);
   destroyChart('leadsMonth');
-  const ctx = document.getElementById('chartLeadsMonth');
-  charts.leadsMonth = new Chart(ctx, {
+  charts.leadsMonth = new Chart(document.getElementById('chartLeadsMonth'), {
     type:'bar',
     data:{ labels: months.map(MONTH_LABEL), datasets:[{ data: values, backgroundColor:'#6fb3d9', borderRadius:5, maxBarThickness:26 }] },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} leads` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ maxRotation:0, autoSkip:true, font:{size:10} } }, y:{ grid:{ color:GRID_COLOR } } }
-    }
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=>` ${fmtNum.format(c.raw)} leads` } } },
+      scales:{ x:{grid:{display:false}, ticks:{maxRotation:0,autoSkip:true,font:{size:10}}}, y:{grid:{color:GRID_COLOR}} } }
   });
-  const total = values.reduce((a,b)=>a+b,0);
-  document.getElementById('insightLeadsMonth').innerHTML = `<b>${fmtNum.format(total)}</b> leads entered the funnel across the selected period.`;
+  document.getElementById('insightLeadsMonth').innerHTML =
+    `<b>${fmtNum.format(values.reduce((a,b)=>a+b,0))}</b> leads in the selected period.`;
 }
 
-/* 10. Leads by quarter */
-function renderLeadsQuarter(type){
-  const rows = (type==='all' ? RAW_DATA.funnel : RAW_DATA.funnel.filter(r=>r.type===type)).filter(r=>r.stage==='opportunity');
-  const values = QUARTER_ORDER.map(q => sum(rows.filter(r=>r.quarter===q), r=>r.count));
+function renderLeadsQuarter(){
+  const byQ={}, order=[];
+  selOpp().forEach(r=>{ const q=quarterOfMonth(r[0].slice(0,7));
+    if(!(q in byQ)){ byQ[q]=0; order.push(q); } byQ[q]++; });
+  order.sort();
+  const values = order.map(q=>byQ[q]);
   destroyChart('leadsQuarter');
-  const ctx = document.getElementById('chartLeadsQuarter');
-  charts.leadsQuarter = new Chart(ctx, {
+  charts.leadsQuarter = new Chart(document.getElementById('chartLeadsQuarter'), {
     type:'bar',
-    data:{ labels: QUARTER_ORDER, datasets:[{ data: values, backgroundColor:'#a89bd0', borderRadius:5, maxBarThickness:30 }] },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ display:false }, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=> ` ${fmtNum.format(c.raw)} leads` } } },
-      scales:{ x:{ grid:{ display:false }, ticks:{ font:{size:10} } }, y:{ grid:{ color:GRID_COLOR } } }
-    }
+    data:{ labels: order, datasets:[{ data: values, backgroundColor:'#a89bd0', borderRadius:5, maxBarThickness:30 }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ ...tooltipBase(), callbacks:{ label:(c)=>` ${fmtNum.format(c.raw)} leads` } } },
+      scales:{ x:{grid:{display:false}, ticks:{font:{size:10}}}, y:{grid:{color:GRID_COLOR}} } }
   });
-  const n = QUARTER_ORDER.length;
-  const dq = delta(values[n-1], values[n-2]);
-  document.getElementById('insightLeadsQuarter').innerHTML = `Lead volume ${dq!==null && dq>=0 ? 'grew' : 'declined'} <b>${dq!==null?fmtPct(Math.abs(dq)).replace('+',''):'—'}</b> quarter-over-quarter.`;
+  const n=values.length;
+  const dq = n>=2 ? delta(values[n-1], values[n-2]) : null;
+  document.getElementById('insightLeadsQuarter').innerHTML = dq!==null
+    ? `Lead volume ${dq>=0?'grew':'declined'} <b>${fmtPct(Math.abs(dq)).replace('+','')}</b> quarter-over-quarter.`
+    : `<b>${fmtNum.format(values[0]||0)}</b> leads in this quarter.`;
 }
 
 /* ---------- Table ---------- */
-function renderTable(months, type){
-  const tbody = document.getElementById('summaryTbody');
-  const rowsHtml = [...months].reverse().map(mk=>{
-    const monthTx = RAW_DATA.transactions.filter(t=>t.month===mk && (type==='all'||t.type===type));
-    const salesTx = monthTx.filter(t=>t.type==='sale');
-    const rentalTx = monthTx.filter(t=>t.type==='rental');
-    const salesVol = sum(salesTx, t=>t.amount);
-    const rentalVol = sum(rentalTx, t=>t.amount);
-    const totalVol = salesVol + rentalVol;
-    return `<tr>
-      <td class="month-cell">${MONTH_LABEL(mk)}</td>
-      <td>${fmtEUR.format(totalVol)}</td>
-      <td>${fmtNum.format(salesTx.length)}</td>
-      <td>${fmtEUR.format(salesVol)}</td>
-      <td>${fmtNum.format(rentalTx.length)}</td>
-      <td>${fmtEUR.format(rentalVol)}</td>
-    </tr>`;
+function renderTable(){
+  const months = rangeMonths(), tx = selTx();
+  document.getElementById('summaryTbody').innerHTML = [...months].reverse().map(mk=>{
+    const m = tx.filter(t=>t.month===mk);
+    const sales=m.filter(t=>t.type==='sale'), rentals=m.filter(t=>t.type==='rental');
+    const sv=sum(sales,t=>t.amount), rv=sum(rentals,t=>t.amount);
+    return `<tr><td class="month-cell">${MONTH_LABEL(mk)}</td>
+      <td>${fmtEUR.format(sv+rv)}</td><td>${fmtNum.format(sales.length)}</td><td>${fmtEUR.format(sv)}</td>
+      <td>${fmtNum.format(rentals.length)}</td><td>${fmtEUR.format(rv)}</td></tr>`;
   }).join('');
-  tbody.innerHTML = rowsHtml;
 }
 
 /* ---------- Funnel visibility per type filter ---------- */
@@ -749,36 +725,44 @@ function updateFunnelVisibility(){
 }
 
 /* ---------- Period label ---------- */
-const PERIOD_TEXT = { 1:'This month', 3:'Last 3 months', 6:'Last 6 months', 12:'Last 12 months', 24:'Full history' };
 function updatePeriodLabel(){
-  const { current } = currentAndPrevious();
-  const startLbl = MONTH_LABEL(current[0]), endLbl = MONTH_LABEL(current[current.length-1]);
-  document.getElementById('periodLabel').textContent = ` · ${PERIOD_TEXT[state.period]} (${startLbl} – ${endLbl})`;
+  const fmt = (d)=> new Date(d+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  document.getElementById('periodLabel').textContent = ` · ${fmt(state.from)} – ${fmt(state.to)}`;
 }
 
 /* ---------- Master render ---------- */
 function renderAll(){
   updatePeriodLabel();
   renderKPIs();
-  const { current } = currentAndPrevious();
-  renderNewProperties(current);
+  renderNewProperties();
   renderBrokerPerformance();
   renderMarketingOrigin();
   renderLeadsPerProject();
   renderProposals();
   renderQuarterly();
   updateFunnelVisibility();
-  if(state.type!=='rental') renderFunnel('funnelSales', current, 'sale');
-  if(state.type!=='sale') renderFunnel('funnelRental', current, 'rental');
-  renderLeadsMonth(current, state.type);
-  renderLeadsQuarter(state.type);
-  renderTable(current, state.type);
+  if(state.type!=='rental') renderFunnel('funnelSales', null, 'sale');
+  if(state.type!=='sale') renderFunnel('funnelRental', null, 'rental');
+  renderLeadsMonth();
+  renderLeadsQuarter();
+  renderTable();
 }
 
 /* ---------- Wiring ---------- */
-document.getElementById('periodFilter').addEventListener('change', (e)=>{
-  state.period = Number(e.target.value);
+function applyRange(){
+  const f=document.getElementById('dateFrom').value, t=document.getElementById('dateTo').value;
+  if(!f || !t) return;
+  state.from = f<=t ? f : t;
+  state.to   = f<=t ? t : f;
   renderAll();
+}
+document.getElementById('dateFrom').addEventListener('change', applyRange);
+document.getElementById('dateTo').addEventListener('change', applyRange);
+document.getElementById('resetRange').addEventListener('click', ()=>{
+  const r = defaultRange();
+  document.getElementById('dateFrom').value = r.from;
+  document.getElementById('dateTo').value = r.to;
+  applyRange();
 });
 document.getElementById('typeFilter').addEventListener('click', (e)=>{
   const btn = e.target.closest('button[data-type]');
@@ -802,6 +786,10 @@ async function boot(){
     return;
   }
   initFromData();
+  const r0 = defaultRange();   // every load defaults to: 1st of this month -> today
+  state.from = r0.from; state.to = r0.to;
+  document.getElementById('dateFrom').value = r0.from;
+  document.getElementById('dateTo').value = r0.to;
   document.getElementById('genDate').textContent = new Date(RAW_DATA.meta.generatedOn+'T00:00:00').toLocaleDateString('en-GB', { day:'2-digit', month:'long', year:'numeric' });
   renderAll();
 }

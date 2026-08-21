@@ -102,6 +102,32 @@ agents = [{'name': n, 'leads': b_leads.get(n, 0),
           for n in sorted(set(b_leads) | set(b_visits), key=lambda x: -b_leads.get(x, 0))
           if n in FULL.values()]
 
+# ---- record-level data (lets the dashboard filter by any date range) ----
+# Compact arrays keep data.json small. No client names, phones or emails.
+rec_opp = [[r['data_criacao'],
+            'rental' if r['operacao'] == 'arrendamento' else 'sale',
+            FULL.get((r.get('comercial') or '').strip(), (r.get('comercial') or '').strip()),
+            (r.get('origem_contacto') or '').strip(),
+            (r.get('projetos') or '')]
+           for r in opp if r.get('data_criacao')]
+
+rec_vis = [[v['data'], (v.get('comercial') or ''), (v.get('projeto') or '')]
+           for v in vis if v.get('data')]
+
+rec_offer, rec_win, rec_listing = [], [], []
+for r in imo:
+    t = prop_type(r)
+    proj = r.get('projeto', '')
+    # a won deal always passed through the offer stage, even if no proposal was logged
+    offer_date = r.get('proposta_data') or r.get('estado_ganho_data')
+    if offer_date:
+        rec_offer.append([offer_date, t, proj])
+    if r.get('estado_ganho_data'):
+        rec_win.append([r['estado_ganho_data'], t,
+                        r.get('estado_ganho_utilizador', ''), proj])
+    if r.get('data_criacao'):
+        rec_listing.append([r['data_criacao'], t])
+
 # ---- write -------------------------------------------------------------
 with open(D('data.json'), encoding='utf-8') as f:
     d = json.load(f)
@@ -125,6 +151,21 @@ k['visits'] = sum(f['count'] for f in funnel if f['stage'] == 'visit_scheduled')
 k['visitsSale'] = sum(f['count'] for f in funnel if f['stage'] == 'visit_scheduled' and f['type'] == 'sale')
 k['visitsRental'] = k['visits'] - k['visitsSale']
 k['totalLeadsNote'] = k['visitsNote'] = ''
+
+d['records'] = {
+    'schema': {
+        'opportunities': ['date', 'type', 'broker', 'origin', 'projects'],
+        'visits': ['date', 'broker', 'project'],
+        'offers': ['date', 'type', 'project'],
+        'wins': ['date', 'type', 'broker', 'project'],
+        'listings': ['date', 'type'],
+    },
+    'opportunities': rec_opp,
+    'visits': rec_vis,
+    'offers': rec_offer,
+    'wins': rec_win,
+    'listings': rec_listing,
+}
 
 with open(D('data.json'), 'w', encoding='utf-8') as f:
     json.dump(d, f, indent=2, ensure_ascii=False)
