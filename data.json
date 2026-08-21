@@ -57,7 +57,7 @@
   },
   "brokerPerformance": {
     "asOf": "2026-08-21",
-    "period": "Jun-Aug 2026",
+    "period": "2026-06 to 2026-08",
     "note": "",
     "agents": [
       {
@@ -102,11 +102,11 @@
     "asOf": "2026-08-21",
     "byChannel": {
       "idealista": 347,
-      "imovirtual": 64,
-      "Referência de cliente": 1,
-      "Broker circulo pessoal": 1,
       "Meta": 247,
-      "Website": 4
+      "imovirtual": 64,
+      "Website": 4,
+      "Referência de cliente": 1,
+      "Broker circulo pessoal": 1
     },
     "note": "Contact origin recorded on each Oportunidade record."
   },
