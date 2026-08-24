@@ -123,8 +123,14 @@ for r in imo:
     if offer_date:
         rec_offer.append([offer_date, t, proj])
     if r.get('estado_ganho_data'):
+        amount = r.get('preco_venda') if t == 'sale' else r.get('preco_arrendamento')
+        try:
+            amount = float(amount or 0)
+        except ValueError:
+            amount = 0.0
         rec_win.append([r['estado_ganho_data'], t,
-                        r.get('estado_ganho_utilizador', ''), proj])
+                        r.get('estado_ganho_utilizador', ''), proj,
+                        r.get('ref', ''), amount])
     if r.get('data_criacao'):
         rec_listing.append([r['data_criacao'], t])
 
@@ -157,7 +163,7 @@ d['records'] = {
         'opportunities': ['date', 'type', 'broker', 'origin', 'projects'],
         'visits': ['date', 'broker', 'project'],
         'offers': ['date', 'type', 'project'],
-        'wins': ['date', 'type', 'broker', 'project'],
+        'wins': ['date', 'type', 'broker', 'project', 'ref', 'amount'],
         'listings': ['date', 'type'],
     },
     'opportunities': rec_opp,

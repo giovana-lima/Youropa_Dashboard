@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedOn": "2026-08-22",
+    "generatedOn": "2026-08-24",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
@@ -9,7 +9,7 @@
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
     "dataNote": "All lead, visit and project figures now come from the CSV spreadsheets in /data, built by reading every Oportunidade and every active Imóvel record in Inmovilla. oportunidades.csv holds 666 opportunities with contact origin and the properties each one consulted; imoveis.csv holds 118 active properties with their project, proposal date and the broker who moved them to Ganho; visitas.csv holds 49 visits from the Agenda. Property-level money figures (volumes, commissions, new listings) still come from the Inmovilla REST API and are refreshed automatically every 3 days.",
-    "leadsSnapshotOn": "2026-08-21",
+    "leadsSnapshotOn": "2026-08-24",
     "leadsSnapshotTotal": 666,
     "leadsSnapshotCoverage": "",
     "apiSyncOn": "2026-08-12",
@@ -56,7 +56,7 @@
     "visitsNote": ""
   },
   "brokerPerformance": {
-    "asOf": "2026-08-21",
+    "asOf": "2026-08-24",
     "period": "2026-06 to 2026-08",
     "note": "",
     "agents": [
@@ -99,7 +99,7 @@
     }
   ],
   "marketingOrigin": {
-    "asOf": "2026-08-21",
+    "asOf": "2026-08-24",
     "byChannel": {
       "idealista": 347,
       "Meta": 247,
@@ -111,7 +111,7 @@
     "note": "Contact origin recorded on each Oportunidade record."
   },
   "leadsPerProject": {
-    "asOf": "2026-08-21",
+    "asOf": "2026-08-24",
     "byProject": {
       "Jardins do Marquês": 259,
       "Prime Living": 124,
@@ -491,7 +491,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "win",
-      "count": 18
+      "count": 1
     },
     {
       "month": "2026-06",
@@ -526,7 +526,7 @@
       "quarter": "Q2 2026",
       "type": "sale",
       "stage": "win",
-      "count": 1
+      "count": 0
     },
     {
       "month": "2026-07",
@@ -561,7 +561,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 1
+      "count": 11
     },
     {
       "month": "2026-07",
@@ -596,7 +596,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 1
+      "count": 0
     },
     {
       "month": "2026-08",
@@ -631,7 +631,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 0
+      "count": 8
     },
     {
       "month": "2026-08",
@@ -666,7 +666,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 0
+      "count": 1
     }
   ],
   "leadsByTypology": [
@@ -714,7 +714,9 @@
         "date",
         "type",
         "broker",
-        "project"
+        "project",
+        "ref",
+        "amount"
       ],
       "listings": [
         "date",
@@ -5809,127 +5811,169 @@
         "2026-07-09",
         "rental",
         "Sandra Dantas",
-        "Douro Nobilis"
+        "Douro Nobilis",
+        "34869552",
+        1000.0
       ],
       [
         "2026-08-12",
         "rental",
         "Eugénia Miranda",
-        "Jardins da Seara"
+        "Jardins da Seara",
+        "34878363",
+        1100.0
       ],
       [
         "2026-07-07",
         "rental",
         "Giovana Lima",
-        "Douro Nobilis"
+        "Douro Nobilis",
+        "34901438",
+        1600.0
       ],
       [
         "2026-06-19",
         "rental",
         "Joana Côrte-Real",
-        "Douro Nobilis"
+        "Douro Nobilis",
+        "34944151",
+        1300.0
       ],
       [
         "2026-07-27",
         "rental",
         "Sandra Dantas",
-        ""
+        "",
+        "35018926",
+        1100.0
       ],
       [
         "2026-07-11",
         "rental",
         "Joana Côrte-Real",
-        "Prime Living"
+        "Prime Living",
+        "35040352",
+        1200.0
       ],
       [
         "2026-08-20",
         "rental",
         "Teresa Archer",
-        "White Tower"
+        "White Tower",
+        "35073131",
+        1150.0
       ],
       [
         "2026-07-30",
         "rental",
         "Giovana Lima",
-        "Prime Living"
+        "Prime Living",
+        "N1.6",
+        950.0
       ],
       [
         "2026-07-10",
         "rental",
         "Sandra Dantas",
-        "Prime Living"
+        "Prime Living",
+        "YR00003",
+        1150.0
       ],
       [
         "2026-08-20",
         "rental",
         "Teresa Archer",
-        "Prime Living"
+        "Prime Living",
+        "YR00004",
+        1000.0
       ],
       [
         "2026-08-20",
         "rental",
         "Teresa Archer",
-        "Prime Living"
+        "Prime Living",
+        "YR00006",
+        1150.0
       ],
       [
         "2026-07-21",
         "rental",
         "Eugénia Miranda",
-        "Prime Living"
+        "Prime Living",
+        "YR00007",
+        900.0
       ],
       [
         "2026-08-12",
         "rental",
         "Eugénia Miranda",
-        "Prime Living"
+        "Prime Living",
+        "YR00008",
+        1000.0
       ],
       [
         "2026-08-20",
         "rental",
         "Teresa Archer",
-        "Jardins da Seara"
+        "Jardins da Seara",
+        "YR00023",
+        1200.0
       ],
       [
         "2026-07-28",
         "rental",
         "Eugénia Miranda",
-        "Jardins da Seara"
+        "Jardins da Seara",
+        "YR00024",
+        1000.0
       ],
       [
         "2026-08-18",
         "sale",
         "Soraia Sousa",
-        "Jardins da Seara"
+        "Jardins da Seara",
+        "YR00026",
+        315000.0
       ],
       [
         "2026-08-20",
         "rental",
         "Teresa Archer",
-        "Jardins da Seara"
+        "Jardins da Seara",
+        "YR00028",
+        1200.0
       ],
       [
         "2026-07-21",
         "rental",
         "Eugénia Miranda",
-        "Jardins da Seara"
+        "Jardins da Seara",
+        "YR00031",
+        1200.0
       ],
       [
         "2026-08-06",
         "rental",
         "Sandra Dantas",
-        ""
+        "",
+        "YR00033",
+        780.0
       ],
       [
         "2026-07-30",
         "rental",
         "Giovana Lima",
-        "Prime Living"
+        "Prime Living",
+        "YR00054",
+        1350.0
       ],
       [
         "2026-07-30",
         "rental",
         "Giovana Lima",
-        "Prime Living"
+        "Prime Living",
+        "YR00055",
+        1350.0
       ]
     ],
     "listings": [

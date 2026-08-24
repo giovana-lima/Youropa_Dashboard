@@ -142,6 +142,19 @@ header.top{
 .mini-table td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-mid);text-align:right;}
 .mini-table td:first-child{color:var(--text-hi);font-weight:600;}
 .mini-table tr:hover td{background:rgba(226,189,122,0.05);}
+.broker-row{cursor:pointer;}
+.broker-row td:first-child::before{content:'▸';display:inline-block;width:14px;color:var(--gold);
+  transition:transform .2s ease;font-size:11px;}
+.broker-row.open td:first-child::before{transform:rotate(90deg);}
+.broker-row:hover td{background:rgba(226,189,122,0.08);}
+.deal-list td{padding:0 8px 12px;}
+.deal-list table{width:100%;border-collapse:collapse;font-size:12px;
+  background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);}
+.deal-list th{text-align:right;color:var(--text-low);font-weight:600;font-size:10px;
+  text-transform:uppercase;letter-spacing:0.05em;padding:7px 10px;}
+.deal-list th:first-child,.deal-list td.l{text-align:left;}
+.deal-list td{padding:6px 10px;color:var(--text-mid);text-align:right;border:0;}
+.deal-empty{color:var(--text-low);font-style:italic;padding:8px 10px;}
 .pending-block{min-height:120px;border:1px dashed var(--line);border-radius:var(--radius-sm);background:rgba(255,255,255,0.02);}
 .kpi-value.pending{min-height:28px;}
 
@@ -539,20 +552,50 @@ function tooltipBase(){
 /* Brokers Performance — properties managed & deals closed, by agent */
 function renderBrokerPerformance(){
   const el = document.getElementById('brokerTable');
-  const leads={}, visits={}, closed={};
+  const leads={}, visits={}, dealsBy={};
   selOpp().forEach(r=>{ if(r[2]) leads[r[2]]=(leads[r[2]]||0)+1; });
   selVisits().forEach(r=>{ if(r[1]) visits[r[1]]=(visits[r[1]]||0)+1; });
-  selWins().forEach(r=>{ if(r[2]) closed[r[2]]=(closed[r[2]]||0)+1; });
-  const known = ((RAW_DATA.brokerPerformance||{}).agents||[]).map(a=>a.name);
-  const names = known.filter(n=>true);
+  selWins().forEach(r=>{ const b=r[2]; if(!b) return; (dealsBy[b]=dealsBy[b]||[]).push(r); });
+
+  const names = ((RAW_DATA.brokerPerformance||{}).agents||[]).map(a=>a.name);
   if(!names.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightBroker').innerHTML=''; return; }
-  const rows = names.map(n=>({name:n, leads:leads[n]||0, visits:visits[n]||0, closed:closed[n]||0}))
+
+  const rows = names.map(n=>({name:n, leads:leads[n]||0, visits:visits[n]||0,
+                              deals:(dealsBy[n]||[]).slice().sort((x,y)=>x[0]<y[0]?1:-1)}))
                     .sort((x,y)=>y.leads-x.leads);
+
   el.innerHTML = `<table class="mini-table"><thead><tr>
       <th>Broker</th><th>Leads</th><th>Visits</th><th>Closed Deals</th></tr></thead><tbody>
-    ${rows.map(a=>`<tr><td>${a.name}</td><td>${fmtNum.format(a.leads)}</td><td>${fmtNum.format(a.visits)}</td><td>${fmtNum.format(a.closed)}</td></tr>`).join('')}
+    ${rows.map((a,i)=>`
+      <tr class="broker-row" data-i="${i}">
+        <td>${a.name}</td><td>${fmtNum.format(a.leads)}</td>
+        <td>${fmtNum.format(a.visits)}</td><td>${fmtNum.format(a.deals.length)}</td>
+      </tr>
+      <tr class="deal-list" data-for="${i}" style="display:none"><td colspan="4">
+        ${a.deals.length ? `<table><thead><tr>
+            <th>Date</th><th>Reference</th><th>Project</th><th>Type</th><th>Value</th>
+          </tr></thead><tbody>
+          ${a.deals.map(d=>`<tr>
+            <td class="l">${new Date(d[0]+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'})}</td>
+            <td class="l">${d[4]||'—'}</td>
+            <td class="l">${d[3]||'—'}</td>
+            <td class="l">${d[1]==='sale'?'Sale':'Rental'}</td>
+            <td>${d[5] ? fmtEUR.format(d[5]) + (d[1]==='rental'?' /mo':'') : '—'}</td>
+          </tr>`).join('')}
+          </tbody></table>`
+          : '<div class="deal-empty">No deals closed in the selected period.</div>'}
+      </td></tr>`).join('')}
     </tbody></table>`;
-  document.getElementById('insightBroker').innerHTML = '';
+
+  el.querySelectorAll('.broker-row').forEach(tr=>{
+    tr.addEventListener('click', ()=>{
+      const d = el.querySelector(`.deal-list[data-for="${tr.dataset.i}"]`);
+      const open = d.style.display !== 'none';
+      d.style.display = open ? 'none' : '';
+      tr.classList.toggle('open', !open);
+    });
+  });
+  document.getElementById('insightBroker').innerHTML = 'Click a broker to see their closed deals.';
 }
 
 /* Marketing — Origin (pending: no bulk leads endpoint wired up yet) */
