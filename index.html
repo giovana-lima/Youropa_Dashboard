@@ -882,7 +882,8 @@ document.getElementById('typeFilter').addEventListener('click', (e)=>{
 /* ---------- Load data.json and boot the dashboard ---------- */
 async function boot(){
   try {
-    const res = await fetch('./data.json');
+    // cache-buster: browsers were serving a stale data.json after each refresh
+    const res = await fetch('./data.json?t=' + Date.now(), { cache: 'no-store' });
     if(!res.ok) throw new Error('HTTP ' + res.status);
     RAW_DATA = await res.json();
   } catch (err) {
