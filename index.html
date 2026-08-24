@@ -143,18 +143,39 @@ header.top{
 .mini-table td:first-child{color:var(--text-hi);font-weight:600;}
 .mini-table tr:hover td{background:rgba(226,189,122,0.05);}
 .broker-row{cursor:pointer;}
-.broker-row td:first-child::before{content:'▸';display:inline-block;width:14px;color:var(--gold);
-  transition:transform .2s ease;font-size:11px;}
-.broker-row.open td:first-child::before{transform:rotate(90deg);}
+.broker-row td:first-child{color:var(--gold);}
 .broker-row:hover td{background:rgba(226,189,122,0.08);}
-.deal-list td{padding:0 8px 12px;}
-.deal-list table{width:100%;border-collapse:collapse;font-size:12px;
-  background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);}
-.deal-list th{text-align:right;color:var(--text-low);font-weight:600;font-size:10px;
-  text-transform:uppercase;letter-spacing:0.05em;padding:7px 10px;}
-.deal-list th:first-child,.deal-list td.l{text-align:left;}
-.deal-list td{padding:6px 10px;color:var(--text-mid);text-align:right;border:0;}
-.deal-empty{color:var(--text-low);font-style:italic;padding:8px 10px;}
+
+/* ---------- Broker detail modal ---------- */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(3,3,3,0.72);backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;padding:24px;z-index:100;
+  opacity:0;pointer-events:none;transition:opacity .2s ease;
+}
+.modal-backdrop.show{opacity:1;pointer-events:auto;}
+.modal-panel{
+  background:linear-gradient(160deg,var(--card) 0%, var(--card-2) 120%);
+  border:1px solid var(--line);border-radius:var(--radius);
+  width:min(720px,100%);max-height:80vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6);transform:translateY(8px);transition:transform .2s ease;
+}
+.modal-backdrop.show .modal-panel{transform:translateY(0);}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:22px 22px 14px;border-bottom:1px solid var(--line);}
+.modal-head h3{margin:0;font-size:16px;font-weight:700;letter-spacing:-0.01em;}
+.modal-head p{margin:4px 0 0;font-size:12px;color:var(--text-low);}
+.modal-close{background:transparent;border:1px solid var(--line);color:var(--text-mid);
+  border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:16px;line-height:1;flex-shrink:0;}
+.modal-close:hover{color:var(--text-hi);border-color:var(--gold);background:rgba(226,189,122,0.08);}
+.modal-body{padding:14px 22px 22px;overflow-y:auto;}
+.modal-body table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.modal-body th{text-align:right;color:var(--text-low);font-weight:600;font-size:10.5px;
+  text-transform:uppercase;letter-spacing:0.05em;padding:8px 10px;border-bottom:1px solid var(--line);}
+.modal-body th:first-child,.modal-body td.l{text-align:left;}
+.modal-body td{padding:9px 10px;color:var(--text-mid);text-align:right;
+  border-bottom:1px solid rgba(255,255,255,0.04);}
+.modal-body tr:hover td{background:rgba(226,189,122,0.05);}
+.modal-empty{color:var(--text-low);font-style:italic;padding:20px 0;text-align:center;}
 .pending-block{min-height:120px;border:1px dashed var(--line);border-radius:var(--radius-sm);background:rgba(255,255,255,0.02);}
 .kpi-value.pending{min-height:28px;}
 
@@ -312,6 +333,19 @@ footer.foot{text-align:center;color:var(--text-low);font-size:11.5px;margin-top:
         </thead>
         <tbody id="summaryTbody"></tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="brokerModal">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="brokerModalTitle">
+      <div class="modal-head">
+        <div>
+          <h3 id="brokerModalTitle"></h3>
+          <p id="brokerModalSub"></p>
+        </div>
+        <button class="modal-close" id="brokerModalClose" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" id="brokerModalBody"></div>
     </div>
   </div>
 
@@ -550,6 +584,32 @@ function tooltipBase(){
 }
 
 /* Brokers Performance — properties managed & deals closed, by agent */
+function openBrokerModal(name, deals){
+  const back = document.getElementById('brokerModal');
+  document.getElementById('brokerModalTitle').textContent = name;
+  const total = deals.reduce((t,d)=>t+(d[5]||0),0);
+  const sales = deals.filter(d=>d[1]==='sale').length;
+  document.getElementById('brokerModalSub').textContent =
+    deals.length
+      ? `${deals.length} closed deal${deals.length>1?'s':''} · ${sales} sale${sales===1?'':'s'} · ${deals.length-sales} rental${deals.length-sales===1?'':'s'}`
+      : 'No deals closed in the selected period';
+  document.getElementById('brokerModalBody').innerHTML = deals.length
+    ? `<table><thead><tr>
+         <th>Date</th><th>Reference</th><th>Project</th><th>Type</th><th>Value</th>
+       </tr></thead><tbody>
+       ${deals.map(d=>`<tr>
+         <td class="l">${new Date(d[0]+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'})}</td>
+         <td class="l">${d[4]||'—'}</td>
+         <td class="l">${d[3]||'—'}</td>
+         <td class="l">${d[1]==='sale'?'Sale':'Rental'}</td>
+         <td>${d[5] ? fmtEUR.format(d[5]) + (d[1]==='rental'?' /mo':'') : '—'}</td>
+       </tr>`).join('')}
+       </tbody></table>`
+    : '<div class="modal-empty">No deals closed in the selected period.</div>';
+  back.classList.add('show');
+}
+function closeBrokerModal(){ document.getElementById('brokerModal').classList.remove('show'); }
+
 function renderBrokerPerformance(){
   const el = document.getElementById('brokerTable');
   const leads={}, visits={}, dealsBy={};
@@ -566,33 +626,16 @@ function renderBrokerPerformance(){
 
   el.innerHTML = `<table class="mini-table"><thead><tr>
       <th>Broker</th><th>Leads</th><th>Visits</th><th>Closed Deals</th></tr></thead><tbody>
-    ${rows.map((a,i)=>`
-      <tr class="broker-row" data-i="${i}">
+    ${rows.map((a,i)=>`<tr class="broker-row" data-i="${i}" title="See ${a.name}'s closed deals">
         <td>${a.name}</td><td>${fmtNum.format(a.leads)}</td>
         <td>${fmtNum.format(a.visits)}</td><td>${fmtNum.format(a.deals.length)}</td>
-      </tr>
-      <tr class="deal-list" data-for="${i}" style="display:none"><td colspan="4">
-        ${a.deals.length ? `<table><thead><tr>
-            <th>Date</th><th>Reference</th><th>Project</th><th>Type</th><th>Value</th>
-          </tr></thead><tbody>
-          ${a.deals.map(d=>`<tr>
-            <td class="l">${new Date(d[0]+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'})}</td>
-            <td class="l">${d[4]||'—'}</td>
-            <td class="l">${d[3]||'—'}</td>
-            <td class="l">${d[1]==='sale'?'Sale':'Rental'}</td>
-            <td>${d[5] ? fmtEUR.format(d[5]) + (d[1]==='rental'?' /mo':'') : '—'}</td>
-          </tr>`).join('')}
-          </tbody></table>`
-          : '<div class="deal-empty">No deals closed in the selected period.</div>'}
-      </td></tr>`).join('')}
+      </tr>`).join('')}
     </tbody></table>`;
 
   el.querySelectorAll('.broker-row').forEach(tr=>{
     tr.addEventListener('click', ()=>{
-      const d = el.querySelector(`.deal-list[data-for="${tr.dataset.i}"]`);
-      const open = d.style.display !== 'none';
-      d.style.display = open ? 'none' : '';
-      tr.classList.toggle('open', !open);
+      const a = rows[Number(tr.dataset.i)];
+      openBrokerModal(a.name, a.deals);
     });
   });
   document.getElementById('insightBroker').innerHTML = 'Click a broker to see their closed deals.';
@@ -813,6 +856,12 @@ function applyRange(){
   state.to   = f<=t ? t : f;
   renderAll();
 }
+document.getElementById('brokerModalClose').addEventListener('click', closeBrokerModal);
+document.getElementById('brokerModal').addEventListener('click', (e)=>{
+  if(e.target.id === 'brokerModal') closeBrokerModal();   // click outside the panel
+});
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeBrokerModal(); });
+
 document.getElementById('dateFrom').addEventListener('change', applyRange);
 document.getElementById('dateTo').addEventListener('change', applyRange);
 document.getElementById('resetRange').addEventListener('click', ()=>{
