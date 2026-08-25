@@ -1,50 +1,55 @@
 data,mes,hora,comercial,tipo,subtipo,imovel_ref,id_oportunidade,cancelada,projeto
-2026-06-19,2026-06,14:30,Teresa Archer,Visita,Presencial Visita t,,,0,
-2026-06-19,2026-06,15:00,Sandra Dantas,1ª Visita,arrendamento Visita,34869552,24,0,Douro Nobilis
-2026-06-30,2026-06,11:30,Sandra Dantas,1ª Visita,venda Visita,35018926,79,0,
-2026-07-07,2026-07,15:00,Sandra Dantas,Visita,Presencial Visita,,,0,
+2026-06-19,2026-06,14:30,Teresa Archer,Visita,,,,0,
+2026-06-19,2026-06,15:00,Sandra Dantas,1ª Visita,,34869552,24,0,Douro Nobilis
+2026-06-30,2026-06,11:30,Sandra Dantas,1ª Visita,,35018926,79,0,
+2026-07-07,2026-07,15:00,Sandra Dantas,Visita,,,,0,
 2026-07-07,2026-07,16:00,Sandra Dantas,Visita,,,,0,
-2026-07-10,2026-07,14:00,Sandra Dantas,Visita,Presencial Visita ao apartamento do Tiago Rua Br,,,0,
+2026-07-10,2026-07,14:00,Sandra Dantas,Visita,,,,0,
 2026-07-13,2026-07,10:00,Sandra Dantas,Visita,,,,0,
-2026-07-14,2026-07,14:30,Sandra Dantas,Visita,Presencial,,,0,
+2026-07-14,2026-07,14:30,Sandra Dantas,Visita,,,,0,
 2026-07-15,2026-07,10:00,Sandra Dantas,Visita,,,,0,
 2026-07-15,2026-07,14:00,Sandra Dantas,Visita,,,,0,
-2026-07-16,2026-07,11:15,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00028,179,0,Jardins da Seara
-2026-07-17,2026-07,12:50,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00019,264,0,
+2026-07-16,2026-07,11:15,Eugénia Miranda,1ª Visita,,YR00028,179,0,Jardins da Seara
+2026-07-17,2026-07,12:50,Eugénia Miranda,1ª Visita,,YR00019,264,0,
 2026-07-22,2026-07,15:00,Sandra Dantas,Visita,,,,0,
-2026-07-28,2026-07,9:00,Sandra Dantas,Visita,Presencial Vaiad visita as,,,0,
-2026-07-29,2026-07,11:00,Teresa Archer,1ª Visita,arrendamento Visita,YR00028,280,0,Jardins da Seara
-2026-07-29,2026-07,16:00,Sandra Dantas,Visita,Presencial Visita aos T,,,0,
+2026-07-28,2026-07,9:00,Sandra Dantas,Visita,,,,0,
+2026-07-29,2026-07,11:00,Teresa Archer,1ª Visita,,YR00028,280,0,Jardins da Seara
+2026-07-29,2026-07,16:00,Sandra Dantas,Visita,,,,0,
 2026-07-29,2026-07,17:00,Sandra Dantas,Visita,,,,0,
-2026-07-29,2026-07,9:00,Sandra Dantas,Visita,Presencial visita,,,0,
-2026-07-31,2026-07,17:30,Eugénia Miranda,Visita,Presencial Visita,4,293,0,
-2026-08-03,2026-08,10:30,Sandra Dantas,Visita,Presencial visita as,,,0,
-2026-08-03,2026-08,16:00,Sandra Dantas,Visita,Presencial Visita,YR00028,300,0,Jardins da Seara
+2026-07-29,2026-07,9:00,Sandra Dantas,Visita,,,,0,
+2026-07-31,2026-07,17:30,Eugénia Miranda,Visita,,4,293,0,
+2026-08-03,2026-08,10:30,Sandra Dantas,Visita,,,,0,
+2026-08-03,2026-08,16:00,Sandra Dantas,Visita,,YR00028,300,0,Jardins da Seara
 2026-08-04,2026-08,10:00,Sandra Dantas,Visita,,,,0,
-2026-08-13,2026-08,11:30,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00059,609,0,Magnolia
-2026-08-13,2026-08,14:00,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00042,674,0,Jardins do Marquês
-2026-08-13,2026-08,14:00,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00043,674,0,Jardins do Marquês
-2026-08-13,2026-08,19:00,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00042,672,0,Jardins do Marquês
-2026-08-13,2026-08,19:00,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00043,672,0,Jardins do Marquês
-2026-08-14,2026-08,14:30,Sandra Dantas,Visita,Presencial Visita com daniel,,,0,
-2026-08-14,2026-08,15:00,Sandra Dantas,1ª Visita,arrendamento Visita,YR00009,572,0,Douro Nobilis
-2026-08-17,2026-08,10:00,Sandra Dantas,1ª Visita,arrendamento Visita,YR00043,725,0,Jardins do Marquês
-2026-08-17,2026-08,12:00,Sandra Dantas,1ª Visita,arrendamento Visita,YR00011,500,0,White Tower
-2026-08-17,2026-08,14:30,Sandra Dantas,Visita,Presencial Vaid visita,,,0,
-2026-08-17,2026-08,14:30,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00005,732,0,Prime Living
-2026-08-17,2026-08,14:30,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00054,732,0,Prime Living
-2026-08-17,2026-08,14:30,Eugénia Miranda,1ª Visita,arrendamento Visita,YR00058,732,0,Prime Living
-2026-08-17,2026-08,17:30,Teresa Archer,1ª Visita,arrendamento Visita,YR00066,709,0,Riverline
-2026-08-17,2026-08,23:00,Sandra Dantas,Visita,Jardins da Seara Visita,YR00022,730,0,Jardins da Seara
+2026-08-13,2026-08,11:30,Eugénia Miranda,1ª Visita,,YR00059,609,0,Magnolia
+2026-08-13,2026-08,14:00,Eugénia Miranda,1ª Visita,,YR00042,674,0,Jardins do Marquês
+2026-08-13,2026-08,14:00,Eugénia Miranda,1ª Visita,,YR00043,674,0,Jardins do Marquês
+2026-08-13,2026-08,19:00,Eugénia Miranda,1ª Visita,,YR00042,672,0,Jardins do Marquês
+2026-08-13,2026-08,19:00,Eugénia Miranda,1ª Visita,,YR00043,672,0,Jardins do Marquês
+2026-08-14,2026-08,14:30,Sandra Dantas,Visita,,,,0,
+2026-08-14,2026-08,15:00,Sandra Dantas,1ª Visita,,YR00009,572,0,Douro Nobilis
+2026-08-17,2026-08,10:00,Sandra Dantas,1ª Visita,,YR00043,725,0,Jardins do Marquês
+2026-08-17,2026-08,12:00,Sandra Dantas,1ª Visita,,YR00011,500,0,White Tower
+2026-08-17,2026-08,14:30,Sandra Dantas,Visita,,,,0,
+2026-08-17,2026-08,14:30,Eugénia Miranda,1ª Visita,,YR00005,732,0,Prime Living
+2026-08-17,2026-08,14:30,Eugénia Miranda,1ª Visita,,YR00054,732,0,Prime Living
+2026-08-17,2026-08,14:30,Eugénia Miranda,1ª Visita,,YR00058,732,0,Prime Living
+2026-08-17,2026-08,17:30,Teresa Archer,1ª Visita,,YR00066,709,0,Riverline
+2026-08-17,2026-08,23:00,Sandra Dantas,Visita,,YR00022,730,0,Jardins da Seara
 2026-08-18,2026-08,10:00,Sandra Dantas,Visita,,34246326,777,0,
-2026-08-18,2026-08,10:00,Joana Côrte-Real,1ª Visita,arrendamento Visita,35030596,745,0,Riverline
-2026-08-18,2026-08,10:00,Sandra Dantas,1ª Visita,venda Visita,YR00012,735,0,Jardins da Seara
-2026-08-18,2026-08,10:00,Sandra Dantas,1ª Visita,arrendamento Visita,YR00013,735,0,
-2026-08-18,2026-08,18:00,Sandra Dantas,1ª Visita,venda Visita,34246326,777,0,
-2026-08-18,2026-08,9:30,Sandra Dantas,Visita,Jardins da Seara Visita,YR00020,322,0,Jardins da Seara
-2026-08-19,2026-08,9:30,Sandra Dantas,1ª Visita,venda Visita,YR00038,777,0,Green Park
-2026-08-20,2026-08,15:30,Teresa Archer,1ª Visita,arrendamento Visita,YR00021,805,0,Jardins da Seara
-2026-08-20,2026-08,16:00,Teresa Archer,1ª Visita,arrendamento Visita,YR00020,805,0,Jardins da Seara
-2026-08-20,2026-08,17:30,Sandra Dantas,1ª Visita,arrendamento Visita,YR00030,322,0,Jardins da Seara
-2026-08-20,2026-08,18:30,Sandra Dantas,1ª Visita,venda Visita,YR00027,807,0,Prime Living
-2026-08-25,2026-08,17:00,Teresa Archer,1ª Visita,arrendamento Visita,35019419,747,0,
+2026-08-18,2026-08,10:00,Joana Côrte-Real,1ª Visita,,35030596,745,0,Riverline
+2026-08-18,2026-08,10:00,Sandra Dantas,1ª Visita,,YR00012,735,0,Jardins da Seara
+2026-08-18,2026-08,10:00,Sandra Dantas,1ª Visita,,YR00013,735,0,Jardins da Seara
+2026-08-18,2026-08,18:00,Sandra Dantas,1ª Visita,,34246326,777,0,
+2026-08-18,2026-08,9:30,Sandra Dantas,Visita,,YR00020,322,0,Jardins da Seara
+2026-08-19,2026-08,9:30,Sandra Dantas,1ª Visita,,YR00038,777,0,Green Park
+2026-08-20,2026-08,15:30,Teresa Archer,1ª Visita,,YR00021,805,0,Jardins da Seara
+2026-08-20,2026-08,16:00,Teresa Archer,1ª Visita,,YR00020,805,0,Jardins da Seara
+2026-08-20,2026-08,17:30,Sandra Dantas,1ª Visita,,YR00030,322,0,Jardins da Seara
+2026-08-20,2026-08,18:30,Sandra Dantas,1ª Visita,,YR00027,807,0,Prime Living
+2026-08-21,2026-08,14:00,Teresa Archer,1ª Visita,,YR00020,836,0,Jardins da Seara
+2026-08-21,2026-08,14:30,Teresa Archer,1ª Visita,,YR00021,836,0,Jardins da Seara
+2026-08-21,2026-08,17:30,Teresa Archer,1ª Visita,,YR00055,805,0,Prime Living
+2026-08-24,2026-08,14:00,Teresa Archer,1ª Visita,,35030596,863,0,Riverline
+2026-08-25,2026-08,17:00,Teresa Archer,1ª Visita,,35019419,747,0,RIverline
+2026-08-26,2026-08,18:00,Teresa Archer,1ª Visita,,YR00001,865,0,Douro Nobilis

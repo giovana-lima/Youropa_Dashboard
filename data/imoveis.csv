@@ -147,7 +147,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29412411,34738986,,Vender,Nao Disponivel,5,154000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
 29412410,34746785,,Arrendar,Nao Disponivel,5,,1050,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
 29412409,34770598,,Vender,Nao Disponivel,5,370000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
-29412368,34775273,,Vender,Reservado,7,280000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
+29412368,34775273,,Vender,Vendido,3,280000,,,0.0,,2026-06-12,218514,218514,2026-08-22,Eugénia Miranda,2026-06-19,sim
 29412407,34775289,,Vender,Nao Disponivel,5,220860,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
 29412378,34780653,,Vender,Disponivel,1,335000,,,0.0,,2026-06-12,218514,218514,,,,sim
 29412406,34794953,,Arrendar,Nao Disponivel,5,,2000,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
@@ -175,7 +175,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29412372,34924224,,Vender,Reservado,7,299000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
 29412377,34932610,,Vender,Reservado,7,330000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
 29412366,34944151,Douro Nobilis,Arrendar,Arrendado,2,,1300,,0.0,,2026-06-12,218514,218514,2026-06-19,Joana Côrte-Real,,sim
-29412370,34957181,Jardins da Seara,Vender,Disponivel,1,300000,,,0.0,,2026-06-12,218514,218514,,,2026-08-20,sim
+29412370,34957181,Jardins da Seara,Vender,Reservado,7,300000,,,0.0,,2026-06-12,218514,218514,,,2026-08-20,sim
 29412389,34964759,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
 29412388,34964776,,Vender,Disponivel,1,490000,,,0.0,,2026-06-12,218514,218514,,,,sim
 29412387,34971224,,Vender,Nao Disponivel,5,310000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
@@ -187,15 +187,16 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29412383,35014103,,Vender,Nao Disponivel,5,235000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
 29412373,35018926,,Arrendar,Arrendado,2,,1100,,0.0,,2026-06-12,218514,218514,2026-07-27,Sandra Dantas,2026-07-01,sim
 29412354,35019309,Riverline,Arrendar,Arquivado,23,,4500,,0.0,,2026-06-12,218514,218514,,,,sim
+29412352,35019419,RIverline,Arrendar,Disponivel,1,,4200,,0.0,,2026-06-12,218514,218514,,,,sim
 29412381,35025094,,Vender,Nao Disponivel,5,245000,,,0.0,,2026-06-12,218514,218514,,,,nao_aplicavel
 29412363,35030571,,Vender,Reservado,7,245000,,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
 29412360,35030596,Riverline,Arrendar,Disponivel,1,,2100,,0.0,,2026-06-12,218514,218514,,,2026-06-19,sim
 29412353,35033378,Riverline,Vender,Arquivado,23,750000,,,0.0,,2026-06-12,218514,218514,,,,sim
 29412351,35040352,Prime Living,Arrendar,Arrendado,2,,1200,,0.0,,2026-06-12,218514,218514,2026-07-11,Joana Côrte-Real,,sim
 29412357,35040552,Douro Nobilis,Arrendar,Disponivel,1,,1350,,0.0,,2026-06-12,218514,218514,,,,sim
-29412359,35055141,Riverline,Arrendar,Com Proposta,18,,1750,,0.0,,2026-06-12,218514,218514,,,,sim
-29412349,35073131,White Tower,Arrendar,Reservado,7,,1150,,0.0,,2026-06-12,218514,218514,2026-08-20,Teresa Archer,2026-07-24,sim
-29412375,4.2,Riverline,Arrendar,Disponivel,1,,1400,,0.0,,2026-06-12,218514,218514,,,,sim
+29412359,35055141,Riverline,Arrendar,Arrendado,2,,1700,,0.0,,2026-06-12,218514,218514,2026-08-21,Teresa Archer,,sim
+29412349,35073131,White Tower,Arrendar,Arrendado,2,,1050,,0.0,,2026-06-12,218514,218514,2026-08-21,Teresa Archer,2026-07-24,sim
+29412375,4.2,Riverline,Arrendar,Nao Disponivel,5,,1400,,0.0,,2026-06-12,218514,218514,,,,sim
 29412376,4.7,Riverline,Arrendar,Disponivel,1,,1300,,0.0,,2026-06-12,218514,218514,,,,sim
 29475558,5.1,,Vender,Eliminado,36,539000,,,0.0,2026-06-20,2026-06-20,218514,218514,,,,sim
 29442092,534534,,Arrendar,Disponivel,1,,1100,,0.0,2026-06-17,2026-06-17,218514,218514,,,,sim
@@ -204,6 +205,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29461811,BK,,Vender,Eliminado,36,288500,,11540,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
 29462687,BL,,Vender,Vendido por Outra Agencia,11,197500,,7900,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
 29463032,BN,,Vender,Vendido por Outra Agencia,11,205000,,8200,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
+29463077,BS,,Vender,Vendido por Outra Agencia,11,288500,,11540,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
 29463200,BS.,,Vender,Vendido por Outra Agencia,11,288500,,11540,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
 29465264,BT,,Vender,Eliminado,36,285500,,11420,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
 29465299,CE,,Vender,Eliminado,36,293000,,11720,0.0,2026-06-19,2026-06-18,216132,216132,,,,sim
@@ -224,29 +226,31 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29581131,YR00001,Douro Nobilis,Arrendar,Disponivel,1,,1000,,0.0,2026-07-02,2026-06-12,218514,218514,,,,sim
 29581225,YR00002,Douro Nobilis,Arrendar,Disponivel,1,,1250,,0.0,2026-07-02,2026-06-12,218514,218514,,,,sim
 29594643,YR00003,Prime Living,Arrendar,Arrendado,2,,1150,,0.0,2026-07-04,2026-06-23,218514,218514,2026-07-10,Sandra Dantas,2026-07-08,sim
-29594644,YR00004,Prime Living,Arrendar,Com Proposta,18,,1000,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-20,Teresa Archer,,sim
+29594644,YR00004,Prime Living,Arrendar,Arrendado,2,,1000,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-21,Teresa Archer,,sim
 29594645,YR00005,Prime Living,Arrendar,Disponivel,1,,1399,,0.0,2026-07-04,2026-06-23,218514,218514,,,,sim
-29594646,YR00006,Prime Living,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-20,Teresa Archer,2026-07-30,sim
+29594646,YR00006,Prime Living,Arrendar,Arrendado,2,,1150,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-21,Teresa Archer,2026-07-31,sim
 29594647,YR00007,Prime Living,Arrendar,Arrendado,2,,900,,0.0,2026-07-04,2026-06-23,218514,218514,2026-07-21,Eugénia Miranda,2026-07-09,sim
 29594755,YR00008,Prime Living,Arrendar,Arrendado,2,,1000,,0.0,2026-07-04,2026-06-23,218514,218514,2026-08-12,Eugénia Miranda,,sim
 29597723,YR00009,Douro Nobilis,Arrendar,Disponivel,1,,1250,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
 29597724,YR00010,,Arrendar,Apenas Follow-up,9,,10,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
 29609419,YR00011,White Tower,Arrendar,Disponivel,1,,1200,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
 29609616,YR00012,Jardins da Seara,Arrendar,Disponivel,1,,850,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
+29609617,YR00013,Jardins da Seara,Arrendar,Com Proposta,18,,850,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
 29609673,YR00014,Jardins da Seara,Arrendar,Disponivel,1,,1000,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
 29609674,YR00015,Jardins da Seara,Arrendar,Disponivel,1,,950,,0.0,2026-07-06,2026-06-12,218514,218514,,,,sim
 29609793,YR00016,Santos Pousada,Arrendar,Disponivel,1,,1500,,0.0,2026-07-06,2026-07-06,218514,218514,,,,sim
+29610346,YR00017,Oporto Luxury,Vender,Disponivel,1,290000,,11600,0.0,2026-07-06,2026-07-06,218514,218514,,,,sim
 29619107,YR00018,Douro Nobilis,Arrendar,Eliminado,36,,1350,,0.0,2026-07-07,2026-06-12,218514,218514,,,2026-07-07,sim
 29622188,YR00019,,Arrendar,Nao Disponivel,5,,1100,,0.0,2026-07-07,2026-07-07,218516,218516,,,,nao_aplicavel
-29644773,YR00020,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
+29644773,YR00020,Jardins da Seara,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
 29644774,YR00021,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
 29644775,YR00022,Jardins da Seara,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
-29644776,YR00023,Jardins da Seara,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,2026-08-20,Teresa Archer,,sim
+29644776,YR00023,Jardins da Seara,Arrendar,Arrendado,2,,1130,,0.0,2026-07-09,2026-06-12,218514,218514,2026-08-21,Teresa Archer,,sim
 29644777,YR00024,Jardins da Seara,Arrendar,Arrendado,2,,1000,,0.0,2026-07-09,2026-06-12,218514,218514,2026-07-28,Eugénia Miranda,2026-07-28,sim
 29645596,YR00025,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
 29645697,YR00026,Jardins da Seara,Vender,Vendido,3,315000,,15750,0.0,2026-07-09,2026-07-09,218514,218514,2026-08-18,Soraia Sousa,2026-08-11,sim
 29645847,YR00027,Prime Living,Vender,Disponivel,1,327000,,16350,0.0,2026-07-09,2026-07-09,218514,218514,,,,sim
-29656824,YR00028,Jardins da Seara,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-08-20,Teresa Archer,,sim
+29656824,YR00028,Jardins da Seara,Arrendar,Arrendado,2,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-08-21,Teresa Archer,,sim
 29656825,YR00029,Jardins da Seara,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
 29656826,YR00030,Jardins da Seara,Arrendar,Disponivel,1,,1300,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
 29656827,YR00031,Jardins da Seara,Arrendar,Arrendado,2,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-07-21,Eugénia Miranda,,sim
@@ -255,13 +259,14 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29716025,YR00034,Riverline,Arrendar,Disponivel,1,,2290,,0.0,2026-07-16,2026-06-12,218514,218514,,,2026-06-19,sim
 29716231,YR00035,Riverline,Arrendar,Disponivel,1,,2200,,0.0,2026-07-16,2026-06-12,218514,218514,,,2026-06-19,sim
 29772395,YR00036,Jardins do Marquês,Vender,Disponivel,1,415000,,16600,0.0,2026-07-22,2026-07-22,218514,218514,,,,sim
+29805301,YR00037,Green Park,Vender,Disponivel,1,235000,,8225,0.0,2026-07-27,2026-07-27,218514,218514,,,,sim
 29809239,YR00038,Green Park,Vender,Disponivel,1,240000,,8400,0.0,2026-07-28,2026-07-27,218514,218514,,,,sim
 29809878,YR00039,Celta Residences,Vender,Vendido por Outra Agencia,11,335000,,11725,0.0,2026-07-28,2026-07-28,218514,218514,,,,sim
 29810578,YR00040,Haizea,Vender,Disponivel,1,290000,,10150,0.0,2026-07-28,2026-07-28,218514,218514,,,,sim
-29828256,YR00041,Jardins do Marquês,Arrendar,Disponivel,1,,1000,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
+29828256,YR00041,Jardins do Marquês,Arrendar,Disponivel,1,,950,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
 29828353,YR00042,Jardins do Marquês,Arrendar,Disponivel,1,,1300,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
 29828354,YR00043,Jardins do Marquês,Arrendar,Disponivel,1,,1500,,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
-29829013,YR00044,Jardins da Seara,Vender,Disponivel,1,330000,,13200,0.0,2026-07-30,2026-06-12,218514,218514,,,,sim
+29829013,YR00044,Jardins da Seara,Vender,Com Proposta,18,330000,,13200,0.0,2026-07-30,2026-06-12,218514,218514,,,,sim
 29830337,YR00045,Jardins do Marquês,Vender,Eliminado,36,415000,,16600,0.0,2026-07-30,2026-07-22,218514,218514,,,,sim
 29830344,YR00046,Jardins do Marquês,Vender,Disponivel,1,235000,,9400,0.0,2026-07-30,2026-07-30,218514,218514,,,,sim
 29843912,YR00047,Jardins do Marquês,Vender,Disponivel,1,370000,,14800,0.0,2026-07-31,2026-07-30,218514,218514,,,,sim
@@ -270,7 +275,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29851165,YR00050,,Arrendar,Eliminado,36,,1700,,0.0,2026-08-01,2026-08-01,218514,218514,,,,sim
 29851182,YR00051,,Arrendar,Nao Disponivel,5,,1700,,0.0,2026-08-01,2026-08-01,218514,218514,,,,nao_aplicavel
 29851183,YR00052,,Arrendar,Nao Disponivel,5,,3200,,0.0,2026-08-01,2026-08-01,218514,218514,,,,nao_aplicavel
-29851214,YR00053,Prime Living,Arrendar,Com Proposta,18,,1000,,0.0,2026-08-01,2026-06-23,218514,218514,,,,sim
+29851214,YR00053,Prime Living,Arrendar,Reservado,7,,1000,,0.0,2026-08-01,2026-06-23,218514,218514,,,2026-08-21,sim
 29886930,YR00054,Prime Living,Arrendar,Disponivel,1,,1350,,0.0,2026-08-07,2026-06-23,218514,218514,2026-07-30,Giovana Lima,2026-07-30,sim
 29886931,YR00055,Prime Living,Arrendar,Disponivel,1,,1350,,0.0,2026-08-07,2026-06-23,218514,218514,2026-07-30,Giovana Lima,2026-07-30,sim
 29888966,YR00056,Jardins da Seara,Arrendar,Arrendado por Outra Agencia,10,,1300,,0.0,2026-08-07,2026-06-12,218514,218514,,,,sim
@@ -283,5 +288,17 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29949571,YR00063,Riverline,Vender,Disponivel,1,535000,,,0.0,2026-08-14,2026-06-12,218514,218514,,,2026-06-19,sim
 29965679,YR00064,Jardins da Seara,Vender,Disponivel,1,300000,,12000,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
 29965680,YR00065,Jardins da Seara,Vender,Disponivel,1,330000,,16500,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
-29965951,YR00066,Riverline,Arrendar,Disponivel,1,,1850,,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
-29966466,YR00068,Vintage Garden,Vender,Por Validar,8,370000,,,0.0,2026-08-17,2026-08-17,218514,218514,,,,sim
+29965951,YR00066,Riverline,Arrendar,Disponivel,1,,1700,,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
+29966466,YR00068,Vintage Garden,Vender,Por Validar,8,298999,,,0.0,2026-08-17,2026-08-17,218514,218514,,,,sim
+30021547,YR00069,Riverline,Arrendar,Disponivel,1,,1700,,0.0,2026-08-21,2026-06-12,218514,218514,,,,sim
+30021610,YR00070,Jardins do Marquês,Arrendar,Com Proposta,18,,1400,,0.0,2026-08-21,2026-07-30,218514,218514,,,,sim
+30028493,YR00071,Vintage Garden,Vender,Por Validar,8,299000,,,0.0,2026-08-24,2026-08-17,218514,218514,,,,sim
+30028495,YR00072,Vintage Garden,Vender,Por Validar,8,314000,,,0.0,2026-08-24,2026-08-17,218514,218514,,,,sim
+30028496,YR00073,Vintage Garden,Vender,Por Validar,8,370000,,,0.0,2026-08-24,2026-08-17,218514,218514,,,,sim
+30028497,YR00074,Vintage Garden,Vender,Por Validar,8,360000,,,0.0,2026-08-24,2026-08-17,218514,218514,,,,sim
+30028498,YR00075,Vintage Garden,Vender,Por Validar,8,285000,,,0.0,2026-08-24,2026-08-17,218514,218514,,,,sim
+30038966,YR00076,Vintage Garden,Vender,Por Validar,8,304000,,,0.0,2026-08-24,2026-08-17,218514,218514,,,,sim
+30038996,YR00077,Jardins do Marquês,Arrendar,Disponivel,1,,1100,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim
+30038997,YR00078,Jardins do Marquês,Arrendar,Disponivel,1,,1000,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim
+30038998,YR00079,,Arrendar,Disponivel,1,,950,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim
+30038999,YR00080,Jardins do Marquês,Arrendar,Disponivel,1,,1000,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim

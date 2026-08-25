@@ -5,6 +5,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 6,40498837,2026-06-15,2026-06,arrendamento,T2,Joana,Cliente do Portal,idealista,35073131,0,White Tower
 7,40502066,2026-06-15,2026-06,arrendamento,T2,Eugénia,Cliente do Portal,idealista,35073131,0,White Tower
 8,40507123,2026-06-16,2026-06,arrendamento,T1,Joana,Cliente do Portal,idealista,"34878517,34869552",0,Jardins da Seara;Douro Nobilis
+9,40513307,2026-06-16,2026-06,venda,T2,Sandra,À procura,,,0,
 10,40516024,2026-06-16,2026-06,arrendamento,T2,Sandra,Cliente do Portal,idealista,34878363,0,Jardins da Seara
 12,40528242,2026-06-17,2026-06,arrendamento,T2,Eugénia,Cliente do Portal,imovirtual.com,34878363,0,Jardins da Seara
 13,40530643,2026-06-17,2026-06,arrendamento,T1,Joana,Cliente do Portal,imovirtual.com,34878517,0,Jardins da Seara
@@ -74,8 +75,8 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 113,40804525,2026-07-06,2026-07,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,"34878450,35040352,YR00022,35030596,YR00006",0,Jardins da Seara;Prime Living;Riverline
 114,40804568,2026-07-06,2026-07,arrendamento,T2,Joana,Cliente do Portal,idealista.com,35073131,0,White Tower
 115,40811037,2026-07-06,2026-07,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,34878450,0,Jardins da Seara
-117,40831302,2026-07-06,2026-07,venda,T1,Eugénia,Cliente do Portal,idealista.com,YR00017,0,
-119,40833730,2026-07-06,2026-07,venda,T1,Joana,Cliente do Portal,idealista.com,YR00017,0,
+117,40831302,2026-07-06,2026-07,venda,T1,Eugénia,Cliente do Portal,idealista.com,YR00017,0,Oporto Luxury
+119,40833730,2026-07-06,2026-07,venda,T1,Joana,Cliente do Portal,idealista.com,YR00017,0,Oporto Luxury
 120,40835119,2026-07-07,2026-07,arrendamento,T2,Eugénia,Cliente do Portal,imovirtual.com,YR00016,0,Santos Pousada
 121,40835312,2026-07-07,2026-07,arrendamento,T1,Joana,Cliente do Portal,idealista.com,N1.6,0,Prime Living
 122,40842333,2026-07-07,2026-07,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,"N1.6,34878517",0,Prime Living;Jardins da Seara
@@ -88,7 +89,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 131,40847573,2026-07-07,2026-07,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,"N1.6,YR00024,34878517,YR00004",0,Prime Living;Jardins da Seara
 134,40851694,2026-07-08,2026-07,arrendamento,T1,Joana,Cliente do Portal,imovirtual.com,N1.6,0,Prime Living
 135,40854781,2026-07-08,2026-07,arrendamento,T3,Eugénia,Cliente do Portal,imovirtual.com,YR00019,0,
-136,40862458,2026-07-08,2026-07,venda,T1,Sandra,Cliente do Portal,idealista.com,YR00017,0,
+136,40862458,2026-07-08,2026-07,venda,T1,Sandra,Cliente do Portal,idealista.com,YR00017,0,Oporto Luxury
 137,40862673,2026-07-08,2026-07,arrendamento,T3,Eugénia,Cliente do Portal,idealista.com,"YR00019,YR00011",0,White Tower
 138,40862789,2026-07-08,2026-07,arrendamento,T1,Joana,Cliente do Portal,idealista.com,"34878517,N1.6,YR00013,YR00062,YR00001,34869552",0,Jardins da Seara;Prime Living;Douro Nobilis
 139,40866686,2026-07-08,2026-07,arrendamento,T2,Sandra,Cliente do Portal,imovirtual.com,34878363,0,Jardins da Seara
@@ -328,8 +329,8 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 452,41415710,2026-08-04,2026-08,arrendamento,T2,Joana,Cliente do Portal,idealista.com,"YR00043,YR00016",0,Jardins do Marquês;Santos Pousada
 453,41415781,2026-08-04,2026-08,arrendamento,T2,Joana,Cliente do Portal,idealista.com,YR00006,0,Prime Living
 454,41415783,2026-08-04,2026-08,arrendamento,T2,Sandra,Cliente do Portal,imovirtual.com,"YR00006,YR00024,YR00029",0,Prime Living;Jardins da Seara
-456,41415830,2026-08-04,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,
-457,41415831,2026-08-04,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00013,0,
+456,41415830,2026-08-04,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+457,41415831,2026-08-04,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
 460,41415921,2026-08-04,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,34878517,0,Jardins da Seara
 461,41415923,2026-08-04,2026-08,arrendamento,T2,Joana,Cliente do Portal,imovirtual.com,YR00006,0,Prime Living
 462,41415994,2026-08-04,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
@@ -347,7 +348,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 476,41428145,2026-08-04,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,"YR00004,4.7",0,Prime Living;Riverline
 477,41431109,2026-08-05,2026-08,venda,T2,Eugénia,Cliente do Portal,idealista.com,YR00027,0,Prime Living
 479,41444725,2026-08-05,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00006,0,Prime Living
-480,41444949,2026-08-05,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00013,0,
+480,41444949,2026-08-05,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
 481,41445486,2026-08-05,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 482,41445502,2026-08-05,2026-08,arrendamento,T2,Joana,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
 483,41445510,2026-08-05,2026-08,arrendamento,T2,Sandra,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
@@ -368,7 +369,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 500,41453031,2026-08-06,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,"YR00023,YR00011",0,Jardins da Seara;White Tower
 501,41453083,2026-08-06,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00006,0,Prime Living
 502,41456446,2026-08-06,2026-08,arrendamento,T2,Joana,Cliente do Portal,idealista.com,YR00011,0,White Tower
-505,41461423,2026-08-06,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,"YR00013,YR00006",0,Prime Living
+505,41461423,2026-08-06,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,"YR00013,YR00006",0,Jardins da Seara;Prime Living
 506,41463335,2026-08-06,2026-08,arrendamento,T3,Joana,Cliente do Portal,idealista.com,35030596,0,Riverline
 507,41463475,2026-08-06,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,YR00006,0,Prime Living
 508,41464033,2026-08-07,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,idealista.com,YR00048,0,
@@ -461,7 +462,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 610,41493256,2026-08-10,2026-08,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,YR00059,0,Magnolia
 612,41493259,2026-08-10,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,idealista.com,YR00048,0,
 613,41494447,2026-08-10,2026-08,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,YR00059,0,Magnolia
-615,41495873,2026-08-10,2026-08,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,"YR00059,YR00001,YR00013",0,Magnolia;Douro Nobilis
+615,41495873,2026-08-10,2026-08,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,"YR00059,YR00001,YR00013",0,Magnolia;Douro Nobilis;Jardins da Seara
 616,41495985,2026-08-10,2026-08,venda,T2,Eugénia,Cliente do Portal,idealista.com,34957181,0,Jardins da Seara
 619,41498019,2026-08-10,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,idealista.com,YR00059,0,Magnolia
 620,41499919,2026-08-10,2026-08,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,YR00059,0,Magnolia
@@ -530,7 +531,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 692,41526522,2026-08-12,2026-08,arrendamento,T3,Sandra,Cliente do Portal,idealista.com,YR00056,0,Jardins da Seara
 693,41527217,2026-08-12,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
 694,41527221,2026-08-12,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
-696,41527506,2026-08-12,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,"YR00013,YR00059",0,Magnolia
+696,41527506,2026-08-12,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,"YR00013,YR00059",0,Jardins da Seara;Magnolia
 697,41527775,2026-08-12,2026-08,venda,T1,Sandra,Cliente do Portal,idealista.com,YR00061,0,
 698,41528090,2026-08-12,2026-08,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,YR00059,0,Magnolia
 700,41529938,2026-08-12,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,34869552,0,Douro Nobilis
@@ -555,14 +556,13 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 722,41538323,2026-08-13,2026-08,arrendamento,T2,Sandra,Cliente do Portal,Website,YR00043,0,Jardins do Marquês
 723,41539283,2026-08-13,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,idealista.com,YR00048,0,
 724,41539284,2026-08-13,2026-08,arrendamento,T2,Joana,Cliente do Portal,idealista.com,YR00006,0,Prime Living
-725,41539519,2026-08-13,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,YR00043,0,Jardins do Marquês
 727,41540128,2026-08-13,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
 728,41540199,2026-08-13,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 729,41540336,2026-08-13,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
 730,41541130,2026-08-13,2026-08,arrendamento,T3,Sandra,Cliente do Portal,idealista.com,YR00028,0,Jardins da Seara
 732,41541854,2026-08-13,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00006,0,Prime Living
 734,41541907,2026-08-13,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00006,0,Prime Living
-735,41542054,2026-08-14,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,
+735,41542054,2026-08-14,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
 737,41543844,2026-08-14,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
 738,41544883,2026-08-14,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
 739,41545177,2026-08-14,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
@@ -572,7 +572,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 743,41547438,2026-08-14,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 744,41547843,2026-08-14,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 745,41548047,2026-08-14,2026-08,arrendamento,T3,Joana,Cliente do Portal,idealista.com,35030596,0,Riverline
-747,41548050,2026-08-14,2026-08,arrendamento,T3,Teresa,Cliente do Portal,idealista.com,35019419,1,
+747,41548050,2026-08-14,2026-08,arrendamento,T3,Teresa,Cliente do Portal,idealista.com,35019419,1,RIverline
 748,41548220,2026-08-14,2026-08,venda,T2,Eugénia,Cliente do Portal,idealista.com,YR00027,0,Prime Living
 749,41549728,2026-08-14,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 750,41550447,2026-08-14,2026-08,arrendamento,T2,Joana,Cliente do Portal,imovirtual.com,YR00054,0,Prime Living
@@ -611,7 +611,7 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 787,41577559,2026-08-17,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 788,41582499,2026-08-18,2026-08,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 789,41582759,2026-08-18,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00016,0,Santos Pousada
-790,41582989,2026-08-18,2026-08,arrendamento,T3,Eugénia,Cliente do Portal,Website,35019419,0,
+790,41582989,2026-08-18,2026-08,arrendamento,T3,Eugénia,Cliente do Portal,Website,35019419,0,RIverline
 791,41584850,2026-08-18,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,"YR00029,YR00028,YR00023",0,Jardins da Seara
 792,41585079,2026-08-18,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,"YR00013,34878517",0,Jardins da Seara
 793,41585080,2026-08-18,2026-08,venda,T3,Sandra,Cliente do Portal,idealista.com,YR00064,0,Jardins da Seara
@@ -619,49 +619,98 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 795,41590003,2026-08-18,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 796,41590349,2026-08-18,2026-08,arrendamento,T1,Joana,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
 797,41590386,2026-08-18,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
-798,41590435,2026-08-18,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,YR00011,0,White Tower
+798,41590435,2026-08-18,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,"YR00011,YR00055",0,White Tower;Prime Living
 799,41590758,2026-08-18,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,imovirtual.com,YR00062,0,Prime Living
-800,41591161,2026-08-18,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00001,0,Douro Nobilis
 801,41591897,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,"YR00013,34878517",0,Jardins da Seara
-802,41591904,2026-08-19,2026-08,arrendamento,T0,Teresa,Cliente do Portal,idealista.com,"YR00059,YR00013",0,Magnolia
+802,41591904,2026-08-19,2026-08,arrendamento,T0,Teresa,Cliente do Portal,idealista.com,"YR00059,YR00013",0,Magnolia;Jardins da Seara
 803,41595079,2026-08-19,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
-804,41595275,2026-08-19,2026-08,arrendamento,T0,Joana,Cliente do Portal,idealista.com,YR00059,0,Magnolia
 805,41596208,2026-08-19,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,YR00023,0,Jardins da Seara
 806,41597232,2026-08-19,2026-08,venda,T2,Joana,Cliente do Portal,idealista.com,J,0,
-807,41597233,2026-08-19,2026-08,venda,T2,Sandra,Cliente do Portal,idealista.com,YR00027,1,Prime Living
 808,41597481,2026-08-19,2026-08,arrendamento,T0,Teresa,Cliente do Portal,imovirtual.com,YR00059,0,Magnolia
 809,41600050,2026-08-19,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
 810,41600841,2026-08-19,2026-08,venda,T3,Eugénia,Cliente do Portal,idealista.com,YR00064,0,Jardins da Seara
-811,41600842,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,
-812,41600843,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,
+811,41600842,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+812,41600843,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
 813,41600844,2026-08-19,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00055,0,Prime Living
-814,41601307,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00013,0,
-815,41601308,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00013,0,
-816,41601310,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00013,0,
-817,41601575,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00013,0,
-818,41602297,2026-08-19,2026-08,arrendamento,T3,.,Cliente do Portal,imovirtual.com,YR00028,0,Jardins da Seara
-819,41602717,2026-08-19,2026-08,arrendamento,T0,.,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
-820,41602719,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
-821,41603345,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,imovirtual.com,34878517,0,Jardins da Seara
-822,41603702,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,imovirtual.com,"35040552,YR00054",0,Douro Nobilis;Prime Living
-823,41604346,2026-08-19,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00013,0,
-824,41606137,2026-08-20,2026-08,arrendamento,T1,.,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
-825,41606436,2026-08-20,2026-08,arrendamento,T0,.,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
-826,41608319,2026-08-20,2026-08,arrendamento,T1,.,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
-827,41609894,2026-08-20,2026-08,arrendamento,T0,.,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
-828,41610421,2026-08-20,2026-08,arrendamento,T2,.,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
-829,41612001,2026-08-20,2026-08,arrendamento,T1,.,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
-830,41612109,2026-08-20,2026-08,arrendamento,T1,.,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
-831,41612618,2026-08-20,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00013,0,
-832,,2026-08-20,2026-08,,,,,idealista.com,YR00027,,Prime Living
-833,,2026-08-20,2026-08,,,,,idealista.com,YR00029,,Jardins da Seara
-834,,2026-08-20,2026-08,,,,,Meta,YR00041,,Jardins do Marquês
-835,,2026-08-20,2026-08,,,,,idealista.com,YR00013,,
-836,,2026-08-20,2026-08,,,,,idealista,,,
-837,,2026-08-20,2026-08,,,,,Meta,YR00042,,Jardins do Marquês
-838,,2026-08-20,2026-08,,,,,idealista.com,YR00013,,
-839,,2026-08-20,2026-08,,,,,idealista.com,YR00013,,
-841,,2026-08-21,2026-08,,,,,Meta,YR00041,,Jardins do Marquês
-842,,2026-08-21,2026-08,,,,,idealista.com,34649651,,
-843,,2026-08-21,2026-08,,,,,idealista.com,YR00013,,
-844,,2026-08-21,2026-08,,,,,idealista.com,YR00013,,
+814,41601307,2026-08-19,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+815,41601308,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+817,41601575,2026-08-19,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+818,41602297,2026-08-19,2026-08,arrendamento,T3,Joana,Cliente do Portal,imovirtual.com,YR00028,0,Jardins da Seara
+819,41602717,2026-08-19,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+820,41602719,2026-08-19,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+821,41603345,2026-08-19,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,imovirtual.com,"34878517,YR00001",0,Jardins da Seara;Douro Nobilis
+822,41603702,2026-08-19,2026-08,arrendamento,T1,Joana,Cliente do Portal,imovirtual.com,"35040552,YR00054",0,Douro Nobilis;Prime Living
+823,41604346,2026-08-19,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+824,41606137,2026-08-20,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+825,41606436,2026-08-20,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+826,41608319,2026-08-20,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+827,41609894,2026-08-20,2026-08,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+828,41610421,2026-08-20,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+829,41612001,2026-08-20,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+830,41612109,2026-08-20,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+831,41612618,2026-08-20,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+832,41613578,2026-08-20,2026-08,venda,T2,Sandra,Cliente do Portal,idealista.com,YR00027,0,Prime Living
+833,41614124,2026-08-20,2026-08,arrendamento,T2,Joana,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+834,41614656,2026-08-20,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+837,41616751,2026-08-20,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+838,41617006,2026-08-20,2026-08,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+839,41617258,2026-08-20,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+840,41617464,2026-08-20,2026-08,venda,T3,Eugénia,Cliente do Portal,,,0,
+841,41617859,2026-08-21,2026-08,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+842,41618171,2026-08-21,2026-08,venda,T0,Joana,Cliente do Portal,idealista.com,34649651,0,
+843,41618532,2026-08-21,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+844,41619039,2026-08-21,2026-08,arrendamento,T1,Teresa,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+845,41620286,2026-08-21,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00062,0,Prime Living
+846,41621681,2026-08-21,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+847,41624596,2026-08-21,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+848,41624892,2026-08-21,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,4.7,0,Riverline
+849,41625193,2026-08-21,2026-08,venda,T1,Teresa,Cliente do Portal,,,0,
+850,41625714,2026-08-21,2026-08,arrendamento,T1,Teresa,Cliente do Portal,idealista.com,4.7,0,Riverline
+851,41625715,2026-08-21,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+852,41627299,2026-08-21,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,YR00055,0,Prime Living
+853,41627547,2026-08-21,2026-08,arrendamento,T2,Teresa,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+854,41627984,2026-08-21,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,imovirtual.com,YR00059,0,Magnolia
+855,41628767,2026-08-22,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+856,41628825,2026-08-22,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,YR00011,0,White Tower
+857,41628970,2026-08-22,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,"YR00013,YR00001,YR00062",0,Jardins da Seara;Douro Nobilis;Prime Living
+858,41629992,2026-08-22,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+859,41630683,2026-08-22,2026-08,venda,T2,Sandra,À procura,,,0,
+860,41631287,2026-08-22,2026-08,arrendamento,T1,Teresa,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+861,41631288,2026-08-22,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+862,41631348,2026-08-22,2026-08,arrendamento,T1,Sandra,Cliente do Portal,,,0,
+863,41631994,2026-08-22,2026-08,arrendamento,T3,Teresa,Cliente do Portal,idealista,35030596,0,Riverline
+864,41632044,2026-08-22,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+865,41632193,2026-08-22,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Broker circulo pessoal,YR00001,1,Douro Nobilis
+866,41633720,2026-08-22,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+867,41633940,2026-08-22,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+869,41634489,2026-08-22,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+870,41634654,2026-08-23,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+872,41635807,2026-08-23,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00001,0,Douro Nobilis
+873,41636076,2026-08-23,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+874,41636259,2026-08-23,2026-08,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+875,41637503,2026-08-23,2026-08,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+876,41638200,2026-08-23,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+877,41638880,2026-08-23,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,"YR00013,YR00059",0,Jardins da Seara;Magnolia
+878,41639440,2026-08-23,2026-08,arrendamento,T1,Teresa,Cliente do Portal,idealista.com,"YR00013,YR00001",0,Jardins da Seara;Douro Nobilis
+879,41640320,2026-08-23,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,"YR00042,YR00041",0,Jardins do Marquês
+880,41640341,2026-08-23,2026-08,arrendamento,T2,Sandra,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+881,41640574,2026-08-23,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+882,41640666,2026-08-23,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+883,41640802,2026-08-23,2026-08,arrendamento,T2,Sandra,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+884,41640870,2026-08-23,2026-08,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+885,41641398,2026-08-24,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+886,41641463,2026-08-24,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+887,41641580,2026-08-24,2026-08,arrendamento,T2,Teresa,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+888,41642249,2026-08-24,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00043,0,Jardins do Marquês
+889,41645985,2026-08-24,2026-08,venda,T3,Teresa,Cliente do Portal,idealista.com,YR00064,0,Jardins da Seara
+891,41649693,2026-08-24,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+892,41649694,2026-08-24,2026-08,venda,T3,Eugénia,Cliente do Portal,idealista.com,YR00064,0,Jardins da Seara
+893,41650375,2026-08-24,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+894,41651219,2026-08-24,2026-08,venda,T3,Eugénia,Cliente do Portal,idealista,YR00064,0,Jardins da Seara
+895,41653453,2026-08-24,2026-08,arrendamento,T1,Sandra,Cliente do Portal,imovirtual.com,YR00001,0,Douro Nobilis
+896,41655178,2026-08-24,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+897,41656304,2026-08-24,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+898,41656855,2026-08-24,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+899,41657196,2026-08-24,2026-08,arrendamento,T0,Teresa,Cliente do Portal,idealista.com,"YR00059,YR00013",0,Magnolia;Jardins da Seara
+900,41657597,2026-08-25,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+901,41657786,2026-08-25,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00001,0,Douro Nobilis
