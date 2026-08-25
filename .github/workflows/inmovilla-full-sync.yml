@@ -95,10 +95,23 @@ jobs:
           def quarter(mk):
               y, m = mk.split("-"); return "Q%d %s" % ((int(m)-1)//3+1, y)
 
+          # Real closing date per property, read from the CRM state history into imoveis.csv.
+          # The API's fechacambio is the last record-change date, not the closing date, and
+          # several deals still carry the bulk-import dates of 12/06 and 23/06.
+          won_on = {}
+          try:
+              import csv as _csv
+              with open("data/imoveis.csv", encoding="utf-8") as fh:
+                  for r in _csv.DictReader(fh):
+                      g = (r.get("estado_ganho_data") or "")[:10]
+                      if len(g) == 10: won_on[r["ref"]] = g
+          except FileNotFoundError:
+              pass
+
           tx, n = [], 0
           for p in raw:
               st = p.get("estadoficha")
-              fc = (p.get("fechacambio") or "")[:10]
+              fc = won_on.get(p.get("ref")) or (p.get("fechacambio") or "")[:10]
               if st not in SOLD and st not in RENTED: continue
               if not fc or fc.startswith("0000"): continue
               n += 1
@@ -123,7 +136,7 @@ jobs:
           k["salesCount"], k["rentalCount"] = len(sales), len(rentals)
           k["avgTicketSales"] = (k["salesVolume"]/len(sales)) if sales else None
           k["note"] = ("Volumes come from properties that reached status Vendido/Vendido MLS or "
-                       "Arrendado/Arrendado MLS in the Inmovilla API, dated by fechacambio. Rental Volume "
+                       "Arrendado/Arrendado MLS in the Inmovilla API, dated by the day they entered Ganho in the CRM state history. Rental Volume "
                        "is the sum of monthly rent, not a one-time amount. Commission figures use the "
                        "comision/cesioncom fields and only appear once they are filled in for a given deal.")
 

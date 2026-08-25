@@ -176,6 +176,20 @@ for t in d.get('transactions', []):
         t['commission'] = _num(by_ref[ref].get('comissao'))
         t['assignmentCommission'] = _num(by_ref[ref].get('comissao_cessao'))
 
+# Re-date each transaction by the day the property actually entered "Ganho", read from the
+# state history in imoveis.csv. The API's fechacambio is the last record-change date, not
+# the closing date - several deals carried the bulk-import dates of 12/06 and 23/06, which
+# put their volume in the wrong month and left it out of step with Brokers Performance
+# (which has always used the Ganho date).
+for t in d.get('transactions', []):
+    ref = (t.get('project') or '').replace('Ref. ', '')
+    won = (by_ref.get(ref) or {}).get('estado_ganho_data') or ''
+    if len(won) >= 10:
+        t['date'] = won[:10]
+        t['month'] = won[:7]
+        y, m = won[:7].split('-')
+        t['quarter'] = 'Q%d %s' % ((int(m) - 1) // 3 + 1, y)
+
 d['records'] = {
     'schema': {
         'opportunities': ['date', 'type', 'broker', 'origin', 'projects'],
