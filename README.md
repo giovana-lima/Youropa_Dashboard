@@ -62,6 +62,17 @@ data) under `records`, not pre-aggregated monthly totals.
 The repository is public, so the CSVs carry **no client names, phone numbers or emails** —
 only ids, dates and metrics.
 
+## Commission
+
+Commission comes from the `comision` field in Inmovilla. When a closed deal has no value
+there, `build_dashboard.py` falls back to the value in `data/imoveis.csv`. Rows flagged
+`comissao_estimada = sim` are estimates, and the KPI card says "includes an estimate".
+As soon as the real figure is entered in Inmovilla, the API value wins automatically and
+the flag should be cleared in the CSV.
+
+Currently estimated: **Ref. 34775273** (280.000 €, sold 22 Aug by Eugénia Miranda) —
+14.000 € assumed at 5%, matching the only other own-sale on record.
+
 ## Known gaps
 
 - Sale visits show as 0: they either aren't booked in the Agenda or are logged under another type.

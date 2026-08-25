@@ -148,7 +148,7 @@
       "date": "2026-06-12",
       "amount": 280000.0,
       "type": "sale",
-      "commission": 0.0,
+      "commission": 14000.0,
       "assignmentCommission": 0.0,
       "channel": "",
       "category": "",
@@ -156,7 +156,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": true
     },
     {
       "id": "R00002",
@@ -171,7 +172,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00003",
@@ -186,7 +188,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00004",
@@ -201,7 +204,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00005",
@@ -216,7 +220,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00006",
@@ -231,7 +236,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00007",
@@ -246,7 +252,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00008",
@@ -261,7 +268,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q3 2026",
-      "month": "2026-07"
+      "month": "2026-07",
+      "commissionEstimated": false
     },
     {
       "id": "R00009",
@@ -276,7 +284,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00010",
@@ -291,7 +300,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00011",
@@ -306,7 +316,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00012",
@@ -321,7 +332,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q3 2026",
-      "month": "2026-07"
+      "month": "2026-07",
+      "commissionEstimated": false
     },
     {
       "id": "R00013",
@@ -336,7 +348,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00014",
@@ -351,7 +364,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00015",
@@ -366,7 +380,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00016",
@@ -381,7 +396,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00017",
@@ -396,7 +412,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00018",
@@ -411,7 +428,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00019",
@@ -426,7 +444,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00020",
@@ -441,7 +460,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     },
     {
       "id": "R00021",
@@ -456,7 +476,8 @@
       "region": "",
       "clientId": "",
       "quarter": "Q2 2026",
-      "month": "2026-06"
+      "month": "2026-06",
+      "commissionEstimated": false
     }
   ],
   "funnel": [

@@ -158,6 +158,26 @@ k['visitsSale'] = sum(f['count'] for f in funnel if f['stage'] == 'visit_schedul
 k['visitsRental'] = k['visits'] - k['visitsSale']
 k['totalLeadsNote'] = k['visitsNote'] = ''
 
+# Commission per transaction. The API rewrites transactions on every sync, so we
+# top up any deal whose commission is still empty using the value in imoveis.csv
+# (which may be an estimate flagged as comissao_estimada). A real value coming
+# from the API always wins.
+by_ref = {r['ref']: r for r in imo}
+for t in d.get('transactions', []):
+    ref = (t.get('project') or '').replace('Ref. ', '')
+    r = by_ref.get(ref, {})
+    if not t.get('commission'):
+        try:
+            t['commission'] = float(r.get('comissao') or 0)
+        except ValueError:
+            t['commission'] = 0.0
+    if not t.get('assignmentCommission'):
+        try:
+            t['assignmentCommission'] = float(r.get('comissao_cessao') or 0)
+        except ValueError:
+            t['assignmentCommission'] = 0.0
+    t['commissionEstimated'] = (r.get('comissao_estimada') or '') == 'sim'
+
 d['records'] = {
     'schema': {
         'opportunities': ['date', 'type', 'broker', 'origin', 'projects'],
