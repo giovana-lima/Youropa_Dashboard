@@ -68,128 +68,63 @@ jobs:
                     open("properties_raw.json","w"), indent=2, ensure_ascii=False)
           PYEOF
 
-      - name: Recompute the API-sourced parts of data.json
+      - name: Refresh the closed-deal list from the API
         run: |
           python3 - <<'PYEOF'
-          import json, datetime
-          from collections import defaultdict
+          # This step only refreshes transactions[]. Everything else in data.json - the
+          # funnel, Brokers Performance, Quarterly Comparison, New Listings - is produced
+          # by scripts/build_dashboard.py in the next step, so one piece of code decides
+          # every number and the two pipelines cannot drift apart.
+          import csv, json, datetime, os
 
           raw = json.load(open("properties_raw.json"))["properties"]
           d = json.load(open("data.json"))
-          today = datetime.date.today()
-
           SOLD, RENTED = {3, 14}, {2, 13}
-
-          by_month = defaultdict(int)
-          for p in raw:
-              f = p.get("fecha") or ""
-              if f[:4].isdigit() and not f.startswith("0000"):
-                  by_month[f[:7]] += 1
-          months = sorted(by_month)
-          cur = today.strftime("%Y-%m")
-          d["newPropertiesByMonth"]["months"] = [
-              ({"month": m, "count": by_month[m], "partial": True} if m == cur
-               else {"month": m, "count": by_month[m]}) for m in months]
-          d["newPropertiesByMonth"]["asOf"] = today.isoformat()
-
-          def quarter(mk):
-              y, m = mk.split("-"); return "Q%d %s" % ((int(m)-1)//3+1, y)
 
           # Real closing date per property, read from the CRM state history into imoveis.csv.
           # The API's fechacambio is the last record-change date, not the closing date, and
           # several deals still carry the bulk-import dates of 12/06 and 23/06.
           won_on = {}
-          try:
-              import csv as _csv
+          if os.path.exists("data/imoveis.csv"):
               with open("data/imoveis.csv", encoding="utf-8") as fh:
-                  for r in _csv.DictReader(fh):
+                  for r in csv.DictReader(fh):
                       g = (r.get("estado_ganho_data") or "")[:10]
-                      if len(g) == 10: won_on[r["ref"]] = g
-          except FileNotFoundError:
-              pass
+                      if len(g) == 10:
+                          won_on[r["ref"]] = g
 
-          tx, n = [], 0
+          def quarter(mk):
+              y, m = mk.split("-")
+              return "Q%d %s" % ((int(m) - 1) // 3 + 1, y)
+
+          tx = []
           for p in raw:
               st = p.get("estadoficha")
+              if st not in SOLD and st not in RENTED:
+                  continue
               fc = won_on.get(p.get("ref")) or (p.get("fechacambio") or "")[:10]
-              if st not in SOLD and st not in RENTED: continue
-              if not fc or fc.startswith("0000"): continue
-              n += 1
+              if not fc or fc.startswith("0000"):
+                  continue
               is_sale = st in SOLD
-              amount = float((p.get("precioinmo") if is_sale else p.get("precioalq")) or 0)
-              tx.append({"id": "R%05d" % n, "date": fc, "amount": amount,
+              tx.append({"id": "R%05d" % (len(tx) + 1), "date": fc,
+                         "amount": float((p.get("precioinmo") if is_sale else p.get("precioalq")) or 0),
                          "type": "sale" if is_sale else "rental",
+                         # Real Inmovilla values only - never estimate a commission.
                          "commission": float(p.get("comision") or 0),
                          "assignmentCommission": float(p.get("cesioncom") or 0),
                          "channel": "", "category": "", "project": "Ref. %s" % p.get("ref"),
                          "region": "", "clientId": "",
                          "quarter": quarter(fc[:7]), "month": fc[:7]})
-          if tx: d["transactions"] = tx
-
-          sales = [t for t in tx if t["type"] == "sale"]
-          rentals = [t for t in tx if t["type"] == "rental"]
-          k = d["kpisApi"]
-          k["asOf"] = today.isoformat()
-          k["salesVolume"] = sum(t["amount"] for t in sales)
-          k["rentalVolume"] = sum(t["amount"] for t in rentals)
-          k["totalVolume"] = k["salesVolume"] + k["rentalVolume"]
-          k["salesCount"], k["rentalCount"] = len(sales), len(rentals)
-          k["avgTicketSales"] = (k["salesVolume"]/len(sales)) if sales else None
-          k["note"] = ("Volumes come from properties that reached status Vendido/Vendido MLS or "
-                       "Arrendado/Arrendado MLS in the Inmovilla API, dated by the day they entered Ganho in the CRM state history. Rental Volume "
-                       "is the sum of monthly rent, not a one-time amount. Commission figures use the "
-                       "comision/cesioncom fields and only appear once they are filled in for a given deal.")
-
-          com_sale = sum(float(p.get("comision") or 0) for p in raw if p.get("estadoficha") in SOLD)
-          com_rent = sum(float(p.get("comision") or 0) for p in raw if p.get("estadoficha") in RENTED)
-          com_assign = sum(float(p.get("cesioncom") or 0) for p in raw)
-          if com_sale or com_rent or com_assign:
-              k["commissionSale"], k["commissionRental"] = com_sale, com_rent
-              k["commissionAssignment"] = com_assign
-              k["totalCommission"] = com_sale + com_rent + com_assign
-
-          # Ignore stray historical months: the account really starts at the first
-          # month that has opportunities (CRM-sourced) or a closed transaction.
-          opp_months = set(f["month"] for f in d.get("funnel", [])
-                           if f["stage"] == "opportunity" and f["count"])
-          anchor = min(opp_months | set(t["month"] for t in tx) | {cur})
-          all_months = sorted(m for m in
-                              (set(months) | set(t["month"] for t in tx) |
-                               set(d["meta"].get("months", [])))
-                              if m >= anchor)
-          d["meta"]["months"] = all_months
-          d["newPropertiesByMonth"]["months"] = [
-              r for r in d["newPropertiesByMonth"]["months"] if r["month"] >= anchor]
-          d["meta"]["generatedOn"] = today.isoformat()
-          d["meta"]["reportingThrough"] = cur
-          d["monthlyMargin"] = dict((m, d.get("monthlyMargin", {}).get(m, 0.85)) for m in all_months)
-
-          qc = defaultdict(lambda: {"sales": 0, "rentals": 0})
-          for t in tx:
-              qc[t["quarter"]]["sales" if t["type"] == "sale" else "rentals"] += 1
-          order = []
-          for m in all_months:
-              q = quarter(m)
-              if q not in order: order.append(q)
-          d["quarterlyComparisonCounts"] = [
-              {"quarter": q, "sales": qc[q]["sales"], "rentals": qc[q]["rentals"]} for q in order]
-
-          existing = dict(((f["month"], f["type"], f["stage"]), f["count"]) for f in d.get("funnel", []))
-          stages = ["opportunity", "visit_scheduled", "offer", "contract_signed", "win"]
-          wins = defaultdict(int)
-          for t in tx: wins[(t["month"], t["type"])] += 1
-          funnel = []
-          for m in all_months:
-              for typ in ("rental", "sale"):
-                  for s in stages:
-                      c = wins[(m, typ)] if s == "win" else existing.get((m, typ, s), 0)
-                      funnel.append({"month": m, "quarter": quarter(m), "type": typ,
-                                     "stage": s, "count": c})
-          d["funnel"] = funnel
-
+          if tx:
+              d["transactions"] = tx
+          d["meta"]["generatedOn"] = datetime.date.today().isoformat()
           json.dump(d, open("data.json", "w"), indent=2, ensure_ascii=False)
-          print("updated through", cur, "| transactions:", len(tx))
+          print("closed deals from the API:", len(tx))
           PYEOF
+
+      - name: Rebuild the dashboard
+        run: |
+          python3 scripts/build_dashboard.py
+          python3 -m json.tool data.json > /dev/null
 
       - name: Commit and publish
         run: |

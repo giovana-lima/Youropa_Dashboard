@@ -84,3 +84,26 @@ commission recorded, so it contributes 0 to the commission KPIs until it is fill
 - 106 opportunities point at properties that are no longer in `imoveis.csv` (delisted or
   "Não Disponível"), so they have no project.
 - Commission figures only appear once the `comision` field is filled in on a deal in Inmovilla.
+
+## One source per number
+
+Everything on screen is recomputed in the browser from `records[]` and `transactions[]`
+for the selected date range, so two cards can never be built by two different rules.
+
+- **Closed deals** are a single list in `scripts/build_dashboard.py`. Total Volume, the
+  funnel's Contract Signed / Commission Paid steps, Quarterly Comparison, Brokers
+  Performance and the broker pop-up all read it.
+- **The closing date** is the day the property entered *Ganho* in the CRM state history,
+  never the API's `fechacambio` (that is the last record-change date and still carries the
+  bulk-import dates of 12/06 and 23/06).
+- **A deal only counts as closed** if the property is still in a closed state. Properties
+  that went to Ganho and back on the market do not count.
+- **A closed deal sits in the period it closed in** at every funnel stage, including Offer.
+  Only proposals still open keep the day they were logged.
+- **Visits** are typed sale or rental from the property visited, or failing that from the
+  opportunity behind them. Visits with neither stay untyped: they count in the Visits card,
+  which says how many, and belong to no funnel.
+- **New Listings** counts only properties with a real creation date. Inmovilla has none for
+  204 of 310 records, and those are left out rather than guessed.
+- The GitHub Action refreshes `transactions[]` from the API and then runs
+  `scripts/build_dashboard.py`, so both pipelines end in the same code.

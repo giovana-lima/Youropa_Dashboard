@@ -413,7 +413,10 @@ function rangeMonths(){
 const REC = () => (RAW_DATA.records || {opportunities:[],visits:[],offers:[],wins:[],listings:[]});
 const typeOk = (t) => state.type==='all' || state.type===t;
 const selOpp      = () => REC().opportunities.filter(r=>inRange(r[0]) && typeOk(r[1]));
-const selVisits   = () => REC().visits.filter(r=>inRange(r[0]));
+const selVisits   = () => REC().visits.filter(r=>inRange(r[0]) && typeOk(r[3]));
+// Agenda entries with no property and no client attached have no sale/rental type.
+// They are real visits, so they stay in the totals, but they belong to no funnel.
+const selVisitsUntyped = () => REC().visits.filter(r=>inRange(r[0]) && !r[3]);
 const selOffers   = () => REC().offers.filter(r=>inRange(r[0]) && typeOk(r[1]));
 const selWins     = () => REC().wins.filter(r=>inRange(r[0]) && typeOk(r[1]));
 const selListings = () => REC().listings.filter(r=>inRange(r[0]));
@@ -533,7 +536,8 @@ function renderKPIs(){
     return { totalVol: salesVol+rentalVol, salesVol, rentalVol,
              avgTicket: sales.length ? salesVol/sales.length : null,
              comSale, comRent, comAssign, comTotal: comSale+comRent+comAssign,
-             leads: selOpp().length, visits: selVisits().length };
+             leads: selOpp().length, visits: selVisits().length,
+             visitsUntyped: selVisitsUntyped().length };
   };
   const k = calc();
   const p = withRange(previousRange(), calc);
@@ -547,7 +551,8 @@ function renderKPIs(){
     { label:'Commission (Assignment)', value: k.comAssign ? fmtEUR.format(k.comAssign) : null },
     { label:'Total Commission', value: k.comTotal ? fmtEUR.format(k.comTotal) : null, d: delta(k.comTotal, p.comTotal) },
     { label:'Total Leads', value: fmtNum.format(k.leads), d: delta(k.leads, p.leads) },
-    { label:'Visits', value: fmtNum.format(k.visits), d: delta(k.visits, p.visits) },
+    { label:'Visits', value: fmtNum.format(k.visits), d: delta(k.visits, p.visits),
+      note: k.visitsUntyped ? `${k.visitsUntyped} with no property linked` : null },
   ];
   document.getElementById('kpiGrid').innerHTML = cards.map((c,i)=>{
     let footer='';
@@ -638,7 +643,11 @@ function renderBrokerPerformance(){
       openBrokerModal(a.name, a.deals);
     });
   });
-  document.getElementById('insightBroker').innerHTML = 'Click a broker to see their closed deals.';
+  const shown = new Set(names);
+  const other = selWins().filter(r=>r[2] && !shown.has(r[2])).length;
+  document.getElementById('insightBroker').innerHTML =
+    'Click a broker to see their closed deals.' +
+    (other ? ` ${other} closed deal${other>1?'s':''} in this period belong${other>1?'':'s'} to agents outside this table.` : '');
 }
 
 /* Marketing — Origin (pending: no bulk leads endpoint wired up yet) */
@@ -744,7 +753,7 @@ const STAGE_ORDER = ['opportunity','visit_scheduled','offer','contract_signed','
 function renderFunnel(containerId, months, type){
   const totals = {
     opportunity: selOpp().filter(r=>r[1]===type).length,
-    visit_scheduled: type==='rental' ? selVisits().length : 0,
+    visit_scheduled: REC().visits.filter(r=>inRange(r[0]) && r[3]===type).length,
     offer: selOffers().filter(r=>r[1]===type).length,
     contract_signed: selWins().filter(r=>r[1]===type).length,
     win: selWins().filter(r=>r[1]===type).length,
