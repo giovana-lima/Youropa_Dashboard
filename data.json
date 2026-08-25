@@ -89,13 +89,13 @@
   "quarterlyComparisonCounts": [
     {
       "quarter": "Q2 2026",
-      "sales": 1,
-      "rentals": 18
+      "sales": 0,
+      "rentals": 1
     },
     {
       "quarter": "Q3 2026",
-      "sales": 1,
-      "rentals": 1
+      "sales": 2,
+      "rentals": 18
     }
   ],
   "marketingOrigin": {
@@ -577,14 +577,14 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "contract_signed",
-      "count": 11
+      "count": 9
     },
     {
       "month": "2026-07",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 11
+      "count": 9
     },
     {
       "month": "2026-07",
@@ -6375,22 +6375,6 @@
         "",
         "YR00033",
         780.0
-      ],
-      [
-        "2026-07-30",
-        "rental",
-        "Giovana Lima",
-        "Prime Living",
-        "YR00054",
-        1350.0
-      ],
-      [
-        "2026-07-30",
-        "rental",
-        "Giovana Lima",
-        "Prime Living",
-        "YR00055",
-        1350.0
       ]
     ],
     "listings": [

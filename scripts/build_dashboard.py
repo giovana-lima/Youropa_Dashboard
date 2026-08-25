@@ -50,10 +50,16 @@ leads = collections.Counter(
 )
 visits = collections.Counter((v['mes'], 'rental') for v in vis if v.get('mes') in months)
 
+# A property can enter Ganho and later be put back on the market. Only count it as closed
+# if it is still in a closed state today - otherwise reverted deals inflate the funnel.
+CLOSED = {'Vendido', 'Arrendado', 'Vendido MLS', 'Arrendado MLS'}
+
 offer, contract = collections.Counter(), collections.Counter()
 for r in imo:
     t = prop_type(r)
     won, proposed = r.get('estado_ganho_data', ''), r.get('proposta_data', '')
+    if won and r.get('estado') not in CLOSED:
+        won = ''
     first = proposed or won          # a won deal always passed through "offer"
     if first and first[:7] in months:
         offer[(first[:7], t)] += 1
@@ -122,7 +128,7 @@ for r in imo:
     offer_date = r.get('proposta_data') or r.get('estado_ganho_data')
     if offer_date:
         rec_offer.append([offer_date, t, proj])
-    if r.get('estado_ganho_data'):
+    if r.get('estado_ganho_data') and r.get('estado') in CLOSED:
         amount = r.get('preco_venda') if t == 'sale' else r.get('preco_arrendamento')
         try:
             amount = float(amount or 0)
@@ -189,6 +195,21 @@ for t in d.get('transactions', []):
         t['month'] = won[:7]
         y, m = won[:7].split('-')
         t['quarter'] = 'Q%d %s' % ((int(m) - 1) // 3 + 1, y)
+
+# Quarterly counts follow the re-dated transactions, so the chart cannot drift away from
+# the volume KPIs and Brokers Performance.
+qc = collections.OrderedDict()
+for t in d.get('transactions', []):
+    q = t.get('quarter')
+    if not q:
+        continue
+    qc.setdefault(q, {'quarter': q, 'sales': 0, 'rentals': 0})
+    qc[q]['sales' if t.get('type') == 'sale' else 'rentals'] += 1
+if qc:
+    def _qkey(q):
+        n, y = q.split(' ')
+        return (y, n)
+    d['quarterlyComparisonCounts'] = [qc[k] for k in sorted(qc, key=_qkey)]
 
 d['records'] = {
     'schema': {
