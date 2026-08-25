@@ -528,13 +528,12 @@ function renderKPIs(){
     const salesVol = sum(sales, t=>t.amount);
     const rentalVol = sum(tx.filter(t=>t.type==='rental'), t=>t.amount);
     const comSale = sum(sales, t=>t.commission||0);
-    const comEstimated = tx.some(t=>t.commissionEstimated && t.commission);
     const comRent = sum(tx.filter(t=>t.type==='rental'), t=>t.commission||0);
     const comAssign = sum(tx, t=>t.assignmentCommission||0);
     return { totalVol: salesVol+rentalVol, salesVol, rentalVol,
              avgTicket: sales.length ? salesVol/sales.length : null,
              comSale, comRent, comAssign, comTotal: comSale+comRent+comAssign,
-             comEstimated, leads: selOpp().length, visits: selVisits().length };
+             leads: selOpp().length, visits: selVisits().length };
   };
   const k = calc();
   const p = withRange(previousRange(), calc);
@@ -543,13 +542,10 @@ function renderKPIs(){
     { label:'Sales Volume', value: fmtEUR.format(k.salesVol), d: delta(k.salesVol, p.salesVol) },
     { label:'Rental Volume', value: fmtEUR.format(k.rentalVol), d: delta(k.rentalVol, p.rentalVol), note:'monthly rent' },
     { label:'Average Ticket (Sales)', value: k.avgTicket!==null ? fmtEURdec.format(k.avgTicket) : null },
-    { label:'Commission (Sale)', value: k.comSale ? fmtEUR.format(k.comSale) : null,
-      note: k.comEstimated ? 'includes an estimate' : '' },
+    { label:'Commission (Sale)', value: k.comSale ? fmtEUR.format(k.comSale) : null },
     { label:'Commission (Rental)', value: k.comRent ? fmtEUR.format(k.comRent) : null },
     { label:'Commission (Assignment)', value: k.comAssign ? fmtEUR.format(k.comAssign) : null },
-    { label:'Total Commission', value: k.comTotal ? fmtEUR.format(k.comTotal) : null,
-      d: k.comEstimated ? null : delta(k.comTotal, p.comTotal),
-      note: k.comEstimated ? 'includes an estimate' : '' },
+    { label:'Total Commission', value: k.comTotal ? fmtEUR.format(k.comTotal) : null, d: delta(k.comTotal, p.comTotal) },
     { label:'Total Leads', value: fmtNum.format(k.leads), d: delta(k.leads, p.leads) },
     { label:'Visits', value: fmtNum.format(k.visits), d: delta(k.visits, p.visits) },
   ];

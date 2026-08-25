@@ -148,7 +148,7 @@
       "date": "2026-06-12",
       "amount": 280000.0,
       "type": "sale",
-      "commission": 14000.0,
+      "commission": 0.0,
       "assignmentCommission": 0.0,
       "channel": "",
       "category": "",

@@ -62,16 +62,21 @@ data) under `records`, not pre-aggregated monthly totals.
 The repository is public, so the CSVs carry **no client names, phone numbers or emails** —
 only ids, dates and metrics.
 
+## Never estimate
+
+Every figure on this dashboard is read from Inmovilla. If a value is missing there, it
+stays **empty** — no averages, no percentages inferred from other deals, no filling in
+of gaps. An empty card is information ("nobody filled this in"); an invented number is
+not, and it is worse than nothing when someone is judging a broker or a campaign by it.
+
 ## Commission
 
 Commission comes from the `comision` field in Inmovilla. When a closed deal has no value
-there, `build_dashboard.py` falls back to the value in `data/imoveis.csv`. Rows flagged
-`comissao_estimada = sim` are estimates, and the KPI card says "includes an estimate".
-As soon as the real figure is entered in Inmovilla, the API value wins automatically and
-the flag should be cleared in the CSV.
+there, `build_dashboard.py` looks in `data/imoveis.csv` — but only ever for a real value
+that came from the CRM.
 
-Currently estimated: **Ref. 34775273** (280.000 €, sold 22 Aug by Eugénia Miranda) —
-14.000 € assumed at 5%, matching the only other own-sale on record.
+Currently missing: **Ref. 34775273** (280.000 €, sold 22 Aug by Eugénia Miranda) has no
+commission recorded, so it contributes 0 to the commission KPIs until it is filled in.
 
 ## Known gaps
 
