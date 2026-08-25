@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedOn": "2026-08-24",
+    "generatedOn": "2026-08-25",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
@@ -16,7 +16,7 @@
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "newPropertiesByMonth": {
-    "asOf": "2026-08-22",
+    "asOf": "2026-08-25",
     "note": "Count of properties by creation month from the Inmovilla API (field \"fecha\"). Includes properties later sold/rented/delisted. The current month is partial. Properties with placeholder creation dates (Casafari-imported comparables) are excluded.",
     "months": [
       {
@@ -29,13 +29,13 @@
       },
       {
         "month": "2026-08",
-        "count": 22,
+        "count": 32,
         "partial": true
       }
     ]
   },
   "kpisApi": {
-    "asOf": "2026-08-22",
+    "asOf": "2026-08-25",
     "totalVolume": 616510.0,
     "salesVolume": 595000.0,
     "rentalVolume": 21510.0,
@@ -491,7 +491,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "win",
-      "count": 1
+      "count": 18
     },
     {
       "month": "2026-06",
@@ -526,7 +526,7 @@
       "quarter": "Q2 2026",
       "type": "sale",
       "stage": "win",
-      "count": 0
+      "count": 1
     },
     {
       "month": "2026-07",
@@ -561,7 +561,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 11
+      "count": 1
     },
     {
       "month": "2026-07",
@@ -596,7 +596,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 0
+      "count": 1
     },
     {
       "month": "2026-08",
@@ -631,7 +631,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "win",
-      "count": 8
+      "count": 0
     },
     {
       "month": "2026-08",
@@ -666,7 +666,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "win",
-      "count": 1
+      "count": 0
     }
   ],
   "leadsByTypology": [
