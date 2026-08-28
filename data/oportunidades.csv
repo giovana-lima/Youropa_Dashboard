@@ -714,3 +714,66 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 899,41657196,2026-08-24,2026-08,arrendamento,T0,Teresa,Cliente do Portal,idealista.com,"YR00059,YR00013",0,Magnolia;Jardins da Seara
 900,41657597,2026-08-25,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
 901,41657786,2026-08-25,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00001,0,Douro Nobilis
+902,41660974,2026-08-25,2026-08,arrendamento,T1,.,Cliente do Portal,idealista.com,YR00001,0,Douro Nobilis
+903,41661416,2026-08-25,2026-08,venda,T0,Eugénia,Cliente do Portal,idealista.com,YR00046,0,Jardins do Marquês
+904,41661734,2026-08-25,2026-08,arrendamento,T0,.,Cliente do Portal,idealista.com,YR00059,0,Magnolia
+905,41662025,2026-08-25,2026-08,arrendamento,T2,.,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+906,41662843,2026-08-25,2026-08,venda,T1,.,Cliente do Portal,idealista.com,YR00061,0,
+908,41664882,2026-08-25,2026-08,venda,T0,Eugénia,Cliente do Portal,idealista.com,YR00085,0,
+909,41664890,2026-08-25,2026-08,venda,T0,Eugénia,Cliente do Portal,idealista.com,YR00085,0,
+910,41664895,2026-08-25,2026-08,venda,T0,Sandra,Cliente do Portal,idealista.com,"YR00085,YR00046",0,Jardins do Marquês
+911,41665724,2026-08-25,2026-08,arrendamento,T3,Teresa,Cliente do Portal,idealista.com,YR00086,0,White Tower
+912,41665725,2026-08-25,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+913,41665872,2026-08-25,2026-08,arrendamento,T3,Sandra,Cliente do Portal,idealista.com,YR00086,0,White Tower
+914,41666000,2026-08-25,2026-08,arrendamento,T3,Teresa,Cliente do Portal,idealista.com,YR00086,0,White Tower
+915,41666921,2026-08-25,2026-08,arrendamento,T3,Eugénia,Cliente do Portal,idealista.com,YR00086,0,White Tower
+916,41667274,2026-08-25,2026-08,arrendamento,T3,Sandra,Cliente do Portal,idealista.com,YR00086,0,White Tower
+917,41668104,2026-08-25,2026-08,venda,T3,Teresa,Cliente do Portal,idealista.com,YR00064,0,Jardins da Seara
+919,41669300,2026-08-25,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+920,41669901,2026-08-25,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+922,41670235,2026-08-25,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00011,0,White Tower
+924,41671115,2026-08-25,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+925,41671673,2026-08-25,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+926,41671959,2026-08-26,2026-08,venda,T2,Eugénia,Cliente do Portal,imovirtual.com,34734420,0,Jardins da Seara
+927,41672068,2026-08-26,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+928,41672203,2026-08-26,2026-08,arrendamento,T0,Teresa,Cliente do Portal,idealista.com,YR00059,0,Magnolia
+929,41672233,2026-08-26,2026-08,venda,T0,Joana,Cliente do Portal,idealista.com,34246326,0,
+930,41674712,2026-08-26,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+931,41675616,2026-08-26,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+933,41676717,2026-08-26,2026-08,venda,T2,Teresa,Cliente do Portal,Website,YR00027,0,Prime Living
+934,41678445,2026-08-26,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Website,YR00041,0,Jardins do Marquês
+935,41679377,2026-08-26,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+936,41680347,2026-08-26,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+937,41681595,2026-08-26,2026-08,arrendamento,T1,Teresa,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+938,41681837,2026-08-26,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+939,41682641,2026-08-26,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+940,41683475,2026-08-26,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+941,41684109,2026-08-26,2026-08,arrendamento,T0,Eugénia,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+942,41684350,2026-08-26,2026-08,arrendamento,T1,Sandra,Cliente do Portal,imovirtual.com,YR00001,0,Douro Nobilis
+943,41684503,2026-08-26,2026-08,arrendamento,T2,Teresa,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+944,41684722,2026-08-26,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+945,41684723,2026-08-26,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+946,41684886,2026-08-26,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+947,41685124,2026-08-26,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+948,41685831,2026-08-26,2026-08,venda,T3,Sandra,Cliente do Portal,idealista.com,YR00064,0,Jardins da Seara
+949,41687038,2026-08-27,2026-08,arrendamento,T1,Sandra,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+950,41687732,2026-08-27,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+951,41687934,2026-08-27,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+952,41689436,2026-08-27,2026-08,arrendamento,T3,Eugénia,Cliente do Portal,idealista.com,YR00086,0,White Tower
+953,41691665,2026-08-27,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+954,41692287,2026-08-27,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,YR00043,0,Jardins do Marquês
+955,41692868,2026-08-27,2026-08,arrendamento,T3,Eugénia,Cliente do Portal,idealista.com,YR00086,0,White Tower
+956,41693880,2026-08-27,2026-08,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,YR00016,0,Santos Pousada
+957,41694476,2026-08-27,2026-08,arrendamento,T2,Teresa,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+958,41695405,2026-08-27,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00043,0,Jardins do Marquês
+959,41698185,2026-08-27,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+960,41698996,2026-08-27,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+961,41699146,2026-08-27,2026-08,venda,T2,Teresa,Cliente do Portal,idealista.com,YR00027,0,Prime Living
+962,41699147,2026-08-27,2026-08,arrendamento,T0,Teresa,Cliente do Portal,idealista.com,YR00059,0,Magnolia
+963,41699328,2026-08-27,2026-08,arrendamento,T2,Eugénia,Cliente do Portal,idealista.com,YR00029,0,Jardins da Seara
+964,41699551,2026-08-27,2026-08,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+965,41699739,2026-08-27,2026-08,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+966,41699791,2026-08-27,2026-08,arrendamento,T1,Eugénia,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+967,41700230,2026-08-28,2026-08,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,"YR00013,34878517",0,Jardins da Seara
+968,41700738,2026-08-28,2026-08,arrendamento,T1,.,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+969,41702107,2026-08-28,2026-08,arrendamento,T0,.,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedOn": "2026-08-25",
+    "generatedOn": "2026-08-28",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
@@ -9,14 +9,14 @@
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
     "dataNote": "All lead, visit and project figures now come from the CSV spreadsheets in /data, built by reading every Oportunidade and every active Imóvel record in Inmovilla. oportunidades.csv holds 666 opportunities with contact origin and the properties each one consulted; imoveis.csv holds 118 active properties with their project, proposal date and the broker who moved them to Ganho; visitas.csv holds 49 visits from the Agenda. Property-level money figures (volumes, commissions, new listings) still come from the Inmovilla REST API and are refreshed automatically every 3 days.",
-    "leadsSnapshotOn": "2026-08-25",
-    "leadsSnapshotTotal": 715,
+    "leadsSnapshotOn": "2026-08-28",
+    "leadsSnapshotTotal": 778,
     "leadsSnapshotCoverage": "",
     "apiSyncOn": "2026-08-12",
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "kpisApi": {
-    "asOf": "2026-08-25",
+    "asOf": "2026-08-28",
     "salesVolume": 595000.0,
     "rentalVolume": 21510.0,
     "totalVolume": 616510.0,
@@ -27,7 +27,7 @@
     "commissionRental": 0.0,
     "commissionAssignment": 0.0,
     "totalCommission": 15750.0,
-    "totalLeads": 715,
+    "totalLeads": 778,
     "visits": 54,
     "visitsSale": 4,
     "visitsRental": 33,
@@ -35,31 +35,31 @@
     "note": "Closed deals are dated by the day the property entered Ganho in the CRM state history. Rental Volume is the sum of monthly rent, not a one-time amount. Commissions are the values recorded in Inmovilla and are never estimated; a deal with none recorded counts as zero."
   },
   "brokerPerformance": {
-    "asOf": "2026-08-25",
+    "asOf": "2026-08-28",
     "period": "2026-06 to 2026-08",
     "note": "",
     "agents": [
       {
         "name": "Eugénia Miranda",
-        "leads": 260,
+        "leads": 283,
         "visits": 11,
         "closedDeals": 6
       },
       {
         "name": "Sandra Dantas",
-        "leads": 214,
+        "leads": 231,
         "visits": 31,
         "closedDeals": 4
       },
       {
         "name": "Joana Côrte-Real",
-        "leads": 177,
+        "leads": 178,
         "visits": 1,
         "closedDeals": 2
       },
       {
         "name": "Teresa Archer",
-        "leads": 47,
+        "leads": 63,
         "visits": 11,
         "closedDeals": 6
       }
@@ -78,28 +78,28 @@
     }
   ],
   "marketingOrigin": {
-    "asOf": "2026-08-25",
+    "asOf": "2026-08-28",
     "byChannel": {
-      "idealista": 369,
-      "Meta": 266,
-      "imovirtual": 66,
-      "Website": 4,
+      "idealista": 408,
+      "Meta": 286,
+      "imovirtual": 68,
+      "Website": 6,
       "Broker circulo pessoal": 2,
       "Referência de cliente": 1
     },
     "note": "Contact origin recorded on each Oportunidade record."
   },
   "leadsPerProject": {
-    "asOf": "2026-08-25",
+    "asOf": "2026-08-28",
     "byProject": {
-      "Jardins do Marquês": 278,
-      "Jardins da Seara": 158,
-      "Prime Living": 127,
-      "Douro Nobilis": 41,
-      "Magnolia": 28,
-      "White Tower": 25,
+      "Jardins do Marquês": 303,
+      "Jardins da Seara": 176,
+      "Prime Living": 129,
+      "Douro Nobilis": 43,
+      "White Tower": 33,
+      "Magnolia": 31,
       "Riverline": 21,
-      "Santos Pousada": 9,
+      "Santos Pousada": 10,
       "Oporto Luxury": 3,
       "Celta Residences": 3,
       "Haizea": 2,
@@ -445,7 +445,7 @@
       "quarter": "Q2 2026",
       "type": "rental",
       "stage": "offer",
-      "count": 5
+      "count": 4
     },
     {
       "month": "2026-06",
@@ -571,7 +571,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 417
+      "count": 469
     },
     {
       "month": "2026-08",
@@ -585,7 +585,7 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "offer",
-      "count": 10
+      "count": 15
     },
     {
       "month": "2026-08",
@@ -606,7 +606,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "opportunity",
-      "count": 27
+      "count": 38
     },
     {
       "month": "2026-08",
@@ -620,7 +620,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "offer",
-      "count": 3
+      "count": 4
     },
     {
       "month": "2026-08",
@@ -5675,6 +5675,447 @@
         "Sandra Dantas",
         "idealista.com",
         "Douro Nobilis"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        ".",
+        "idealista.com",
+        "Douro Nobilis"
+      ],
+      [
+        "2026-08-25",
+        "sale",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        ".",
+        "idealista.com",
+        "Magnolia"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        ".",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-25",
+        "sale",
+        ".",
+        "idealista.com",
+        ""
+      ],
+      [
+        "2026-08-25",
+        "sale",
+        "Eugénia Miranda",
+        "idealista.com",
+        ""
+      ],
+      [
+        "2026-08-25",
+        "sale",
+        "Eugénia Miranda",
+        "idealista.com",
+        ""
+      ],
+      [
+        "2026-08-25",
+        "sale",
+        "Sandra Dantas",
+        "idealista.com",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Eugénia Miranda",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-25",
+        "sale",
+        "Teresa Archer",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Eugénia Miranda",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-25",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "sale",
+        "Eugénia Miranda",
+        "imovirtual.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Magnolia"
+      ],
+      [
+        "2026-08-26",
+        "sale",
+        "Joana Côrte-Real",
+        "idealista.com",
+        ""
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "sale",
+        "Teresa Archer",
+        "Website",
+        "Prime Living"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "Website",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Teresa Archer",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Sandra Dantas",
+        "imovirtual.com",
+        "Douro Nobilis"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Teresa Archer",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Teresa Archer",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-26",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-26",
+        "sale",
+        "Sandra Dantas",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Teresa Archer",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "White Tower"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Santos Pousada"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "sale",
+        "Teresa Archer",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Magnolia"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Teresa Archer",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Eugénia Miranda",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-28",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-28",
+        "rental",
+        ".",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-28",
+        "rental",
+        ".",
+        "Meta",
+        "Jardins do Marquês"
       ]
     ],
     "visits": [
@@ -6070,7 +6511,7 @@
         ""
       ],
       [
-        "2026-06-19",
+        "2026-08-26",
         "rental",
         "Riverline"
       ],
@@ -6093,6 +6534,11 @@
         "2026-07-30",
         "rental",
         "Prime Living"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "Douro Nobilis"
       ],
       [
         "2026-07-10",
@@ -6118,6 +6564,16 @@
         "2026-08-12",
         "rental",
         "Prime Living"
+      ],
+      [
+        "2026-08-28",
+        "rental",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-28",
+        "rental",
+        "Jardins da Seara"
       ],
       [
         "2026-07-07",
@@ -6183,6 +6639,16 @@
         "2026-06-19",
         "sale",
         "Riverline"
+      ],
+      [
+        "2026-08-26",
+        "sale",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-27",
+        "rental",
+        "White Tower"
       ]
     ],
     "wins": [
@@ -6775,6 +7241,34 @@
       [
         "2026-08-24",
         "rental"
+      ],
+      [
+        "2026-08-26",
+        "rental"
+      ],
+      [
+        "2026-08-27",
+        "rental"
+      ],
+      [
+        "2026-08-27",
+        "rental"
+      ],
+      [
+        "2026-08-26",
+        "sale"
+      ],
+      [
+        "2026-08-26",
+        "sale"
+      ],
+      [
+        "2026-08-26",
+        "sale"
+      ],
+      [
+        "2026-08-26",
+        "sale"
       ]
     ]
   }
