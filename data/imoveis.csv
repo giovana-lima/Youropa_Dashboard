@@ -244,14 +244,14 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29622188,YR00019,,Arrendar,Nao Disponivel,5,,1100,,0.0,2026-07-07,2026-07-07,218516,218516,,,,nao_aplicavel
 29644773,YR00020,Jardins da Seara,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
 29644774,YR00021,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
-29644775,YR00022,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-08-26,218514,218514,,,,sim
+29644775,YR00022,Jardins da Seara,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-09,2026-08-29,218514,218514,,,2026-08-29,sim
 29644776,YR00023,Jardins da Seara,Arrendar,Arrendado,2,,1130,,0.0,2026-07-09,2026-06-12,218514,218514,2026-08-21,Teresa Archer,,sim
 29644777,YR00024,Jardins da Seara,Arrendar,Arrendado,2,,1000,,0.0,2026-07-09,2026-06-12,218514,218514,2026-07-28,Eugénia Miranda,2026-07-28,sim
 29645596,YR00025,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
 29645697,YR00026,Jardins da Seara,Vender,Vendido,3,315000,,15750,0.0,2026-07-09,2026-07-09,218514,218514,2026-08-18,Soraia Sousa,2026-08-11,sim
-29645847,YR00027,Prime Living,Vender,Disponivel,1,327000,,16350,0.0,2026-07-09,2026-07-09,218514,218514,,,,sim
+29645847,YR00027,Prime Living,Vender,Com Proposta,18,327000,,16350,0.0,2026-07-09,2026-08-29,218514,218514,,,2026-08-29,sim
 29656824,YR00028,Jardins da Seara,Arrendar,Arrendado,2,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-08-21,Teresa Archer,,sim
-29656825,YR00029,Jardins da Seara,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
+29656825,YR00029,Jardins da Seara,Arrendar,Arrendado,2,,1150,,0.0,2026-07-10,2026-08-30,218514,218514,2026-08-30,Eugénia Miranda,,sim
 29656826,YR00030,Jardins da Seara,Arrendar,Reservado,7,,1300,,0.0,2026-07-10,2026-08-27,218514,218514,,,,sim
 29656827,YR00031,Jardins da Seara,Arrendar,Arrendado,2,,1200,,0.0,2026-07-10,2026-06-12,218514,218514,2026-07-21,Eugénia Miranda,,sim
 29656828,YR00032,Jardins da Seara,Arrendar,Disponivel,1,,950,,0.0,2026-07-10,2026-06-12,218514,218514,,,,sim
@@ -288,7 +288,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29949571,YR00063,Riverline,Vender,Disponivel,1,535000,,,0.0,2026-08-14,2026-06-12,218514,218514,,,2026-06-19,sim
 29965679,YR00064,Jardins da Seara,Vender,Disponivel,1,300000,,12000,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
 29965680,YR00065,Jardins da Seara,Vender,Com Proposta,18,330000,,16500,0.0,2026-08-17,2026-08-26,218514,218514,,,2026-08-26,sim
-29965951,YR00066,Riverline,Arrendar,Disponivel,1,,1700,,0.0,2026-08-17,2026-06-12,218514,218514,,,,sim
+29965951,YR00066,Riverline,Arrendar,Com Proposta,18,,1700,,0.0,2026-08-17,2026-08-29,218514,218514,,,2026-08-29,sim
 29966466,YR00068,Vintage Garden,Vender,Por Validar,8,298999,,,0.0,2026-08-17,2026-08-17,218514,218514,,,,sim
 30021547,YR00069,Riverline,Arrendar,Disponivel,1,,1700,,0.0,2026-08-21,2026-06-12,218514,218514,,,,sim
 30021610,YR00070,Jardins do Marquês,Arrendar,Com Proposta,18,,1400,,0.0,2026-08-21,2026-07-30,218514,218514,,,,sim
