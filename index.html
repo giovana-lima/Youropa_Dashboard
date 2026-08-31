@@ -538,10 +538,13 @@ function renderKPIs(){
     const comSale = sum(sales, t=>t.commission||0);
     const comRent = sum(tx.filter(t=>t.type==='rental'), t=>t.commission||0);
     const comAssign = sum(tx, t=>t.assignmentCommission||0);
+    const visitsAll = selVisits();
     return { totalVol: salesVol+rentalVol, salesVol, rentalVol,
              avgTicket: sales.length ? salesVol/sales.length : null,
              comSale, comRent, comAssign, comTotal: comSale+comRent+comAssign,
-             leads: selOpp().length, visits: selVisits().length,
+             leads: selOpp().length, visits: visitsAll.length,
+             visitsSale: visitsAll.filter(r=>r[3]==='sale').length,
+             visitsRental: visitsAll.filter(r=>r[3]==='rental').length,
              visitsUntyped: selVisitsUntyped().length };
   };
   const k = calc();
@@ -558,6 +561,8 @@ function renderKPIs(){
     { label:'Total Leads', value: fmtNum.format(k.leads), d: delta(k.leads, p.leads) },
     { label:'Visits', value: fmtNum.format(k.visits), d: delta(k.visits, p.visits),
       note: k.visitsUntyped ? `${k.visitsUntyped} with no property linked` : null },
+    { label:'Visits (Sales)', value: fmtNum.format(k.visitsSale), d: delta(k.visitsSale, p.visitsSale) },
+    { label:'Visits (Rental)', value: fmtNum.format(k.visitsRental), d: delta(k.visitsRental, p.visitsRental) },
   ];
   document.getElementById('kpiGrid').innerHTML = cards.map((c,i)=>{
     let footer='';
@@ -622,23 +627,29 @@ function closeBrokerModal(){ document.getElementById('brokerModal').classList.re
 
 function renderBrokerPerformance(){
   const el = document.getElementById('brokerTable');
-  const leads={}, visits={}, dealsBy={};
+  const leads={}, visits={}, visitsSale={}, visitsRental={}, dealsBy={};
   selOpp().forEach(r=>{ if(r[2]) leads[r[2]]=(leads[r[2]]||0)+1; });
-  selVisits().forEach(r=>{ if(r[1]) visits[r[1]]=(visits[r[1]]||0)+1; });
+  selVisits().forEach(r=>{ if(!r[1]) return;
+    visits[r[1]]=(visits[r[1]]||0)+1;
+    if(r[3]==='sale') visitsSale[r[1]]=(visitsSale[r[1]]||0)+1;
+    else if(r[3]==='rental') visitsRental[r[1]]=(visitsRental[r[1]]||0)+1;
+  });
   selWins().forEach(r=>{ const b=r[2]; if(!b) return; (dealsBy[b]=dealsBy[b]||[]).push(r); });
 
   const names = ((RAW_DATA.brokerPerformance||{}).agents||[]).map(a=>a.name);
   if(!names.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightBroker').innerHTML=''; return; }
 
   const rows = names.map(n=>({name:n, leads:leads[n]||0, visits:visits[n]||0,
+                              visitsSale:visitsSale[n]||0, visitsRental:visitsRental[n]||0,
                               deals:(dealsBy[n]||[]).slice().sort((x,y)=>x[0]<y[0]?1:-1)}))
                     .sort((x,y)=>y.leads-x.leads);
 
   el.innerHTML = `<table class="mini-table"><thead><tr>
-      <th>Broker</th><th>Leads</th><th>Visits</th><th>Closed Deals</th></tr></thead><tbody>
+      <th>Broker</th><th>Leads</th><th>Visits</th><th>Sales Visits</th><th>Rental Visits</th><th>Closed Deals</th></tr></thead><tbody>
     ${rows.map((a,i)=>`<tr class="broker-row" data-i="${i}" title="See ${a.name}'s closed deals">
         <td>${a.name}</td><td>${fmtNum.format(a.leads)}</td>
-        <td>${fmtNum.format(a.visits)}</td><td>${fmtNum.format(a.deals.length)}</td>
+        <td>${fmtNum.format(a.visits)}</td><td>${fmtNum.format(a.visitsSale)}</td>
+        <td>${fmtNum.format(a.visitsRental)}</td><td>${fmtNum.format(a.deals.length)}</td>
       </tr>`).join('')}
     </tbody></table>`;
 
@@ -666,12 +677,12 @@ function renderMarketingOrigin(){
   const entries = Object.entries(c).sort((a,b)=>b[1]-a[1]);
   if(!entries.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightMarketing').innerHTML=''; return; }
   const tot = entries.reduce((s,e)=>s+e[1],0);
-  el.innerHTML = `<table class="mini-table"><thead><tr><th>Channel</th><th>Leads</th><th>Share</th></tr></thead><tbody>
-    ${entries.map(([ch,ct])=>`<tr><td>${ch}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
+  el.innerHTML = `<table class="mini-table"><thead><tr><th>Channel</th><th>Leads</th></tr></thead><tbody>
+    ${entries.map(([ch,ct])=>`<tr><td>${ch}</td><td>${fmtNum.format(ct)}</td></tr>`).join('')}
     </tbody></table>`;
   const top=entries[0];
   document.getElementById('insightMarketing').innerHTML =
-    `<b>${top[0]}</b> brings ${(top[1]/tot*100).toFixed(0)}% of leads in this period (${fmtNum.format(top[1])} of ${fmtNum.format(tot)}).`;
+    `<b>${top[0]}</b> brings the most leads in this period (${fmtNum.format(top[1])} of ${fmtNum.format(tot)} total).`;
 }
 
 /* Leads per Project (pending: blocked on Inmovilla support exposing the custom "Projeto" field via API) */
@@ -681,9 +692,8 @@ function renderLeadsPerProject(){
   selOpp().forEach(r=>{ (r[4]||'').split(';').filter(Boolean).forEach(p=>{ c[p]=(c[p]||0)+1; }); });
   const all = Object.entries(c).sort((a,b)=>b[1]-a[1]);
   if(!all.length){ el.innerHTML='<div class="pending-block"></div>'; document.getElementById('insightLeadsPerProject').innerHTML=''; return; }
-  const tot = all.reduce((s,e)=>s+e[1],0);
-  el.innerHTML = `<table class="mini-table"><thead><tr><th>Project</th><th>Leads</th><th>Share</th></tr></thead><tbody>
-    ${all.slice(0,8).map(([p,ct])=>`<tr><td>${p}</td><td>${fmtNum.format(ct)}</td><td>${(ct/tot*100).toFixed(0)}%</td></tr>`).join('')}
+  el.innerHTML = `<table class="mini-table"><thead><tr><th>Project</th><th>Leads</th></tr></thead><tbody>
+    ${all.slice(0,8).map(([p,ct])=>`<tr><td>${p}</td><td>${fmtNum.format(ct)}</td></tr>`).join('')}
     </tbody></table>`;
   document.getElementById('insightLeadsPerProject').innerHTML =
     `<b>${all[0][0]}</b> is the most requested development, with ${fmtNum.format(all[0][1])} leads.`;

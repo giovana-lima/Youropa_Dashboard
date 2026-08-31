@@ -145,10 +145,16 @@ for r in opp:
 b_visits = collections.Counter(FULL.get((v.get('comercial') or '').strip(),
                                         (v.get('comercial') or '').strip())
                                for v in vis if v.get('comercial'))
+b_visits_by_type = collections.Counter(
+    (FULL.get((v.get('comercial') or '').strip(), (v.get('comercial') or '').strip()), visit_type(v))
+    for v in vis if v.get('comercial') and visit_type(v))
 b_closed = collections.Counter(x['broker'] for x in deals if x['broker'])
 
 agents = [{'name': n, 'leads': b_leads.get(n, 0),
-           'visits': b_visits.get(n, 0), 'closedDeals': b_closed.get(n, 0)}
+           'visits': b_visits.get(n, 0),
+           'visitsSale': b_visits_by_type.get((n, 'sale'), 0),
+           'visitsRental': b_visits_by_type.get((n, 'rental'), 0),
+           'closedDeals': b_closed.get(n, 0)}
           for n in sorted(set(b_leads) | set(b_visits), key=lambda x: -b_leads.get(x, 0))
           if n in FULL.values()]
 

@@ -43,24 +43,32 @@
         "name": "Eugénia Miranda",
         "leads": 283,
         "visits": 11,
+        "visitsSale": 0,
+        "visitsRental": 11,
         "closedDeals": 7
       },
       {
         "name": "Sandra Dantas",
         "leads": 252,
         "visits": 34,
+        "visitsSale": 4,
+        "visitsRental": 14,
         "closedDeals": 4
       },
       {
         "name": "Joana Côrte-Real",
         "leads": 192,
         "visits": 1,
+        "visitsSale": 0,
+        "visitsRental": 1,
         "closedDeals": 2
       },
       {
         "name": "Teresa Archer",
         "leads": 83,
         "visits": 12,
+        "visitsSale": 0,
+        "visitsRental": 11,
         "closedDeals": 6
       }
     ]
