@@ -1,42 +1,43 @@
 {
   "meta": {
-    "generatedOn": "2026-09-01",
+    "generatedOn": "2026-09-03",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
       "2026-07",
-      "2026-08"
+      "2026-08",
+      "2026-09"
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
     "dataNote": "All lead, visit and project figures now come from the CSV spreadsheets in /data, built by reading every Oportunidade and every active Imóvel record in Inmovilla. oportunidades.csv holds 666 opportunities with contact origin and the properties each one consulted; imoveis.csv holds 118 active properties with their project, proposal date and the broker who moved them to Ganho; visitas.csv holds 49 visits from the Agenda. Property-level money figures (volumes, commissions, new listings) still come from the Inmovilla REST API and are refreshed automatically every 3 days.",
-    "leadsSnapshotOn": "2026-09-01",
-    "leadsSnapshotTotal": 833,
+    "leadsSnapshotOn": "2026-09-03",
+    "leadsSnapshotTotal": 863,
     "leadsSnapshotCoverage": "",
     "apiSyncOn": "2026-08-12",
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "kpisApi": {
-    "asOf": "2026-09-01",
+    "asOf": "2026-09-03",
     "salesVolume": 595000.0,
-    "rentalVolume": 22660.0,
-    "totalVolume": 617660.0,
+    "rentalVolume": 27960.0,
+    "totalVolume": 622960.0,
     "salesCount": 2,
-    "rentalCount": 20,
+    "rentalCount": 24,
     "avgTicketSales": 297500.0,
     "commissionSale": 15750.0,
     "commissionRental": 0.0,
     "commissionAssignment": 0.0,
     "totalCommission": 15750.0,
-    "totalLeads": 833,
-    "visits": 58,
+    "totalLeads": 863,
+    "visits": 62,
     "visitsSale": 4,
-    "visitsRental": 37,
+    "visitsRental": 41,
     "visitsUnlinked": 17,
     "note": "Closed deals are dated by the day the property entered Ganho in the CRM state history. Rental Volume is the sum of monthly rent, not a one-time amount. Commissions are the values recorded in Inmovilla and are never estimated; a deal with none recorded counts as zero."
   },
   "brokerPerformance": {
-    "asOf": "2026-09-01",
-    "period": "2026-06 to 2026-08",
+    "asOf": "2026-09-03",
+    "period": "2026-06 to 2026-09",
     "note": "",
     "agents": [
       {
@@ -49,27 +50,27 @@
       },
       {
         "name": "Sandra Dantas",
-        "leads": 252,
-        "visits": 34,
+        "leads": 266,
+        "visits": 35,
         "visitsSale": 4,
-        "visitsRental": 14,
-        "closedDeals": 4
+        "visitsRental": 15,
+        "closedDeals": 6
       },
       {
         "name": "Joana Côrte-Real",
-        "leads": 192,
+        "leads": 197,
         "visits": 1,
         "visitsSale": 0,
         "visitsRental": 1,
-        "closedDeals": 3
+        "closedDeals": 4
       },
       {
         "name": "Teresa Archer",
-        "leads": 83,
-        "visits": 12,
+        "leads": 93,
+        "visits": 15,
         "visitsSale": 0,
-        "visitsRental": 11,
-        "closedDeals": 6
+        "visitsRental": 14,
+        "closedDeals": 7
       }
     ]
   },
@@ -82,31 +83,32 @@
     {
       "quarter": "Q3 2026",
       "sales": 2,
-      "rentals": 19
+      "rentals": 23
     }
   ],
   "marketingOrigin": {
-    "asOf": "2026-09-01",
+    "asOf": "2026-09-03",
     "byChannel": {
-      "idealista": 443,
-      "Meta": 303,
-      "imovirtual": 70,
+      "idealista": 460,
+      "Meta": 314,
+      "imovirtual": 71,
       "Website": 6,
       "Broker circulo pessoal": 3,
-      "Referência de cliente": 1
+      "Referência de cliente": 1,
+      "IG Organic": 1
     },
     "note": "Contact origin recorded on each Oportunidade record."
   },
   "leadsPerProject": {
-    "asOf": "2026-09-01",
+    "asOf": "2026-09-03",
     "byProject": {
-      "Jardins do Marquês": 322,
-      "Jardins da Seara": 194,
-      "Prime Living": 140,
-      "Douro Nobilis": 47,
+      "Jardins do Marquês": 335,
+      "Jardins da Seara": 196,
+      "Prime Living": 148,
+      "Douro Nobilis": 49,
+      "Magnolia": 38,
       "White Tower": 38,
-      "Magnolia": 36,
-      "Riverline": 23,
+      "Riverline": 25,
       "Santos Pousada": 10,
       "Oporto Luxury": 3,
       "Celta Residences": 3,
@@ -447,6 +449,66 @@
       "clientId": "",
       "quarter": "Q3 2026",
       "month": "2026-08"
+    },
+    {
+      "id": "R00023",
+      "date": "2026-09-01",
+      "amount": 1000.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00009",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-09"
+    },
+    {
+      "id": "R00024",
+      "date": "2026-09-01",
+      "amount": 1200.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00030",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-09"
+    },
+    {
+      "id": "R00025",
+      "date": "2026-09-01",
+      "amount": 1000.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. YR00057",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-09"
+    },
+    {
+      "id": "R00026",
+      "date": "2026-09-03",
+      "amount": 2100.0,
+      "type": "rental",
+      "commission": 0.0,
+      "assignmentCommission": 0.0,
+      "channel": "",
+      "category": "",
+      "project": "Ref. 35030596",
+      "region": "",
+      "clientId": "",
+      "quarter": "Q3 2026",
+      "month": "2026-09"
     }
   ],
   "funnel": [
@@ -595,21 +657,21 @@
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "opportunity",
-      "count": 518
+      "count": 525
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "visit_scheduled",
-      "count": 31
+      "count": 32
     },
     {
       "month": "2026-08",
       "quarter": "Q3 2026",
       "type": "rental",
       "stage": "offer",
-      "count": 18
+      "count": 15
     },
     {
       "month": "2026-08",
@@ -630,7 +692,7 @@
       "quarter": "Q3 2026",
       "type": "sale",
       "stage": "opportunity",
-      "count": 44
+      "count": 45
     },
     {
       "month": "2026-08",
@@ -659,6 +721,76 @@
       "type": "sale",
       "stage": "win",
       "count": 2
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "opportunity",
+      "count": 19
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "visit_scheduled",
+      "count": 3
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "offer",
+      "count": 5
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "contract_signed",
+      "count": 4
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "rental",
+      "stage": "win",
+      "count": 4
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "opportunity",
+      "count": 3
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "visit_scheduled",
+      "count": 0
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "offer",
+      "count": 1
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "contract_signed",
+      "count": 0
+    },
+    {
+      "month": "2026-09",
+      "quarter": "Q3 2026",
+      "type": "sale",
+      "stage": "win",
+      "count": 0
     }
   ],
   "records": {
@@ -6525,6 +6657,216 @@
         "Sandra Dantas",
         "idealista.com",
         "Jardins do Marquês"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Teresa Archer",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Magnolia"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-08-31",
+        "sale",
+        "Teresa Archer",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-08-31",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Jardins da Seara"
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Douro Nobilis"
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Riverline"
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Douro Nobilis"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Teresa Archer",
+        "IG Organic",
+        "Prime Living"
+      ],
+      [
+        "2026-09-02",
+        "sale",
+        "Joana Côrte-Real",
+        "idealista.com",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-02",
+        "sale",
+        "Joana Côrte-Real",
+        "idealista.com",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-02",
+        "sale",
+        "Sandra Dantas",
+        "idealista.com",
+        ""
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Joana Côrte-Real",
+        "idealista.com",
+        "Riverline"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Teresa Archer",
+        "imovirtual.com",
+        "Prime Living"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        "Joana Côrte-Real",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-03",
+        "rental",
+        "Sandra Dantas",
+        "Meta",
+        "Jardins do Marquês"
+      ],
+      [
+        "2026-09-03",
+        "rental",
+        "Teresa Archer",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-09-03",
+        "rental",
+        "Joana Côrte-Real",
+        "idealista.com",
+        "Prime Living"
+      ],
+      [
+        "2026-09-03",
+        "rental",
+        "Sandra Dantas",
+        "idealista.com",
+        "Magnolia"
+      ],
+      [
+        "2026-09-03",
+        "rental",
+        ".",
+        "Meta",
+        "Jardins do Marquês"
       ]
     ],
     "visits": [
@@ -6875,6 +7217,30 @@
         "Sandra Dantas",
         "White Tower",
         "rental"
+      ],
+      [
+        "2026-08-31",
+        "Teresa Archer",
+        "Jardins da Seara",
+        "rental"
+      ],
+      [
+        "2026-09-01",
+        "Teresa Archer",
+        "Jardins da Seara",
+        "rental"
+      ],
+      [
+        "2026-09-02",
+        "Sandra Dantas",
+        "Jardins da Seara",
+        "rental"
+      ],
+      [
+        "2026-09-03",
+        "Teresa Archer",
+        "Jardins da Seara",
+        "rental"
       ]
     ],
     "offers": [
@@ -6944,7 +7310,7 @@
         ""
       ],
       [
-        "2026-08-26",
+        "2026-09-03",
         "rental",
         "Riverline"
       ],
@@ -6967,11 +7333,6 @@
         "2026-07-30",
         "rental",
         "Prime Living"
-      ],
-      [
-        "2026-08-27",
-        "rental",
-        "Douro Nobilis"
       ],
       [
         "2026-07-10",
@@ -6999,9 +7360,9 @@
         "Prime Living"
       ],
       [
-        "2026-08-28",
+        "2026-09-01",
         "rental",
-        "Jardins da Seara"
+        "Douro Nobilis"
       ],
       [
         "2026-08-28",
@@ -7049,6 +7410,11 @@
         "Jardins da Seara"
       ],
       [
+        "2026-09-01",
+        "rental",
+        "Jardins da Seara"
+      ],
+      [
         "2026-07-21",
         "rental",
         "Jardins da Seara"
@@ -7084,6 +7450,16 @@
         "Prime Living"
       ],
       [
+        "2026-09-01",
+        "rental",
+        "Prime Living"
+      ],
+      [
+        "2026-09-02",
+        "sale",
+        "Oporto Luxury"
+      ],
+      [
         "2026-06-19",
         "sale",
         "Riverline"
@@ -7102,6 +7478,11 @@
         "2026-08-27",
         "rental",
         "White Tower"
+      ],
+      [
+        "2026-09-02",
+        "rental",
+        ""
       ]
     ],
     "wins": [
@@ -7152,6 +7533,14 @@
         "",
         "35018926",
         1100.0
+      ],
+      [
+        "2026-09-03",
+        "rental",
+        "Teresa Archer",
+        "Riverline",
+        "35030596",
+        2100.0
       ],
       [
         "2026-07-11",
@@ -7226,6 +7615,14 @@
         1000.0
       ],
       [
+        "2026-09-01",
+        "rental",
+        "Joana Côrte-Real",
+        "Douro Nobilis",
+        "YR00009",
+        1000.0
+      ],
+      [
         "2026-08-21",
         "rental",
         "Teresa Archer",
@@ -7266,6 +7663,14 @@
         1150.0
       ],
       [
+        "2026-09-01",
+        "rental",
+        "Sandra Dantas",
+        "Jardins da Seara",
+        "YR00030",
+        1200.0
+      ],
+      [
         "2026-07-21",
         "rental",
         "Eugénia Miranda",
@@ -7280,6 +7685,14 @@
         "",
         "YR00033",
         780.0
+      ],
+      [
+        "2026-09-01",
+        "rental",
+        "Sandra Dantas",
+        "Prime Living",
+        "YR00057",
+        1000.0
       ]
     ],
     "listings": [
@@ -7729,6 +8142,14 @@
       ],
       [
         "2026-08-26",
+        "sale"
+      ],
+      [
+        "2026-09-01",
+        "rental"
+      ],
+      [
+        "2026-09-01",
         "sale"
       ]
     ]

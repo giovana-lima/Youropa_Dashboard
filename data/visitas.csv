@@ -57,3 +57,7 @@ data,mes,hora,comercial,tipo,subtipo,imovel_ref,id_oportunidade,cancelada,projet
 2026-08-26,2026-08,14:00,Sandra Dantas,1ª Visita,,YR00086,923,0,White Tower
 2026-08-26,2026-08,14:30,Teresa Archer,1ª Visita,,YR00012,907,0,Jardins da Seara
 2026-08-26,2026-08,14:30,Sandra Dantas,1ª Visita,,YR00086,913,0,White Tower
+2026-08-31,2026-08,18:30,Teresa Archer,Visita,,YR00012,1028,0,Jardins da Seara
+2026-09-01,2026-09,18:00,Teresa Archer,Visita,,YR00021,1027,0,Jardins da Seara
+2026-09-02,2026-09,12:00,Sandra Dantas,Visita,,YR00012,1018,0,Jardins da Seara
+2026-09-03,2026-09,19:00,Teresa Archer,Visita,,YR00012,1042,0,Jardins da Seara
