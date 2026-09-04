@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedOn": "2026-09-03",
+    "generatedOn": "2026-09-04",
     "reportingThrough": "2026-08",
     "months": [
       "2026-06",
@@ -10,14 +10,14 @@
     ],
     "source": "Inmovilla CRM (crm.inmovilla.com) - manually read via Claude in Chrome",
     "dataNote": "All lead, visit and project figures now come from the CSV spreadsheets in /data, built by reading every Oportunidade and every active Imóvel record in Inmovilla. oportunidades.csv holds 666 opportunities with contact origin and the properties each one consulted; imoveis.csv holds 118 active properties with their project, proposal date and the broker who moved them to Ganho; visitas.csv holds 49 visits from the Agenda. Property-level money figures (volumes, commissions, new listings) still come from the Inmovilla REST API and are refreshed automatically every 3 days.",
-    "leadsSnapshotOn": "2026-09-03",
+    "leadsSnapshotOn": "2026-09-04",
     "leadsSnapshotTotal": 863,
     "leadsSnapshotCoverage": "",
     "apiSyncOn": "2026-08-12",
     "apiSyncNote": "Starting 2026-08-12, New Listings, Total/Sales/Rental Volume, Average Ticket, Broker Performance and Quarterly Comparison are sourced directly from the Inmovilla REST API (all 291 property records read via GET /propiedades), not manual CRM reading. estadoficha codes used: Vendido=3, Vendido MLS=14 (sales); Arrendado=2, Arrendado MLS=13 (rentals) - confirmed via GET /enums/?tipos=estadoficha. 204 of 291 property records have a placeholder creation date (0000-00-00) and no verified agent/status history - these are Casafari-imported market comparables, not Youropa's own listings, and are excluded from New Listings and Volume figures. Commission fields (comision/cesioncom) are returned by the API but are not yet populated by Youropa in Inmovilla, so all Commission KPIs show as pending until that field is in active use. Visits and Leads per Project are blocked pending, respectively, a working /seguimientos query and a response from Inmovilla support on exposing the custom \"Projeto\" field via API."
   },
   "kpisApi": {
-    "asOf": "2026-09-03",
+    "asOf": "2026-09-04",
     "salesVolume": 595000.0,
     "rentalVolume": 27960.0,
     "totalVolume": 622960.0,
@@ -36,7 +36,7 @@
     "note": "Closed deals are dated by the day the property entered Ganho in the CRM state history. Rental Volume is the sum of monthly rent, not a one-time amount. Commissions are the values recorded in Inmovilla and are never estimated; a deal with none recorded counts as zero."
   },
   "brokerPerformance": {
-    "asOf": "2026-09-03",
+    "asOf": "2026-09-04",
     "period": "2026-06 to 2026-09",
     "note": "",
     "agents": [
@@ -87,7 +87,7 @@
     }
   ],
   "marketingOrigin": {
-    "asOf": "2026-09-03",
+    "asOf": "2026-09-04",
     "byChannel": {
       "idealista": 460,
       "Meta": 314,
@@ -100,7 +100,7 @@
     "note": "Contact origin recorded on each Oportunidade record."
   },
   "leadsPerProject": {
-    "asOf": "2026-09-03",
+    "asOf": "2026-09-04",
     "byProject": {
       "Jardins do Marquês": 335,
       "Jardins da Seara": 196,
