@@ -862,3 +862,16 @@ id_oportunidade,cod_interno,data_criacao,mes,operacao,tipologia,comercial,estado
 1062,41779615,2026-09-03,2026-09,arrendamento,T1,Joana,Cliente do Portal,idealista.com,YR00062,0,Prime Living
 1063,41781025,2026-09-03,2026-09,arrendamento,T0,Sandra,Cliente do Portal,idealista.com,YR00059,0,Magnolia
 1064,41784281,2026-09-03,2026-09,arrendamento,T0,.,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+1065,41787021,2026-09-03,2026-09,arrendamento,T1,Sandra,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+1066,41787329,2026-09-03,2026-09,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+1067,41787955,2026-09-03,2026-09,arrendamento,T3,Sandra,Cliente do Portal,idealista.com,YR00086,0,White Tower
+1068,41794737,2026-09-03,2026-09,venda,T2,Teresa,Cliente do Portal,idealista.com,J,0,
+1069,41795367,2026-09-03,2026-09,arrendamento,T3,Teresa,Cliente do Portal,idealista.com,YR00087,0,Prime Living
+1070,41795406,2026-09-03,2026-09,arrendamento,T0,Sandra,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+1071,41795837,2026-09-03,2026-09,arrendamento,T1,Teresa,Cliente do Portal,Meta,YR00042,0,Jardins do Marquês
+1072,41796371,2026-09-04,2026-09,arrendamento,T2,Sandra,Cliente do Portal,Meta,YR00043,0,Jardins do Marquês
+1073,41798025,2026-09-04,2026-09,arrendamento,T0,Teresa,Cliente do Portal,Meta,YR00041,0,Jardins do Marquês
+1074,41805337,2026-09-04,2026-09,arrendamento,T2,Sandra,Cliente do Portal,idealista.com,"YR00055,4.7",0,Prime Living
+1075,41806584,2026-09-04,2026-09,arrendamento,T1,Teresa,Cliente do Portal,idealista.com,YR00013,0,Jardins da Seara
+1076,41807393,2026-09-04,2026-09,arrendamento,T3,Sandra,Cliente do Portal,idealista.com,YR00087,0,Prime Living
+1077,41807394,2026-09-04,2026-09,venda,T2,Teresa,Cliente do Portal,idealista.com,YR00027,0,Prime Living

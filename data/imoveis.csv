@@ -244,7 +244,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 29622188,YR00019,,Arrendar,Nao Disponivel,5,,1100,,0.0,2026-07-07,2026-07-07,218516,218516,,,,nao_aplicavel
 29644773,YR00020,Jardins da Seara,Arrendar,Com Proposta,18,,1150,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
 29644774,YR00021,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
-29644775,YR00022,Jardins da Seara,Arrendar,Com Proposta,18,,1200,,0.0,2026-07-09,2026-08-29,218514,218514,,,2026-08-29,sim
+29644775,YR00022,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-09-03,218514,218514,,,,sim
 29644776,YR00023,Jardins da Seara,Arrendar,Arrendado,2,,1130,,0.0,2026-07-09,2026-06-12,218514,218514,2026-08-21,Teresa Archer,,sim
 29644777,YR00024,Jardins da Seara,Arrendar,Arrendado,2,,1000,,0.0,2026-07-09,2026-06-12,218514,218514,2026-07-28,Eugénia Miranda,2026-07-28,sim
 29645596,YR00025,Jardins da Seara,Arrendar,Disponivel,1,,1200,,0.0,2026-07-09,2026-06-12,218514,218514,,,,sim
@@ -302,7 +302,7 @@ cod_ofer,ref,projeto,operacao,estado,estado_cod,preco_venda,preco_arrendamento,c
 30038997,YR00078,Jardins do Marquês,Arrendar,Disponivel,1,,1000,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim
 30038998,YR00079,,Arrendar,Disponivel,1,,950,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim
 30038999,YR00080,Jardins do Marquês,Arrendar,Disponivel,1,,1000,,0.0,2026-08-24,2026-07-30,218514,218514,,,,sim
-30044774,YR00086,White Tower,Arrendar,Reservado,7,,1300,,0.0,2026-08-26,2026-09-01,218514,218514,,,2026-08-27,sim
+30044774,YR00086,White Tower,Arrendar,Disponivel,1,,1300,,0.0,2026-08-26,2026-09-03,218514,218514,,,,sim
 30052524,YR00088,Jardins do Marquês,Arrendar,Disponivel,1,,1500,,0.0,2026-08-27,2026-08-27,218514,218514,,,,sim
 30052064,YR00087,Prime Living,Arrendar,Disponivel,1,,1600,,0.0,2026-08-27,2026-08-27,218514,218514,,,,sim
 30044622,YR00082,Fernão Magalhães 127,Vender,Disponivel,1,575000,,,0.0,2026-08-26,2026-08-26,218514,218514,,,,sim

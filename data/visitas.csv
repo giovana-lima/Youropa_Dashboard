@@ -61,3 +61,6 @@ data,mes,hora,comercial,tipo,subtipo,imovel_ref,id_oportunidade,cancelada,projet
 2026-09-01,2026-09,18:00,Teresa Archer,Visita,,YR00021,1027,0,Jardins da Seara
 2026-09-02,2026-09,12:00,Sandra Dantas,Visita,,YR00012,1018,0,Jardins da Seara
 2026-09-03,2026-09,19:00,Teresa Archer,Visita,,YR00012,1042,0,Jardins da Seara
+2026-09-04,2026-09,10:00,Teresa Archer,1ª Visita,,YR00059,1034,0,Magnolia
+2026-09-04,2026-09,11:00,Teresa Archer,1ª Visita,,34981289,1045,0,Riverline
+2026-09-04,2026-09,11:30,Teresa Archer,1ª Visita,,4.7,1045,0,Riverline
